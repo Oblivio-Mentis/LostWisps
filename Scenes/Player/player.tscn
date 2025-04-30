@@ -1,23 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcbcs4fcflrir"]
+[gd_scene load_steps=6 format=3 uid="uid://dcbcs4fcflrir"]
 
-[ext_resource type="Texture2D" uid="uid://d3ywh06q2l3go" path="res://player.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://d1unq0l8f06mq" path="res://Player.cs" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://xyheqb3uyl17" path="res://Scripts/Player/Player.cs" id="1_xpcdj"]
+[ext_resource type="Resource" uid="uid://72vnhgbl44x2" path="res://Global/Player/PlayerStats.tres" id="2_mtuoh"]
+[ext_resource type="Texture2D" uid="uid://d3ywh06q2l3go" path="res://Sprites/player.png" id="3_htcer"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 43.85
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(20000, 20)
+size = Vector2(2000, 20)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_onrkg")
+script = ExtResource("1_xpcdj")
+Stats = ExtResource("2_mtuoh")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(136, 577)
 scale = Vector2(0.324, 0.324)
-texture = ExtResource("1_4flbx")
+texture = ExtResource("3_htcer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(125, 583)
@@ -26,5 +28,5 @@ shape = SubResource("CircleShape2D_4flbx")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(107, 640)
+position = Vector2(537, 642)
 shape = SubResource("RectangleShape2D_onrkg")
