@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="LostWisps"
-run/main_scene="uid://dcbcs4fcflrir"
+run/main_scene="uid://bf8ctgo46tnpv"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://Sprites/icon.svg"
+config/icon="res://Sprites/Icon.svg"
+
+[debug]
+
+settings/stdout/print_fps=true
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [dotnet]
 

@@ -3,18 +3,18 @@ using Godot;
 [GlobalClass]
 public partial class PlayerStats : Resource
 {
-	[Export] public float MaxSpeed = 600f;
-	[Export] public float Acceleration = 800f;
-	[Export] public float GroundDeceleration = 1000f;
-	[Export] public float AirDeceleration = 300f;
+	[Export] public float MaxSpeed = 220f;
+	[Export] public float Acceleration = 1000f; 
+	[Export] public float AirDeceleration = 1500f;
 
-	[Export] public float GravityJump = 600f;
-	[Export] public float GravityFall = 750f;
+	[Export] public float GravityJump = 1100f;
+	[Export] public float GravityFall = 1200f;
 
-	[Export] public float JumpPower = 400f;
-	[Export] public float MaxFallSpeed = 300f;
-	[Export] public float FallAcceleration = 800f;
+	[Export] public float JumpPowerX = 300f;
+	[Export] public float JumpPowerY = 600f;
+	[Export] public float MaxFallSpeed = 800f;
+	[Export] public float AirAcceleration = 1500f;
 
-	[Export] public float CoyoteTime = 0.15f; // Время после выхода с земли, когда можно прыгнуть
-	[Export] public float JumpBufferTime = 0.15f; // Время после нажатия, чтобы использовать прыжок позже
+	[Export] public float CoyoteTime = 0.1f; // Время после выхода с земли, когда можно прыгнуть
+	[Export] public float JumpBufferTime = 0.1f; // Время после нажатия, чтобы использовать прыжок позже
 }

@@ -1,26 +1,26 @@
 [gd_scene load_steps=27 format=3 uid="uid://dhgoxn4ob7rth"]
 
 [ext_resource type="Script" uid="uid://xyheqb3uyl17" path="res://Scripts/Player/Player.cs" id="1_1pfiu"]
-[ext_resource type="Texture2D" uid="uid://bex7kw4852eix" path="res://Sprites/gBot_pieces.webp" id="1_p3s5f"]
+[ext_resource type="Texture2D" uid="uid://bex7kw4852eix" path="res://Sprites/gBotPieces.webp" id="1_p3s5f"]
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="2_7tjpo"]
 
 [sub_resource type="Resource" id="Resource_5gxpp"]
 script = ExtResource("2_7tjpo")
-MaxSpeed = 600.0
-Acceleration = 800.0
-GroundDeceleration = 1000.0
-AirDeceleration = 300.0
-GravityJump = 600.0
-GravityFall = 750.0
-JumpPower = 400.0
-MaxFallSpeed = 300.0
-FallAcceleration = 800.0
-CoyoteTime = 0.15
-JumpBufferTime = 0.15
+MaxSpeed = 220.0
+Acceleration = 1000.0
+AirDeceleration = 1500.0
+GravityJump = 1100.0
+GravityFall = 1200.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
+MaxFallSpeed = 800.0
+AirAcceleration = 1500.0
+CoyoteTime = 0.1
+JumpBufferTime = 0.1
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dlryd"]
-radius = 43.85
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f124h"]
+size = Vector2(85.3882, 275.393)
 
 [sub_resource type="Animation" id="Animation_7tjpo"]
 length = 0.001
@@ -1887,7 +1887,7 @@ states/jump/position = Vector2(557, 100)
 states/walk/node = SubResource("AnimationNodeAnimation_5gxpp")
 states/walk/position = Vector2(369, 314)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_dlryd"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_sxkax"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_7slgi"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_0crf3"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_rvgq0"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_w3yav"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_wwjlp"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_8gynd"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_mfhyl"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_5pcw1")]
-graph_offset = Vector2(-258, -7)
+graph_offset = Vector2(-54, 5)
 
 [node name="PlayerTutorial" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "animationTree", "skeletonContainer")]
 script = ExtResource("1_1pfiu")
@@ -1972,12 +1972,12 @@ rest = Transform2D(1, 0, 0, 1, 0, -277)
 [node name="chest" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip"]
 position = Vector2(2, -49)
 rotation = 0.137269
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 2, -49)
 
 [node name="neck" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-4, -194)
 rotation = 0.342237
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -4, -194)
 
 [node name="jaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/neck"]
@@ -2004,7 +2004,6 @@ rest = Transform2D(0.911579, 3.12748, -0.96005, 0.27983, 12, 85)
 [node name="right_arm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-102, -92)
 rotation = 1.04778
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -102, -92)
 
 [node name="right_forearm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/right_arm"]
@@ -2062,9 +2061,9 @@ rest = Transform2D(4.44, 0, 0, 1, -7, 140)
 [node name="JumpPeak" type="Node2D" parent="StateMachine"]
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -140)
+position = Vector2(-4.00001, -438.5)
 scale = Vector2(3.06834, 3.06834)
-shape = SubResource("CircleShape2D_dlryd")
+shape = SubResource("RectangleShape2D_f124h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

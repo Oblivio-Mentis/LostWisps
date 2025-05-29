@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcbcs4fcflrir"]
 
-[ext_resource type="Script" uid="uid://xyheqb3uyl17" path="res://Scripts/Player/Player.cs" id="1_xpcdj"]
-[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="2_xpcdj"]
-[ext_resource type="Texture2D" uid="uid://d3ywh06q2l3go" path="res://Sprites/player.png" id="3_htcer"]
+[ext_resource type="Script" uid="uid://xyheqb3uyl17" path="res://Scripts/Player/Player.cs" id="1_h54ih"]
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="2_ude3g"]
+[ext_resource type="Texture2D" uid="uid://d3ywh06q2l3go" path="res://Sprites/Player.png" id="3_jmcll"]
 
 [sub_resource type="Resource" id="Resource_mtuoh"]
-script = ExtResource("2_xpcdj")
-MaxSpeed = 600.0
-Acceleration = 800.0
-GroundDeceleration = 1000.0
+script = ExtResource("2_ude3g")
+MaxSpeed = 220.0
+Acceleration = 1000.0
 AirDeceleration = 1100.0
-GravityJump = 600.0
+GravityJump = 1100.0
 GravityFall = 850.0
-JumpPower = 400.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
 MaxFallSpeed = 850.0
-FallAcceleration = 800.0
+AirAcceleration = 1500.0
 CoyoteTime = 0.15
 JumpBufferTime = 0.45
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
@@ -23,14 +23,14 @@ metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 radius = 43.85
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer")]
-script = ExtResource("1_xpcdj")
+script = ExtResource("1_h54ih")
 Stats = SubResource("Resource_mtuoh")
 JumpBuffer = NodePath("Timers/JumpBuffer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2.27374e-13, 9.09495e-13)
 scale = Vector2(0.324, 0.324)
-texture = ExtResource("3_htcer")
+texture = ExtResource("3_jmcll")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-13, 7)
