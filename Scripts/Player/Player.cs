@@ -10,6 +10,7 @@ namespace Player
 	{
 		[Export] public PlayerStats Stats;
 		[Export] public Timer JumpBuffer;
+		[Export] public Timer CoyoteTimer;
 		[Export] public AnimationTree animationTree;
 		[Export] public Node2D skeletonContainer;
 
@@ -52,7 +53,6 @@ namespace Player
 		public override void _Process(double delta)
 		{
 			currentState.Update(delta);
-
 		}
 
 		public override void _Input(InputEvent @event)
@@ -88,7 +88,7 @@ namespace Player
 			currentState = newState;
 			currentState.EnterState();
 
-			GD.Print("State Change From " + previousState.GetType().FullName + " to " + currentState.GetType().FullName);
+			// GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
 		}
 		
 		public void SetAnimation(string newAnimationState)
@@ -102,7 +102,7 @@ namespace Player
 
 			if (currentAnimationState != newAnimationState)
 			{
-				GD.Print($"[Animation] Switching from '{currentAnimationState}' to '{newAnimationState}'");
+				// GD.Print($"Animation - Switching from '{currentAnimationState}' to '{newAnimationState}'");
 				stateMachine.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
 			}

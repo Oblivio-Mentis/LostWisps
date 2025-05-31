@@ -27,8 +27,9 @@ namespace Player
 
 		public override void Update(double delta)
 		{
-			// TODO: Пофиксить JumpBuffer))))))))))))))))))))
-			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0)
+			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0f)
+				player.ChangeState(new JumpState(player));
+			else if (player.KeyJumpPressed && player.CoyoteTimer.TimeLeft > 0f)
 				player.ChangeState(new JumpState(player));
 			else if (player.IsOnFloor() && (player.KeyLeft || player.KeyRight))
 				player.ChangeState(new RunState(player));
@@ -46,8 +47,8 @@ namespace Player
 		{
 			float direction = player.frameInput.X;
 
-			if (direction != 0)
-				player.skeletonContainer.Scale = new Vector2(direction, 1);
+			// if (direction != 0)
+			// 	player.skeletonContainer.Scale = new Vector2(direction, 1);
 
 			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, player.frameInput.X * player.Stats.JumpPowerX,  player.Stats.AirDeceleration * (float)delta);
 		}
@@ -55,7 +56,6 @@ namespace Player
 		private void HandleGravity(double delta)
 		{
 			player.frameVelocity += new Vector2(0, player.Stats.GravityFall * (float)delta);
-			//GD.Print(player.frameVelocity.Y);
 
 			if (player.frameVelocity.Y > player.Stats.MaxFallSpeed)
 				player.frameVelocity.Y = player.Stats.MaxFallSpeed;

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://di2q2es3w14dc"]
+
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_3al7h"]
+[ext_resource type="Script" uid="uid://05kl5uyts61h" path="res://Scripts/Objects/MovingPlatform.cs" id="1_5pq8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pq8e"]
+size = Vector2(246, 20)
+
+[sub_resource type="Animation" id="Animation_mciqb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uip2u"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.56, -1.56),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_igc7c"]
+_data = {
+&"RESET": SubResource("Animation_mciqb"),
+&"move": SubResource("Animation_uip2u")
+}
+
+[node name="MovingPlatform" type="Path2D" node_paths=PackedStringArray("pathFollow2D", "animationPlayer")]
+script = ExtResource("1_5pq8e")
+pathFollow2D = NodePath("PathFollow2D")
+animationPlayer = NodePath("PathFollow2D/AnimationPlayer")
+metadata/_edit_group_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("1_3al7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_5pq8e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D"]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_igc7c")
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")

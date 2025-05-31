@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cslg5k57aviqi"]
+
+[ext_resource type="Script" uid="uid://cwdqo6cjn0ytp" path="res://Scripts/Objects/PressurePlate.cs" id="1_wm6fh"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="2_pqlye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ob17t"]
+size = Vector2(20, 8)
+
+[node name="PressurePlate" type="Node2D"]
+script = ExtResource("1_wm6fh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ob17t")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 1.16)
+shape = SubResource("RectangleShape2D_ob17t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0849142, 0.28)
+texture = ExtResource("2_pqlye")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

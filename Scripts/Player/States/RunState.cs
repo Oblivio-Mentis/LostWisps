@@ -11,18 +11,19 @@ namespace Player
 		public override void EnterState()
 		{
 			player.SetAnimation("walk");
-			GD.Print(player.frameVelocity.X);
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleHorizontalMovement(delta);
+			
 		}
 
 		public override void Update(double delta)
 		{
 			if (!player.IsOnFloor())
 			{
+				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
 			}
 			else if (player.KeyJump || player.JumpBuffer.TimeLeft > 0)
@@ -42,7 +43,7 @@ namespace Player
 			if (direction != 0)
 			{
 				player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, direction * player.Stats.MaxSpeed, player.Stats.Acceleration * (float)delta);
-				player.skeletonContainer.Scale = new Vector2(direction, 1);
+				// player.skeletonContainer.Scale = new Vector2(direction, 1);
 			}
 		}
 	}

@@ -1,19 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf8ctgo46tnpv"]
+[gd_scene load_steps=10 format=3 uid="uid://bf8ctgo46tnpv"]
 
-[ext_resource type="PackedScene" uid="uid://dhgoxn4ob7rth" path="res://Scenes/Player/PlayerTutorial.tscn" id="1_kmf64"]
 [ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="2_xp3oo"]
+[ext_resource type="PackedScene" uid="uid://cslg5k57aviqi" path="res://Scenes/Objects/PressurePlate.tscn" id="3_lalt1"]
+[ext_resource type="PackedScene" uid="uid://kcbdogbsqxca" path="res://Scenes/Objects/Gate.tscn" id="4_jphr8"]
+[ext_resource type="PackedScene" uid="uid://di2q2es3w14dc" path="res://Scenes/Objects/MovingPlatform.tscn" id="5_tvasq"]
+[ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="5_yt681"]
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="6_t8v38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xp3oo"]
 size = Vector2(246, 22)
 
+[sub_resource type="Curve2D" id="Curve2D_tvasq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 2, -285)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_yt681"]
+resource_local_to_scene = true
+script = ExtResource("6_t8v38")
+MaxSpeed = 220.0
+Acceleration = 1000.0
+AirDeceleration = 1500.0
+GravityJump = 1100.0
+GravityFall = 1200.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
+MaxFallSpeed = 800.0
+AirAcceleration = 1500.0
+CoyoteTime = 0.012
+JumpBufferTime = 0.012
+metadata/_custom_type_script = "uid://dc3lsomwrsivi"
+
 [node name="Node2D" type="Node2D"]
 
-[node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
-position = Vector2(83, 1075)
-scale = Vector2(0.100281, 0.100281)
-
 [node name="Platfom" type="Sprite2D" parent="."]
-position = Vector2(194, 425)
+position = Vector2(196, 425)
 texture = ExtResource("2_xp3oo")
 metadata/_edit_group_ = true
 
@@ -125,3 +147,27 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platfom9/StaticBody2D"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xp3oo")
+
+[node name="PressurePlate" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("3_lalt1")]
+position = Vector2(954, 1058)
+scale = Vector2(4.31797, -5.42757)
+Target = NodePath("../Gate")
+
+[node name="Gate" parent="." instance=ExtResource("4_jphr8")]
+position = Vector2(1172, 1014)
+scale = Vector2(1, 0.537251)
+openY = 200.0
+closeY = 200.0
+
+[node name="MovingPlatform" parent="." instance=ExtResource("5_tvasq")]
+position = Vector2(1149, 795)
+curve = SubResource("Curve2D_tvasq")
+loop = false
+speed = 200.0
+
+[node name="PlayerTutorial" parent="." instance=ExtResource("5_yt681")]
+position = Vector2(195, 421)
+Stats = SubResource("Resource_yt681")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerTutorial"]
+position_smoothing_enabled = true

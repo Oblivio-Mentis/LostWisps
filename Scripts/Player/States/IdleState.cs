@@ -21,6 +21,7 @@ namespace Player
 		{
 			if (!player.IsOnFloor())
 			{
+				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
 			}
 			else if (player.KeyJump)
