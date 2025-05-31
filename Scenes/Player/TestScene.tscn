@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf8ctgo46tnpv"]
+[gd_scene load_steps=5 format=3 uid="uid://bf8ctgo46tnpv"]
 
 [ext_resource type="PackedScene" uid="uid://dhgoxn4ob7rth" path="res://Scenes/Player/PlayerTutorial.tscn" id="1_kmf64"]
 [ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="2_xp3oo"]
+[ext_resource type="Texture2D" uid="uid://ddve8tmd0x0jb" path="res://Sprites/Шаблон для уровней.drawio.png" id="3_lalt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xp3oo"]
 size = Vector2(246, 22)
 
 [node name="Node2D" type="Node2D"]
-
-[node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
-position = Vector2(83, 1075)
-scale = Vector2(0.100281, 0.100281)
+metadata/_edit_horizontal_guides_ = [333.0]
 
 [node name="Platfom" type="Sprite2D" parent="."]
 position = Vector2(194, 425)
@@ -103,18 +101,6 @@ metadata/_edit_group_ = true
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xp3oo")
 
-[node name="Platfom8" type="Sprite2D" parent="Platfom8"]
-position = Vector2(1938.13, 523.5)
-scale = Vector2(0.114373, 52.3913)
-texture = ExtResource("2_xp3oo")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platfom8/Platfom8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platfom8/Platfom8/StaticBody2D"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_xp3oo")
-
 [node name="Platfom9" type="Sprite2D" parent="."]
 position = Vector2(472, 565)
 texture = ExtResource("2_xp3oo")
@@ -125,3 +111,12 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platfom9/StaticBody2D"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xp3oo")
+
+[node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
+position = Vector2(148, 955)
+scale = Vector2(1, 1)
+
+[node name="ШаблонДляУровней_drawio" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(1821, 116)
+texture = ExtResource("3_lalt1")
