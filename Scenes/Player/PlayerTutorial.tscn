@@ -20,8 +20,9 @@ CoyoteTime = 0.012
 JumpBufferTime = 0.012
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f124h"]
-size = Vector2(50, 85)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f124h"]
+radius = 18.0
+height = 85.0
 
 [sub_resource type="Animation" id="Animation_7tjpo"]
 length = 0.001
@@ -1790,7 +1791,8 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-131, 59)
 
 [node name="PlayerTutorial" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "CoyoteTimer", "animationTree", "skeletonContainer")]
-position = Vector2(0, 16)
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_1pfiu")
 Stats = SubResource("Resource_5gxpp")
 JumpBuffer = NodePath("Timers/JumpBuffer")
@@ -1799,7 +1801,7 @@ animationTree = NodePath("AnimationTree")
 skeletonContainer = NodePath("SkeletonContainer")
 
 [node name="SkeletonContainer" type="Node2D" parent="."]
-position = Vector2(0, -17)
+position = Vector2(0, 1.90735e-06)
 scale = Vector2(0.0992725, 0.0992725)
 
 [node name="Polygons" type="Node2D" parent="SkeletonContainer"]
@@ -1881,6 +1883,7 @@ rest = Transform2D(1, 0, 0, 1, -0.653414, -76.4186)
 [node name="neck" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-4, -194)
 rotation = 0.342237
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -6.65341, -177.195)
 
 [node name="jaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/neck"]
@@ -1903,6 +1906,7 @@ rest = Transform2D(1, 0, 0, 1, -13, 107)
 [node name="left_hand" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/left_arm/left_forearm"]
 position = Vector2(12, 85)
 rotation = 0.930087
+scale = Vector2(1, 1)
 rest = Transform2D(0.279829, 0.96005, -0.96005, 0.279829, 13.3466, 128.57)
 auto_calculate_length_and_angle = false
 length = 40.825
@@ -1911,18 +1915,17 @@ bone_angle = 346.19
 [node name="right_arm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-102, -92)
 rotation = 1.04778
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -96.6932, -111.458)
 
 [node name="right_forearm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/right_arm"]
 position = Vector2(-2, 100)
 rotation = -0.937956
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -2, 100)
 
 [node name="right_hand" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/right_arm/right_forearm"]
 position = Vector2(5, 113)
 rotation = -0.356234
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0.000858456, -0.000858456, 1, 2.34658, 161.877)
 auto_calculate_length_and_angle = false
 length = 43.063
@@ -1931,7 +1934,6 @@ bone_angle = 70.968
 [node name="left_thigh" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip"]
 position = Vector2(32, 6)
 rotation = 0.173814
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 32, 6)
 
 [node name="left_leg" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/left_thigh"]
@@ -1941,7 +1943,6 @@ rest = Transform2D(1, 0, 0, 1, -32, 80)
 
 [node name="left_foot" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/left_thigh/left_leg"]
 position = Vector2(9, 151)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 9, 151)
 auto_calculate_length_and_angle = false
 length = 45.0
@@ -1950,7 +1951,6 @@ bone_angle = 0.0
 [node name="right_thigh" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip"]
 position = Vector2(-77, 2)
 rotation = 0.242259
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -77, 2)
 
 [node name="right_leg" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/right_thigh"]
@@ -1980,8 +1980,8 @@ bone_angle = 0.0
 [node name="JumpPeak" type="Node2D" parent="StateMachine"]
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -59)
-shape = SubResource("RectangleShape2D_f124h")
+position = Vector2(0, -43)
+shape = SubResource("CapsuleShape2D_f124h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

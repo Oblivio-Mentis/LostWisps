@@ -18,3 +18,16 @@ public partial class PlayerStats : Resource
 	[Export] public float CoyoteTime = 0.1f; // Время после выхода с земли, когда можно прыгнуть
 	[Export] public float JumpBufferTime = 0.1f; // Время после нажатия, чтобы использовать прыжок позже
 }
+
+// var normal = player.GetFloorNormal();
+// if (normal.Y < player.Stats.SlopeClimbThreshold)
+// {
+// 	if (player.KeyLeft || player.KeyRight)
+// 	{
+// 		player.ChangeState(new ClimbState(player)); // Переход в ClimbState
+// 		return;
+// 	}
+
+// 	player.ChangeState(new SlidingState(player)); // Иначе — SlideState
+// 	return;
+// }

@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://di2q2es3w14dc"]
+[gd_scene load_steps=7 format=3 uid="uid://b7dndjqth5sf7"]
 
-[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_3al7h"]
-[ext_resource type="Script" uid="uid://05kl5uyts61h" path="res://Scripts/Objects/MovingPlatform.cs" id="1_5pq8e"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_gsoxd"]
+[ext_resource type="Script" uid="uid://p1jqt4mu6l5m" path="res://Scripts/Objects/ActivatedPlatform.cs" id="1_yxylb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pq8e"]
-size = Vector2(246, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rowiq"]
+size = Vector2(240, 30)
 
-[sub_resource type="Animation" id="Animation_mciqb"]
+[sub_resource type="Animation" id="Animation_1p3ia"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,10 +21,8 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_uip2u"]
+[sub_resource type="Animation" id="Animation_rowiq"]
 resource_name = "move"
-length = 2.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,23 +30,20 @@ tracks/0/path = NodePath(".:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-1.56, -1.56),
 "update": 0,
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_igc7c"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7aenf"]
 _data = {
-&"RESET": SubResource("Animation_mciqb"),
-&"move": SubResource("Animation_uip2u")
+&"RESET": SubResource("Animation_1p3ia"),
+&"move": SubResource("Animation_rowiq")
 }
 
-[node name="MovingPlatform" type="Path2D" node_paths=PackedStringArray("pathFollow2D", "animationPlayer")]
-script = ExtResource("1_5pq8e")
-pathFollow2D = NodePath("PathFollow2D")
-animationPlayer = NodePath("PathFollow2D/AnimationPlayer")
-metadata/_edit_group_ = true
+[node name="ActivatedPlatform" type="Path2D"]
+script = ExtResource("1_yxylb")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotates = false
@@ -56,16 +51,19 @@ rotates = false
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("1_3al7h")
+position = Vector2(7.39098e-06, 3.57628e-07)
+scale = Vector2(0.97166, 1.30435)
+texture = ExtResource("1_gsoxd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_5pq8e")
+shape = SubResource("RectangleShape2D_rowiq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D"]
-callback_mode_process = 0
 libraries = {
-&"": SubResource("AnimationLibrary_igc7c")
+&"": SubResource("AnimationLibrary_7aenf")
 }
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
+
+[connection signal="animation_finished" from="PathFollow2D/AnimationPlayer" to="." method="AnimationFinished"]

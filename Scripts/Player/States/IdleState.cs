@@ -36,6 +36,7 @@ namespace Player
 
 		private void HandleHorizontalMovement(double delta)
 		{
+			
 			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, 0,  Mathf.Abs(player.frameVelocity.X) / 0.05f * (float)delta);
 		}
 	}

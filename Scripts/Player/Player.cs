@@ -88,9 +88,9 @@ namespace Player
 			currentState = newState;
 			currentState.EnterState();
 
-			// GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
+			GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
 		}
-		
+
 		public void SetAnimation(string newAnimationState)
 		{
 			if (animationTree == null)
