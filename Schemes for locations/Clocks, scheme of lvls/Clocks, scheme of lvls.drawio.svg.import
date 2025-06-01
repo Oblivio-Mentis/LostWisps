@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ywh06q2l3go"
-path="res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex"
+uid="uid://btpabtikx37ej"
+path="res://.godot/imported/Clocks, scheme of lvls.drawio.svg-365086c6262e644f6875b690d5262c3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player.png"
-dest_files=["res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex"]
+source_file="res://Schemes for locations/Clocks, scheme of lvls/Clocks, scheme of lvls.drawio.svg"
+dest_files=["res://.godot/imported/Clocks, scheme of lvls.drawio.svg-365086c6262e644f6875b690d5262c3b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

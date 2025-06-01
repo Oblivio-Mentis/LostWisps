@@ -3,9 +3,9 @@ using System;
 
 namespace Object
 {
-    public interface IActivatable
-    {
-        void Activate();
-        void Deactivate();
-    }
+	public interface IActivatable
+	{
+		void Activate();
+		void Deactivate();
+	}
 }

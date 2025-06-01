@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ywh06q2l3go"
-path="res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex"
+uid="uid://deoqq0rketilj"
+path="res://.godot/imported/Clocks, scheme of lvls.drawio.png-4eed1400fef6ed880814456a954e6b45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player.png"
-dest_files=["res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex"]
+source_file="res://Schemes for locations/Clocks, scheme of lvls/Clocks, scheme of lvls.drawio.png"
+dest_files=["res://.godot/imported/Clocks, scheme of lvls.drawio.png-4eed1400fef6ed880814456a954e6b45.ctex"]
 
 [params]
 

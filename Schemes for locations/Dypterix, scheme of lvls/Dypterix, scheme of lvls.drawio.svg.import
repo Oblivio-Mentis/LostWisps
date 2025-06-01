@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qr0oomt6j0ai"
-path="res://.godot/imported/Шаблон для уровней.drawio.svg-9bde78730ccde661492ff0390d4a5746.ctex"
+uid="uid://c1jjn5mhmuvoc"
+path="res://.godot/imported/Dypterix, scheme of lvls.drawio.svg-28a0bbcfeb67b386418f575eceed2030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Шаблон для уровней.drawio.svg"
-dest_files=["res://.godot/imported/Шаблон для уровней.drawio.svg-9bde78730ccde661492ff0390d4a5746.ctex"]
+source_file="res://Schemes for locations/Dypterix, scheme of lvls/Dypterix, scheme of lvls.drawio.svg"
+dest_files=["res://.godot/imported/Dypterix, scheme of lvls.drawio.svg-28a0bbcfeb67b386418f575eceed2030.ctex"]
 
 [params]
 
