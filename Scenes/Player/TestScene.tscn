@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
 
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="1_kmf64"]
@@ -12,17 +11,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xp3oo"]
 size = Vector2(246, 22)
 
-=======
-[gd_scene load_steps=11 format=3 uid="uid://bf8ctgo46tnpv"]
-
-[ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="1_kmf64"]
-[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="3_jphr8"]
-[ext_resource type="Texture2D" uid="uid://dhay7iseqxurj" path="res://Sprites/TestLvls/TestLvl1.png" id="4_jphr8"]
-[ext_resource type="PackedScene" uid="uid://di2q2es3w14dc" path="res://Scenes/Objects/MovingPlatform.tscn" id="4_tvasq"]
-[ext_resource type="PackedScene" uid="uid://d3sohailg7e0h" path="res://Scenes/Objects/StaticPlatform.tscn" id="5_tvasq"]
-[ext_resource type="PackedScene" uid="uid://cslg5k57aviqi" path="res://Scenes/Objects/PressurePlate.tscn" id="6_yt681"]
-
->>>>>>> Stashed changes
 [sub_resource type="Resource" id="Resource_tvasq"]
 resource_local_to_scene = true
 script = ExtResource("3_jphr8")
@@ -39,7 +27,6 @@ CoyoteTime = 0.012
 JumpBufferTime = 0.012
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
-<<<<<<< Updated upstream
 [sub_resource type="Curve2D" id="Curve2D_sdckr"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -313, -0.000732422)
@@ -57,30 +44,10 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -2, -2, -29, 121, 29, -121, 67, -67, 0, 0, 0, 0, -9, -168, 9, -55, -9, 55, -73, -84, 0, 0, 0, 0, -2, -2)
 }
 point_count = 5
-=======
-[sub_resource type="Curve2D" id="Curve2D_yt681"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, -351)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_jphr8"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, 1)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_tvasq"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 211)
-}
-point_count = 2
->>>>>>> Stashed changes
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [333.0]
 
-<<<<<<< Updated upstream
 [node name="Platfom" type="Sprite2D" parent="."]
 position = Vector2(194, 425)
 texture = ExtResource("2_xp3oo")
@@ -185,18 +152,10 @@ shape = SubResource("RectangleShape2D_xp3oo")
 
 [node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
 position = Vector2(78, 500)
-=======
-[node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
-position = Vector2(1299, 1090)
->>>>>>> Stashed changes
 Stats = SubResource("Resource_tvasq")
 
-[node name="Camera2D" type="Camera2D" parent="PlayerTutorial"]
-position_smoothing_enabled = true
-
-[node name="TestLvl1" type="Sprite2D" parent="."]
+[node name="ШаблонДляУровней_drawio" type="Sprite2D" parent="."]
 show_behind_parent = true
-<<<<<<< Updated upstream
 position = Vector2(1821, 116)
 texture = ExtResource("3_lalt1")
 
@@ -226,62 +185,3 @@ curve = SubResource("Curve2D_fd730")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, 624)
 polygon = PackedVector2Array(-3, -47, 394, 453, -2, 471)
-=======
-position = Vector2(1061, 541)
-texture = ExtResource("4_jphr8")
-
-[node name="MovingPlatform" parent="." instance=ExtResource("4_tvasq")]
-position = Vector2(502, 956)
-curve = SubResource("Curve2D_yt681")
-loop = false
-speed = 100.0
-
-[node name="MovingPlatform2" parent="." instance=ExtResource("4_tvasq")]
-position = Vector2(320, 325)
-curve = SubResource("Curve2D_jphr8")
-loop = false
-speed = 150.0
-
-[node name="MovingPlatform3" parent="." instance=ExtResource("4_tvasq")]
-position = Vector2(1520, 605)
-scale = Vector2(1.32462, 1)
-curve = SubResource("Curve2D_tvasq")
-loop = false
-speed = 200.0
-
-[node name="StaticPlatform4" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(1080, 816)
-scale = Vector2(2.32, 1)
-
-[node name="StaticPlatform6" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(900, 605)
-scale = Vector2(2.32, 1)
-
-[node name="StaticPlatform8" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(1520, 465)
-scale = Vector2(4.99648, 1)
-
-[node name="StaticPlatform9" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(1360, 326)
-scale = Vector2(3.67649, 1)
-
-[node name="StaticPlatform7" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(290, 605)
-scale = Vector2(0.745203, 1)
-
-[node name="StaticPlatform5" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(1899, 816)
-scale = Vector2(1.84, 1)
-
-[node name="PressurePlate" parent="." instance=ExtResource("6_yt681")]
-position = Vector2(1105, 795)
-scale = Vector2(1.72, 1.48)
-
-[node name="PressurePlate2" parent="." instance=ExtResource("6_yt681")]
-position = Vector2(256, 585)
-scale = Vector2(1.72, 1.48)
-
-[node name="StatcBody2D" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(1058, 1098)
-scale = Vector2(22.3411, 1.06199)
->>>>>>> Stashed changes

@@ -1791,8 +1791,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-131, 59)
 
 [node name="PlayerTutorial" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "CoyoteTimer", "animationTree", "skeletonContainer")]
-floor_stop_on_slope = false
-floor_block_on_wall = false
 script = ExtResource("1_1pfiu")
 Stats = SubResource("Resource_5gxpp")
 JumpBuffer = NodePath("Timers/JumpBuffer")
