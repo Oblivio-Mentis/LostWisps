@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm25au46lb645"]
+
+[ext_resource type="Texture2D" uid="uid://sqy6nwk6jnfa" path="res://Sprites/icon.svg" id="1_rd3vv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_py1hu"]
+resource_local_to_scene = true
+friction = 0.5
+
+[node name="InteractionObject" type="RigidBody2D"]
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_py1hu")
+metadata/_edit_horizontal_guides_ = [-16.0, 16.0]
+metadata/_edit_vertical_guides_ = [-16.0, 16.0]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, -16, -16, -19, 16, -19, 19, -16, 19, 16, 16, 19, -16, 19, -19, 16)
+one_way_collision_margin = 0.0
+
+[node name="Icon" type="Sprite2D" parent="CollisionPolygon2D"]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.305001, 0.305001)
+texture = ExtResource("1_rd3vv")

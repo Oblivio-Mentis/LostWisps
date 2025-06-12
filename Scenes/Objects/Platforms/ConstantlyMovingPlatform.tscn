@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://di2q2es3w14dc"]
 
 [ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_3al7h"]
-[ext_resource type="Script" uid="uid://05kl5uyts61h" path="res://Scripts/Objects/ConstantlyMovingPlatform.cs" id="1_5pq8e"]
+[ext_resource type="Script" uid="uid://05kl5uyts61h" path="res://Scripts/Objects/Platforms/ConstantlyMovingPlatform.cs" id="1_5pq8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pq8e"]
 size = Vector2(240, 30)
@@ -65,6 +65,7 @@ script = ExtResource("1_5pq8e")
 metadata/_edit_group_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(9, -95)
 rotates = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]

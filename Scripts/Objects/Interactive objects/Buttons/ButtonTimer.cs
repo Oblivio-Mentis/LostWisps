@@ -1,12 +1,11 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
-namespace Object
+namespace LostWisps.Object
 {
-    public partial class Button : Node2D
+    public partial class ButtonTimer : Node2D
     {
-        [Export] public Node2D[] TargetNodes2D { get; private set; }
+        [Export] public Node2D[] TargetNodes { get; private set; }
         [Export] public float releaseDelay = 0f;
         private AnimationPlayer animationPlayer;
         private Timer timer;
@@ -19,12 +18,12 @@ namespace Object
             animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             timer = GetNode<Timer>("ReleaseDelayTimer");
 
-            if (TargetNodes2D == null)
+            if (TargetNodes == null)
                 return;
 
             var list = new List<IActivatable>();
 
-            foreach (var node in TargetNodes2D)
+            foreach (var node in TargetNodes)
             {
                 if (node is IActivatable activatable)
                 {
@@ -44,15 +43,13 @@ namespace Object
             if (!CanInteract(body))
                 return;
 
-            GD.Print($"Object entered the pressure plate: {body.Name}");
-
             activeBodies.Add(body);
 
             if (!isActivated)
             {
                 isActivated = true;
                 timer.Stop();
-                animationPlayer.Play("toggle");
+                animationPlayer.Play("Toggle");
 
                 foreach (var target in targets)
                 {
@@ -63,7 +60,6 @@ namespace Object
 
         private void OnBodyExited(Node2D body)
         {
-            GD.Print($"Object exited the pressure plate: {body.Name}");
             activeBodies.Remove(body);
 
             if (activeBodies.Count == 0)
@@ -81,7 +77,7 @@ namespace Object
         {
             isActivated = false;
             timer.Stop();
-            animationPlayer.PlayBackwards("toggle");
+            animationPlayer.PlayBackwards("Toggle");
 
             foreach (var target in targets)
             {

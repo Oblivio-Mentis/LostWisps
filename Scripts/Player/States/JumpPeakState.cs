@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class JumpPeakState : PlayerState
 	{

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://uy1niwobaitt"]
+
+[ext_resource type="Script" uid="uid://dtquhmraud82a" path="res://Scripts/Objects/Spawners/LightSource.cs" id="1_ic83r"]
+
+[node name="LightSource" type="RayCast2D"]
+script = ExtResource("1_ic83r")
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(0.917647, 0.705882, 0.392157, 1)

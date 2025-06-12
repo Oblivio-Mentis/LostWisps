@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://kcmq2oermbar"]
+
+[ext_resource type="Texture2D" uid="uid://sqy6nwk6jnfa" path="res://Sprites/icon.svg" id="1_0eiqs"]
+[ext_resource type="Script" uid="uid://b7bhi0jor3lj" path="res://Scripts/Objects/Interactive objects/Slider.cs" id="1_y470p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hi7sv"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y470p"]
+radius = 9.0
+
+[node name="Slider" type="Line2D" node_paths=PackedStringArray("TargetNodes")]
+points = PackedVector2Array(-16, 0, 16, 0)
+width = 2.0
+script = ExtResource("1_y470p")
+TargetNodes = []
+
+[node name="Marker" type="RigidBody2D" parent="."]
+mass = 60.0
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker"]
+shape = SubResource("CircleShape2D_hi7sv")
+
+[node name="Area2D" type="Area2D" parent="Marker"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
+shape = SubResource("CircleShape2D_y470p")
+
+[node name="Icon" type="Sprite2D" parent="Marker"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_0eiqs")
+
+[connection signal="body_entered" from="Marker/Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Marker/Area2D" to="." method="OnBodyExited"]

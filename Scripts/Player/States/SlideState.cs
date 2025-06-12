@@ -1,0 +1,78 @@
+using Godot;
+using System;
+
+namespace LostWisps.Player
+{
+    public partial class SlideState : PlayerState
+    {
+        public SlideState(Player player) : base(player) { }
+
+        public override void EnterState()
+        {
+        }
+
+        public override void ExitState()
+        {
+        }
+
+        public override void PhysicsUpdate(double delta)
+        {
+            HandleHorizontalMovement(delta);
+            ApplySlideFriction(delta);
+            HandleGravity(delta);
+        }
+
+        public override void Update(double delta)
+        {
+            if (player.IsOnFloor())
+            {
+                player.frameVelocity.Y = 0;
+                player.ChangeState(new IdleState(player));
+                return;
+            }
+
+            if (player.KeyJumpPressed)
+            {
+                player.ChangeState(new JumpState(player));
+                return;
+            }
+
+            if (player.IsOnWallOnly() && player.frameInput != Vector2.Zero)
+            {
+                var slopeUpDirection = Mathf.Abs(player.GetSlopeUpDirection().Y);
+                if (slopeUpDirection >= 0.7f && slopeUpDirection < 1f && Mathf.Sign(-player.GetSlopeUpDirection().Y) == player.frameInput.X)
+                {
+                    player.ChangeState(new SlopeClimbState(player));
+                    return;
+                }
+            }
+
+            if (!player.IsOnFloor() && !player.IsOnWall())
+            {
+                player.ChangeState(new FallState(player));
+                return;
+            }
+        }
+
+        private void HandleHorizontalMovement(double delta)
+        {
+            player.frameVelocity.X += player.Stats.Acceleration * Mathf.Sign(-player.GetSlopeUpDirection().Y) * (float)delta;
+            player.frameVelocity.X = Mathf.Min(player.frameVelocity.X, player.Stats.MaxSpeed);
+        }
+
+        private void ApplySlideFriction(double delta)
+        {
+            float slideFriction = 0.95f;
+            player.frameVelocity = new Vector2(
+                player.frameVelocity.X * slideFriction * (float)delta,
+                player.frameVelocity.Y
+            );
+        }
+
+        private void HandleGravity(double delta)
+        {
+            player.frameVelocity += new Vector2(0, player.Stats.GravityFall * (float)delta);
+            player.frameVelocity.Y = Mathf.Min(player.frameVelocity.Y, player.Stats.MaxFallSpeed);
+        }
+	}
+}

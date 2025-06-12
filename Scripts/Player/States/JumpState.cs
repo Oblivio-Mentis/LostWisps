@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Player
+namespace LostWisps.Player
 {
     public partial class JumpState : PlayerState
     {
@@ -25,13 +25,17 @@ namespace Player
 
         public override void Update(double delta)
         {
-            // Переход в FallState при начале падения (вертикальная скорость >= 0)
             if (player.frameVelocity.Y >= 0)
+            {
                 player.ChangeState(new FallState(player));
+                return;
+            }
 
-            // Если игрок резко меняет направление против движения — тоже в FallState
             if (player.frameInput.X != 0 && Mathf.Sign(player.frameVelocity.X) != player.frameInput.X)
+            {
                 player.ChangeState(new FallState(player));
+                return;
+            }
         }
 
         private void HandleHorizontalMovement(double delta)
