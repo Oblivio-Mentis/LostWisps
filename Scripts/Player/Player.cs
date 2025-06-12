@@ -1,10 +1,9 @@
 using Godot;
-using Player;
 using System;
 
 using System.Runtime.CompilerServices;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class Player : CharacterBody2D
 	{
@@ -46,6 +45,30 @@ namespace Player
 			currentState.PhysicsUpdate(delta);
 
 			Velocity = frameVelocity;
+
+			for (int i = 0; i < GetSlideCollisionCount(); i++)
+			{
+				KinematicCollision2D collision = GetSlideCollision(i);
+
+				if (collision.GetCollider() is RigidBody2D rigidBody)
+				{
+					// 1. Вычисляем направление толчка
+					Vector2 pushDir = -collision.GetNormal();
+
+					// 2. Вычисляем разницу скоростей в направлении толчка
+					float velocityDiffInPushDir = Velocity.Dot(pushDir) - rigidBody.LinearVelocity.Dot(pushDir);
+					velocityDiffInPushDir = Mathf.Max(0.0f, velocityDiffInPushDir); // Только положительная разница
+
+					// 3. Учитываем массу объекта
+					float massRatio = Mathf.Min(1.0f, 100 / rigidBody.Mass);
+
+					// 4. Вычисляем силу толчка
+					Vector2 pushForce = pushDir * velocityDiffInPushDir * (massRatio * (IsOnFloor() ? 1 : 1.0f));
+
+					// 5. Применяем импульс к объекту
+					rigidBody.ApplyCentralImpulse(pushForce);
+				}
+			}
 
 			MoveAndSlide();
 		}
@@ -106,6 +129,15 @@ namespace Player
 				stateMachine.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
 			}
+		}
+
+		public Vector2 GetSlopeUpDirection()
+		{
+			if (!IsOnWall())
+				return Vector2.Zero;
+
+			Vector2 normal = GetWallNormal();
+            return new Vector2(-normal.Y, normal.X).Normalized();
 		}
 	}
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class RunState : PlayerState
 	{
@@ -16,7 +16,6 @@ namespace Player
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleHorizontalMovement(delta);
-			
 		}
 
 		public override void Update(double delta)
@@ -25,14 +24,19 @@ namespace Player
 			{
 				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
+				return;
 			}
-			else if (player.KeyJump || player.JumpBuffer.TimeLeft > 0)
+
+			if (player.KeyJump || player.JumpBuffer.TimeLeft > 0)
 			{
 				player.ChangeState(new JumpState(player));
+				return;
 			}
-			else if (player.frameInput == Vector2.Zero)
+
+			if (player.frameInput == Vector2.Zero)
 			{
 				player.ChangeState(new IdleState(player));
+				return;
 			}
 		}
 
@@ -43,7 +47,6 @@ namespace Player
 			if (direction != 0)
 			{
 				player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, direction * player.Stats.MaxSpeed, player.Stats.Acceleration * (float)delta);
-				// player.skeletonContainer.Scale = new Vector2(direction, 1);
 			}
 		}
 	}

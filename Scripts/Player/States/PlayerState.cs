@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public abstract class PlayerState
 	{

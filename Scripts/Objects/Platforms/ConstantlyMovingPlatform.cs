@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Object
+namespace LostWisps.Object
 {
     public partial class ConstantlyMovingPlatform : Path2D
     {

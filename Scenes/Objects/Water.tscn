@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crjq3ki7vorod"]
+
+[ext_resource type="Shader" uid="uid://dsak4ud2ax3vr" path="res://Shaders/Water.gdshader" id="1_j4q04"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4q04"]
+resource_local_to_scene = true
+shader = ExtResource("1_j4q04")
+shader_parameter/time_speed = 2.0
+shader_parameter/wave_height = 1.0
+shader_parameter/wave_frequency = 0.03
+shader_parameter/water_color_top = Vector4(0.2, 0.6, 0.9, 0.6)
+shader_parameter/water_color_bottom = Vector4(0.1, 0.2, 0.5, 0.8)
+
+[node name="Water" type="Polygon2D"]
+texture_filter = 2
+texture_repeat = 3
+material = SubResource("ShaderMaterial_j4q04")
+polygon = PackedVector2Array(0, 0, 0, 64, 64, 64, 64, 0)
+uv = PackedVector2Array(0, 0, 0, 64, 64, 64, 64, 0)
