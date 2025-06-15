@@ -42,9 +42,8 @@ _data = {
 &"toggle": SubResource("Animation_n0sxu")
 }
 
-[node name="Lever" type="Node2D" node_paths=PackedStringArray("TargetNodes2D")]
+[node name="Lever" type="Node2D"]
 script = ExtResource("1_w76vg")
-TargetNodes2D = []
 metadata/_edit_group_ = true
 
 [node name="Node2D" type="Node2D" parent="."]

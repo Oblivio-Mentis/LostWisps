@@ -1,41 +1,31 @@
+#nullable enable
+
 using Godot;
+using System;
 using System.Collections.Generic;
 
 namespace LostWisps.Object
 {
-    public partial class ButtonTimer : Node2D
+    public partial class ButtonTimer : BaseSynchronizer
     {
-        [Export] public Node2D[] TargetNodes { get; private set; }
-        [Export] public float releaseDelay = 0f;
-        private AnimationPlayer animationPlayer;
-        private Timer timer;
-        private IActivatable[] targets;
+        [Export] public float ReleaseDelay = 0f;
+
+        private AnimationPlayer? animationPlayer;
+        private Timer? timer;
+
         private HashSet<Node2D> activeBodies = new HashSet<Node2D>();
         private bool isActivated = false;
 
         public override void _Ready()
         {
-            animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-            timer = GetNode<Timer>("ReleaseDelayTimer");
+            base._Ready();
 
-            if (TargetNodes == null)
+            animationPlayer ??= GetNode<AnimationPlayer>("AnimationPlayer");
+
+            timer ??= GetNode<Timer>("ReleaseDelayTimer");
+
+            if (TargetNodes == null || TargetNodes.Length == 0)
                 return;
-
-            var list = new List<IActivatable>();
-
-            foreach (var node in TargetNodes)
-            {
-                if (node is IActivatable activatable)
-                {
-                    list.Add(activatable);
-                }
-                else
-                {
-                    GD.PushWarning($"Node at path {node} does not implement IActivatable.");
-                }
-            }
-
-            targets = list.ToArray();
         }
 
         private void OnBodyEntered(Node2D body)
@@ -48,12 +38,15 @@ namespace LostWisps.Object
             if (!isActivated)
             {
                 isActivated = true;
-                timer.Stop();
-                animationPlayer.Play("Toggle");
+                timer?.Stop();
+                animationPlayer?.Play("Toggle");
 
-                foreach (var target in targets)
+                foreach (var node in TargetNodes)
                 {
-                    target?.Activate();
+                    if (node is IActivatable activatable)
+                    {
+                        activatable.Activate();
+                    }
                 }
             }
         }
@@ -63,25 +56,30 @@ namespace LostWisps.Object
             activeBodies.Remove(body);
 
             if (activeBodies.Count == 0)
-                if (releaseDelay == 0)
+            {
+                if (ReleaseDelay <= 0)
                 {
                     TimerTimeout();
                 }
                 else
                 {
-                    timer.Start(releaseDelay);
+                    timer?.Start(ReleaseDelay);
                 }
+            }
         }
 
         private void TimerTimeout()
         {
             isActivated = false;
-            timer.Stop();
-            animationPlayer.PlayBackwards("Toggle");
+            timer?.Stop();
+            animationPlayer?.PlayBackwards("Toggle");
 
-            foreach (var target in targets)
+            foreach (var node in TargetNodes)
             {
-                target?.Deactivate();
+                if (node is IActivatable activatable)
+                {
+                    activatable.Deactivate();
+                }
             }
         }
 

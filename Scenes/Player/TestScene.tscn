@@ -1,17 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://de8vm4nenskxk"]
+[gd_scene load_steps=18 format=3 uid="uid://de8vm4nenskxk"]
 
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="1_kmf64"]
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="3_jphr8"]
 [ext_resource type="Texture2D" uid="uid://ddve8tmd0x0jb" path="res://Sprites/Шаблон для уровней.drawio.png" id="3_lalt1"]
-[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="5_tvasq"]
-[ext_resource type="PackedScene" uid="uid://dm25au46lb645" path="res://Scenes/Objects/Interactive objects/InteractionObject.tscn" id="10_r1r0j"]
-[ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="11_modyw"]
-[ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://Scenes/Objects/Interactive objects/Lever.tscn" id="12_ys24i"]
+[ext_resource type="Texture2D" uid="uid://sqy6nwk6jnfa" path="res://Sprites/icon.svg" id="3_yt681"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="8_fd730"]
+[ext_resource type="Script" uid="uid://j30b7rwtvrsy" path="res://Global/Systems/Destruction/Base/DestructionManager.cs" id="9_fd730"]
+[ext_resource type="PackedScene" uid="uid://dsfb6sf0ft8jy" path="res://Scenes/Objects/Chains/ChainSegment.tscn" id="10_modyw"]
+[ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="10_r1r0j"]
+[ext_resource type="Shader" uid="uid://c7rgu0y1t77u6" path="res://Scenes/Player/TestScene.gdshader" id="11_286s1"]
+[ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://Scenes/Objects/Fluids/Water.tscn" id="11_modyw"]
+[ext_resource type="Texture2D" uid="uid://bmf6b8rdbmj2u" path="res://Sprites/Без имени.png" id="12_bp81r"]
+[ext_resource type="Texture2D" uid="uid://dd7k7nl7a0yph" path="res://Sprites/icon.png" id="12_ys24i"]
 [ext_resource type="PackedScene" uid="uid://c6poe3nv23cwc" path="res://Scenes/Objects/Platforms/Platform.tscn" id="13_bp81r"]
-[ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://Scenes/Objects/SyncNodes/RotationSyncronizer.tscn" id="13_k66q0"]
-[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="13_ys24i"]
-[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="14_bp81r"]
-[ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://Scenes/Objects/SyncNodes/PositionSynchronizer.tscn" id="14_k66q0"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="13_ys24i"]
 
 [sub_resource type="Resource" id="Resource_tvasq"]
 resource_local_to_scene = true
@@ -27,34 +29,40 @@ MaxFallSpeed = 800.0
 AirAcceleration = 1500.0
 CoyoteTime = 0.012
 JumpBufferTime = 0.012
+PushForce = 200.0
+MinPushForce = 100.0
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
-[sub_resource type="Curve2D" id="Curve2D_ys24i"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 214, -1)
-}
-point_count = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1r0j"]
 
-[sub_resource type="Curve2D" id="Curve2D_bp81r"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 64, -1.00043, 4.09761, -75.1315, -4.09761, 75.1315, 98.0007, 115.999, 0, 0, 0, 0, 62.0012, 196)
-}
-point_count = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ys24i"]
+shader = ExtResource("11_286s1")
+shader_parameter/width = 0.0
+shader_parameter/fix_start = false
+shader_parameter/fix_end = false
+shader_parameter/inverted = false
+shader_parameter/speed = 1.0
+shader_parameter/variation = 0.0
+shader_parameter/scale = 0.0
+shader_parameter/repeats = 0.0
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [333.0]
 
-[node name="InteractionObject" parent="." instance=ExtResource("10_r1r0j")]
-position = Vector2(-53, 1053)
-physics_material_override = null
-lock_rotation = true
+[node name="DestructionManager" type="Node" parent="."]
+script = ExtResource("9_fd730")
+metadata/_custom_type_script = "uid://j30b7rwtvrsy"
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-694, 809)
+texture = ExtResource("3_yt681")
 
 [node name="PlayerTutorial" parent="." instance=ExtResource("1_kmf64")]
-position = Vector2(-536, 1072)
+position = Vector2(-665, 956)
 Stats = SubResource("Resource_tvasq")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerTutorial"]
-position_smoothing_enabled = true
 
 [node name="ШаблонДляУровней_drawio" type="Sprite2D" parent="."]
 visible = false
@@ -63,46 +71,72 @@ position = Vector2(1821, 116)
 texture = ExtResource("3_lalt1")
 
 [node name="Platform" parent="." instance=ExtResource("13_bp81r")]
-position = Vector2(-357, 825)
+position = Vector2(-794, 1072)
+scale = Vector2(15.08, 1)
 
-[node name="Lever" parent="Platform" node_paths=PackedStringArray("TargetNodes2D") instance=ExtResource("12_ys24i")]
-position = Vector2(-6, -15)
-TargetNodes2D = [NodePath("../../PositionSynchronizer")]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["LightReflectors"]]
+position = Vector2(1198, 3)
 
-[node name="LightSource" parent="." instance=ExtResource("11_modyw")]
-position = Vector2(112, 915)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-645, 1056, -561, 1046, -472, 1025, -373, 991, -292, 945, -247, 907, -179, 907, -183, 1055)
 
-[node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("14_k66q0")]
-position = Vector2(-586, 842)
-curve = SubResource("Curve2D_ys24i")
-Speed = 0.3
-TargetNodes = [NodePath("../Platform")]
+[node name="Slider" parent="." instance=ExtResource("8_fd730")]
+position = Vector2(-809, 1029)
+points = PackedVector2Array(-124, 0, 112, 0)
 
-[node name="Platform2" parent="." instance=ExtResource("13_bp81r")]
-position = Vector2(-759, 918)
-metadata/_edit_group_ = true
+[node name="LightSource" parent="." instance=ExtResource("10_r1r0j")]
+position = Vector2(-535, 861)
 
-[node name="RotationSynchronizer" parent="." instance=ExtResource("13_k66q0")]
-position = Vector2(-698, 1001)
-rotation = -1.57079
-curve = SubResource("Curve2D_bp81r")
-metadata/_edit_group_ = true
+[node name="Water" parent="." instance=ExtResource("11_modyw")]
+position = Vector2(-623, 1141)
+scale = Vector2(51.24, 2.36)
 
-[node name="Lever" parent="." instance=ExtResource("12_ys24i")]
-position = Vector2(314, 1073)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-985, 959)
+rotation = -1.62867
 
-[node name="Platform3" parent="." instance=ExtResource("13_bp81r")]
-position = Vector2(368, 1088)
-scale = Vector2(11.2341, 0.997332)
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
 
-[node name="Button" parent="." instance=ExtResource("14_bp81r")]
-position = Vector2(183, 1073)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+shape = SubResource("CircleShape2D_r1r0j")
 
-[node name="ButtonTimer" parent="." instance=ExtResource("5_tvasq")]
-position = Vector2(246, 1073)
-releaseDelay = 5.0
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D"]
+position = Vector2(0, 5)
+node_a = NodePath("../StaticBody2D2")
+node_b = NodePath("../ChainSegment")
 
-[node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("13_ys24i")]
-position = Vector2(-408, 1053)
-points = PackedVector2Array(-179, 0, 190, 0)
-TargetNodes = [NodePath("../PositionSynchronizer"), NodePath("../RotationSynchronizer")]
+[node name="ChainSegment" parent="Node2D" instance=ExtResource("10_modyw")]
+position = Vector2(0, 19)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Node2D"]
+position = Vector2(0, 32)
+node_a = NodePath("../ChainSegment")
+node_b = NodePath("../ChainSegment2")
+
+[node name="ChainSegment2" parent="Node2D" instance=ExtResource("10_modyw")]
+position = Vector2(0, 46)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Node2D"]
+position = Vector2(0, 54)
+node_a = NodePath("../ChainSegment2")
+node_b = NodePath("../ChainSegment3")
+
+[node name="ChainSegment3" parent="Node2D" instance=ExtResource("10_modyw")]
+position = Vector2(0, 68)
+
+[node name="Icon2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ys24i")
+position = Vector2(-975.094, 888.5)
+scale = Vector2(4.16375, 14.1)
+texture = ExtResource("12_bp81r")
+
+[node name="Platfom" type="Sprite2D" parent="Icon2"]
+visible = false
+position = Vector2(-23.7037, -5.51721)
+scale = Vector2(0.636977, 3.98201)
+texture = ExtResource("13_ys24i")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1052, 888)
+texture = ExtResource("12_ys24i")

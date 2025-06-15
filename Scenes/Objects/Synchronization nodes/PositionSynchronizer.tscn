@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn68ts0vx4yn5"]
+
+[ext_resource type="Script" uid="uid://dlsrorf874req" path="res://Scripts/Objects/Synchronization nodes/PositionSynchronizer.cs" id="1_yvpj8"]
+
+[node name="PositionSynchronizer" type="Path2D"]
+script = ExtResource("1_yvpj8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(1, 0)

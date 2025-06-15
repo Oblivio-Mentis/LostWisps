@@ -26,6 +26,19 @@ settings/size/viewport_width=1920
 
 project/assembly_name="LostWisps"
 
+[file_customization]
+
+folder_colors={
+"res://Astronomical library/": "purple",
+"res://Global/": "gray",
+"res://Global/Systems/Destruction/Base/": "red",
+"res://Scenes/": "teal",
+"res://Scripts/": "blue",
+"res://Scripts/Objects/Interactive objects/Base/": "red",
+"res://Scripts/Objects/Synchronization nodes/Base/": "red",
+"res://Shaders/": "pink"
+}
+
 [global_group]
 
 LightReflectors=""

@@ -18,6 +18,8 @@ MaxFallSpeed = 800.0
 AirAcceleration = 1500.0
 CoyoteTime = 0.012
 JumpBufferTime = 0.012
+PushForce = 200.0
+MinPushForce = 100.0
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f124h"]
