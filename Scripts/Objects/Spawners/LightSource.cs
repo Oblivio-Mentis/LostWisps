@@ -1,3 +1,5 @@
+#nullable enable
+
 using Godot;
 using System;
 
@@ -5,139 +7,166 @@ namespace LostWisps.Object
 {
     public partial class LightSource : RayCast2D
     {
-        [Export] public int DefaultLineLength { get; set; } = 2000;
+        [Export] public float DefaultLineLength { get; set; } = 2000f;
+        [Export] public int   MaxReflections { get; set; } = 2;
+        [Export] public float HitOffset { get; set; } = 0f;
+        [Export] public StringName ReflectorGroup { get; set; } = "LightReflectors";
+        [Export] public bool IsReflection { get; set; } = false;
 
-        private PackedScene raycastScene = GD.Load<PackedScene>("uid://uy1niwobaitt");
-        public LightSource IncidentRay { get; set; }
-        public bool IsReflection { get; set; }
-        public bool HasChildReflection { get; set; }
+        public LightSource? IncidentRay { get; set; }
+
+        private bool _hasChildRay = false;
+        private int  _reflectionIndex = 0;
+
+        private Line2D? _line;
+        private static readonly float EPSILON = 0.0001f;
+        private static PackedScene? _lightScene;
 
         public override void _Ready()
         {
+            _line = GetNodeOrNull<Line2D>("Line2D");
+
             TargetPosition = new Vector2(0, DefaultLineLength);
+
+            if (_line != null)
+            {
+                _line.ClearPoints();
+                _line.AddPoint(Vector2.Zero);
+                _line.AddPoint(new Vector2(0, DefaultLineLength));
+            }
+
+            _lightScene ??= GD.Load<PackedScene>("uid://uy1niwobaitt");
+        }
+
+        public override void _ExitTree()
+        {
+            if (IncidentRay != null)
+                IncidentRay._hasChildRay = false;
         }
 
         public override void _PhysicsProcess(double delta)
         {
-            UpdateLine();
-
-            if (IsColliding() && !HasChildReflection)
+            if (IsReflection)
             {
-                PhysicsBody2D collider = GetCollider() as PhysicsBody2D;
-
-                if (collider != null && collider.IsInGroup("LightReflectors"))
+                if (!ValidateParentCollision())
                 {
-                    CreateNewRay(collider, true);
+                    QueueFree();
+                    return;
+                }
+
+                if (TryComputeReflection(out var hitPoint, out var reflectDir))
+                {
+                    GlobalPosition = hitPoint + reflectDir * EPSILON;
+                    Rotation = DirToRayRotation(reflectDir);
                 }
             }
 
-            if (IsReflection)
+            UpdateLine();
+
+            if (!_hasChildRay && TryGetReflectorCollider(out var reflector) && _reflectionIndex < MaxReflections)
             {
-                Reflect();
+                CreateChildRay(reflector);
             }
         }
 
         private void UpdateLine()
         {
-            var line = GetNode<Line2D>("Line2D");
-
-            if (line.GetPointCount() == 0)
-            {
-                line.AddPoint(Vector2.Zero);
-                line.AddPoint(new Vector2(0, DefaultLineLength));
-            }
-
-            line.SetPointPosition(1, new Vector2(0, DefaultLineLength));
-
-            if (IsReflection)
-            {
-                var collisionPoint = IncidentRay.GetCollisionPoint();
-                var parentLine = GetParent().GetNode<Line2D>("Line2D");
-
-                if (parentLine.GetPointCount() >= 2)
-                {
-                    parentLine.SetPointPosition(1, parentLine.ToLocal(collisionPoint));
-                }
-            }
+            if (_line == null)
+                return;
 
             if (IsColliding())
             {
-                var collisionPoint = GetCollisionPoint();
-                line.SetPointPosition(1, ToLocal(collisionPoint));
+                var hit = GetCollisionPoint();
+                _line.SetPointPosition(1, ToLocal(hit));
+            }
+            else
+            {
+                _line.SetPointPosition(1, new Vector2(0, DefaultLineLength));
             }
         }
 
-        private void Reflect()
+        private static float DirToRayRotation(Vector2 dir) => dir.Angle() - Mathf.Pi / 2f;
+
+        private bool ValidateParentCollision()
         {
-            if (IsReflection)
-            {
-                CheckParentCollision();
+            if (IncidentRay == null)
+                return false;
 
-                var collisionPoint = IncidentRay.GetCollisionPoint();
-                Position = collisionPoint;
-
-                var collisionNormal = IncidentRay.GetCollisionNormal();
-
-                var incidentRayOrigin = IncidentRay.GlobalPosition;
-                var incidentRayEndpoint = collisionPoint;
-                var rayDirection = incidentRayEndpoint - incidentRayOrigin;
-                var rayDirectionNormalized = rayDirection.Normalized();
-
-                var reflectionVector = rayDirectionNormalized.Bounce(collisionNormal);
-                Rotation = (reflectionVector.Angle() - Mathf.Pi / 2);
-            }
-        }
-
-        private void CreateNewRay(Node colliderSurface, bool isReflection = false)
-        {
-            HasChildReflection = true;
-
-            if (raycastScene == null)
-            {
-                GD.PrintErr("raycastScene не назначен!");
-                return;
-            }
-
-            var newRaycast = (LightSource)raycastScene.Instantiate();
-            newRaycast.TopLevel = true;
-            newRaycast.IsReflection = isReflection;
-
-            var collisionPoint = GetCollisionPoint();
-            newRaycast.Position = collisionPoint;
-
-            var collisionNormal = GetCollisionNormal();
-
-            var incidentDirection = (collisionPoint - GlobalPosition).Normalized();
-
-            var reflectionDirection = incidentDirection.Bounce(collisionNormal);
-
-            newRaycast.Rotation = reflectionDirection.Angle();
-
-            newRaycast.IncidentRay = this;
-
-            if (colliderSurface is CollisionObject2D collisionObj)
-            {
-                newRaycast.AddException(collisionObj);
-            }
-
-            AddChild(newRaycast);
-        }
-
-        private void CheckParentCollision()
-        {
             if (!IncidentRay.IsColliding())
+                return false;
+
+            if (!IncidentRay.TryGetReflectorCollider(out _))
+                return false;
+
+            return true;
+        }
+
+        private bool TryGetReflectorCollider(out CollisionObject2D collider)
+        {
+            collider = default!;
+            if (!IsColliding())
+                return false;
+
+            var obj = GetCollider();
+            if (obj is CollisionObject2D co && co.IsInGroup(ReflectorGroup))
             {
-                IncidentRay.HasChildReflection = false;
-                QueueFree();
-                return;
+                collider = co;
+                return true;
             }
 
-            PhysicsBody2D collider = IncidentRay.GetCollider() as PhysicsBody2D;
-            if (collider == null || !collider.IsInGroup("LightReflectors"))
-            {
-                IncidentRay.HasChildReflection = false;
-                QueueFree();
-            }
+            return false;
+        }
+
+        private bool TryComputeReflection(out Vector2 hitPoint, out Vector2 reflectDir)
+        {
+            hitPoint = default;
+            reflectDir = default;
+
+            if (!IsColliding())
+                return false;
+
+            var normal = GetCollisionNormal();
+            if (normal.IsZeroApprox())
+                return false;
+
+            normal = normal.Normalized();
+
+            hitPoint = GetCollisionPoint();
+
+            var incDir = (hitPoint - GlobalPosition);
+            if (incDir.IsZeroApprox())
+                return false;
+
+            incDir = incDir.Normalized();
+            reflectDir = incDir.Bounce(normal).Normalized();
+            return true;
+        }
+
+        private void CreateChildRay(CollisionObject2D reflector)
+        {
+            if (_lightScene == null)
+                return;
+
+            if (!TryComputeReflection(out var hitPoint, out var reflectDir))
+                return;
+
+            var child = _lightScene.Instantiate<LightSource>();
+            child.TopLevel = true;
+
+            child.IsReflection = true;
+            child.IncidentRay = this;
+            child._reflectionIndex = _reflectionIndex + 1;
+
+            child.TargetPosition = new Vector2(0, DefaultLineLength);
+
+            // Старт новой «палки» ровно из конца предыдущей
+            child.GlobalPosition = hitPoint + reflectDir * (HitOffset <= 0f ? EPSILON : HitOffset);
+            child.Rotation = DirToRayRotation(reflectDir);
+
+            child.AddException(reflector);
+
+            _hasChildRay = true;
+            AddChild(child);
         }
     }
 }

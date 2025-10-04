@@ -62,6 +62,8 @@ namespace LostWisps.Object
 
         public override float GetTarget() => TargetProgress;
 
+        public override float GetNextTarget(float from) => TargetProgress;
+
         public override float Lerp(float from, float to, float t) => Mathf.Lerp(from, to, t);
 
         protected override void ApplyCurrentValue()
@@ -140,6 +142,15 @@ namespace LostWisps.Object
                 animationDuration = CalculateAnimationDuration(startValue, endValue);
                 isAnimating = true;
             }
+        }
+
+        protected override void ActivateAdditive()
+        {
+            startValue = current;
+            endValue = GetNextTarget(current);
+            animationStartTime = 0f;
+            animationDuration = CalculateAnimationDuration(startValue, endValue);
+            isAnimating = true;
         }
     }
 }

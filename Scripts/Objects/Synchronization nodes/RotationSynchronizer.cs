@@ -1,7 +1,6 @@
 #nullable enable
 
 using Godot;
-using System;
 
 namespace LostWisps.Object
 {
@@ -16,6 +15,7 @@ namespace LostWisps.Object
         [Export] public float TargetAngle = 90.0f;
         [Export] public RotationDirectionType RotationDirection = RotationDirectionType.CounterClockwise;
 
+        private float lastAngle = 0f;
         private float directionMultiplier = -1.0f;
 
         public override void _Ready()
@@ -29,17 +29,29 @@ namespace LostWisps.Object
             directionMultiplier = RotationDirection == RotationDirectionType.Clockwise ? 1.0f : -1.0f;
         }
 
-        public override float GetTarget() => TargetAngle * directionMultiplier;
+        public override float GetTarget()
+        {
+            return TargetAngle * directionMultiplier;
+        }
 
-        public override float Lerp(float from, float to, float t) => Mathf.Lerp(from, to, t);
+        public override float GetNextTarget(float from)
+        {
+            return from + TargetAngle * directionMultiplier;
+        }
+
+        public override float Lerp(float from, float to, float t) =>
+            Mathf.Lerp(from, to, t);
 
         protected override void ApplyCurrentValue()
         {
+            float delta = current - lastAngle;
             foreach (var node in TargetNodes)
             {
                 if (node != null)
-                    node.RotationDegrees = current;
+                    node.RotationDegrees += delta;
             }
+            
+            lastAngle = current;
         }
 
         public override float ValueToTarget(float normalizedValue) =>
@@ -59,16 +71,21 @@ namespace LostWisps.Object
 
         protected override void ResetState()
         {
-            base.ResetState();
-
-            if (IsAlwaysActive && !IsConstant && !PingPong)
+            if (!IsAdditive || IsConstant || PingPong || IsAlwaysActive)
             {
-                startValue = current;
-                endValue = target;
-                animationStartTime = 0f;
-                animationDuration = CalculateAnimationDuration(startValue, endValue);
-                isAnimating = true;
+                current = default!;
             }
+
+            target = IsConstant || PingPong || IsAlwaysActive ? GetTarget() : default!;
+        }
+
+        protected override void ActivateAdditive()
+        {
+            startValue = current;
+            endValue = GetNextTarget(current);
+            animationStartTime = 0f;
+            animationDuration = CalculateAnimationDuration(startValue, endValue);
+            isAnimating = true;
         }
     }
 }

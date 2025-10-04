@@ -152,7 +152,6 @@ namespace LostWisps.Player
 
 			if (currentAnimationState != newAnimationState)
 			{
-				// GD.Print($"Animation - Switching from '{currentAnimationState}' to '{newAnimationState}'");
 				stateMachine.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
 			}
@@ -164,6 +163,7 @@ namespace LostWisps.Player
 				return Vector2.Zero;
 
 			Vector2 normal = GetWallNormal();
+
             return new Vector2(-normal.Y, normal.X).Normalized();
 		}
 	}

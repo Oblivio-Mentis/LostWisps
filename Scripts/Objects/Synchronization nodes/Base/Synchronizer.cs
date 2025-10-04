@@ -1,11 +1,11 @@
 #nullable enable
 
 using Godot;
-using System;
+using LostWisps.Global.Animation;
 
 namespace LostWisps.Object
 {
-    public abstract partial class Synchronizer<T> : BaseSynchronizer, IActivatable, IValueReceiver
+    public abstract partial class Synchronizer<T> : BaseSynchronizer, IActivatable, IValueReceiver where T : struct
     {
         [Export] public float Speed = 1.0f;
 
@@ -20,6 +20,7 @@ namespace LostWisps.Object
         [ExportGroup("🎯 Управление активацией")]
         [Export] public bool IsAlwaysActive = false;
         [Export] public bool CanBeDeactivated = true;
+        [Export] public bool IsAdditive = false;
 
         protected readonly ActivatableComponent _activatable = new();
         private bool _manuallyDeactivated = false;
@@ -47,7 +48,11 @@ namespace LostWisps.Object
 
         protected virtual void ResetState()
         {
-            current = default!;
+            if (!IsAdditive || IsConstant || PingPong || IsAlwaysActive)
+            {
+                current = default!;
+            }
+
             target = IsConstant || PingPong || IsAlwaysActive ? GetTarget() : default!;
         }
 
@@ -72,36 +77,51 @@ namespace LostWisps.Object
             ApplyCurrentValue();
         }
 
-        protected virtual void UpdateConstant(float delta)
-        {
-        }
+        protected virtual void UpdateConstant(float delta) { }
 
         protected virtual void UpdateNormal(float delta)
         {
             if (!isAnimating)
             {
-                startValue = current;
-                endValue = target;
-                animationStartTime = 0f;
-                animationDuration = CalculateAnimationDuration(startValue, endValue);
-                isAnimating = true;
+                if (IsAdditive && _activatable.IsActivated)
+                {
+                    ActivateAdditive();
+                }
+                else if (!IsAdditive && _activatable.IsActivated)
+                {
+                    startValue = current;
+                    endValue = target;
+                    animationStartTime = 0f;
+                    animationDuration = CalculateAnimationDuration(startValue, endValue);
+                    isAnimating = true;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             animationStartTime += delta;
 
-            float t = Mathf.Clamp(animationStartTime / animationDuration, 0f, 1f);
+            float t = animationDuration > 0 
+                ? Mathf.Clamp(animationStartTime / animationDuration, 0f, 1f) 
+                : 1f;
+
             float easedT = GetEasedProgress(t);
 
-            current = Lerp(startValue, endValue, easedT);
+            current = t >= 1f ? endValue : Lerp(startValue, endValue, easedT);
 
             if (t >= 1f)
             {
                 current = endValue;
                 isAnimating = false;
 
-                if (endValue.Equals(default(T)) && !_manuallyDeactivated && !IsAlwaysActive)
+                if (!IsAlwaysActive)
                 {
-                    _activatable.Deactivate();
+                    if (!_manuallyDeactivated)
+                    {
+                        _activatable.Deactivate();
+                    }
                 }
             }
         }
@@ -168,6 +188,8 @@ namespace LostWisps.Object
 
         public abstract T GetTarget();
 
+        public abstract T GetNextTarget(T from);
+
         public abstract T ValueToTarget(float normalizedValue);
 
         public abstract T ValueToTargetDirect(float value);
@@ -185,12 +207,14 @@ namespace LostWisps.Object
 
         public void Activate()
         {
+            
             if (IsConstant)
             {
                 if (_activatable.IsActivated)
                     return;
 
                 _manuallyDeactivated = false;
+                // AnimationPriorityManager.RequestActivation(this);
                 _activatable.Activate();
                 return;
             }
@@ -198,20 +222,20 @@ namespace LostWisps.Object
             if (_activatable.IsActivated && !_manuallyDeactivated)
                 return;
 
-            isAnimating = false;
             _manuallyDeactivated = false;
 
-            _activatable.Activate();
-
-            if (PingPong)
+            if (IsAdditive)
             {
-                pingPongState = PingPongState.Forward;
-                target = GetTarget();
+                ActivateAdditive();
             }
             else
             {
+                ResetState();
                 target = GetTarget();
             }
+            
+            // AnimationPriorityManager.RequestActivation(this);
+            _activatable.Activate();
         }
 
         public void Deactivate()
@@ -227,8 +251,16 @@ namespace LostWisps.Object
                 return;
             }
 
-            target = default!;
-            StartReturnAnimation();
+            if (!IsAdditive)
+            {
+                target = default!;
+                StartReturnAnimation();
+            }
+            else
+            {
+                isAnimating = false;
+                _activatable.Deactivate();
+            }
         }
 
         private void StartReturnAnimation()
@@ -254,5 +286,7 @@ namespace LostWisps.Object
 
             _activatable.Activate();
         }
+
+        protected abstract void ActivateAdditive();
     }
 }

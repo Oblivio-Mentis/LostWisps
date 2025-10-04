@@ -27,15 +27,36 @@ namespace LostWisps.Player
 		public override void Update(double delta)
 		{
 			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0f)
+			{
 				player.ChangeState(new JumpState(player));
-			else if (player.KeyJumpPressed && player.CoyoteTimer.TimeLeft > 0f)
+				return;
+			}
+
+			if (player.KeyJumpPressed && player.CoyoteTimer.TimeLeft > 0f)
+			{
 				player.ChangeState(new JumpState(player));
-			else if (player.IsOnFloor() && (player.KeyLeft || player.KeyRight))
+				return;
+			}
+
+			if (player.IsOnFloor() && (player.KeyLeft || player.KeyRight))
+			{
 				player.ChangeState(new RunState(player));
-			else if (player.IsOnFloor())
+				return;
+			}
+
+			if (player.IsOnFloor())
+			{
 				player.ChangeState(new IdleState(player));
-			else if (player.IsOnWallOnly())
+				return;
+			}
+
+			var slopeUpDirection = player.GetSlopeUpDirection();
+			if (player.IsOnWallOnly() && slopeUpDirection.X > 0)
+			{
 				player.ChangeState(new SlideState(player));
+				return;
+			}
+				
 		}
 
 		private void HandleJumpBuffer()
