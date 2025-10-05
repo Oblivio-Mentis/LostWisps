@@ -3,7 +3,6 @@ using System;
 
 namespace LostWisps.Object
 {
-    public enum BodyType { StaticBody2D, AnimatableBody2D }
     public enum ColliderType { Rectangle, Circle, Polygon }
 
     [Tool]
@@ -13,8 +12,6 @@ namespace LostWisps.Object
         [ExportGroup("🖼️ Базовые настройки")]
         [Export] public Texture2D TextureAtlas { get; set; }
         [Export] public Rect2 TextureRegion { get; set; }
-        [Export] public BodyType BodyType { get; set; } = BodyType.StaticBody2D;
-
         [Export]public ColliderType ColliderType { get; set; } = ColliderType.Rectangle;
 
         [ExportGroup("🟥 Настройки коллайдера")]

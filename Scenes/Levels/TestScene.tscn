@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
+[gd_scene load_steps=11 format=3 uid="uid://de8vm4nenskxk"]
 
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="3_5n7br"]
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="4_1yx6m"]
@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="7_idno8"]
 [ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="9_0ta0f"]
 [ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://Scenes/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="9_lq7ju"]
-[ext_resource type="PackedScene" uid="uid://dngt8hur6acq1" path="res://Scenes/Objects/Platforms/AnimatableLevelObject.tscn" id="10_0ta0f"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="11_l2tm1"]
-[ext_resource type="Resource" uid="uid://c6bupp0jtv8us" path="res://Astronomical library/Presets/new_resource.tres" id="11_v1q72"]
 
 [sub_resource type="Resource" id="Resource_0ta0f"]
 resource_local_to_scene = true
@@ -65,10 +63,3 @@ TargetNodes = [null, null, null, null]
 [node name="LightSource" parent="." instance=ExtResource("9_0ta0f")]
 position = Vector2(528, 488)
 rotation = -0.523598
-
-[node name="Platform2" parent="." instance=ExtResource("6_gjo11")]
-position = Vector2(48, 120)
-
-[node name="AnimatableLevelObject" parent="." instance=ExtResource("10_0ta0f")]
-position = Vector2(512, 608)
-Config = ExtResource("11_v1q72")

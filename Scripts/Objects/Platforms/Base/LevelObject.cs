@@ -14,6 +14,7 @@ namespace LostWisps.Object
         [Export] private CollisionShape2D circleCollider;
         [Export] private CollisionPolygon2D polygonCollider;
 
+
         public override void _Ready()
         {
             ApplyConfig();
@@ -21,7 +22,7 @@ namespace LostWisps.Object
 
         public override void _Notification(int what)
         {
-            if (Engine.IsEditorHint() && what == NotificationEnterTree)
+            if (Engine.IsEditorHint())
             {
                 ApplyConfig();
             }
@@ -30,15 +31,18 @@ namespace LostWisps.Object
         private void ResetBody()
         {
             texture.Texture = null;
+
             rectangleCollider.Disabled = true;
+            rectangleCollider.Shape = null;
+
             circleCollider.Disabled = true;
+            circleCollider.Shape = null;
+
             polygonCollider.Disabled = true;
         }
 
         private void ApplyConfig()
         {
-            GD.Print("awsd");
-
             if (Config == null)
             {
                 GD.PrintErr("LevelObject: Config is null.");
@@ -68,25 +72,17 @@ namespace LostWisps.Object
             {
                 case ColliderType.Rectangle:
                     rectangleCollider.Disabled = false;
-
-                    if (rectangleCollider.Shape is RectangleShape2D rectangleShape2D)
-                        rectangleShape2D.Size = Config.ColliderSize;
-
+                    rectangleCollider.Shape = new RectangleShape2D { Size = Config.ColliderSize };
                     break;
 
                 case ColliderType.Circle:
                     circleCollider.Disabled = false;
-
-                    if (circleCollider.Shape is CircleShape2D circleShape2D)
-                        circleShape2D.Radius = Config.CircleRadius;
-
+                    circleCollider.Shape = new CircleShape2D { Radius = Config.CircleRadius };
                     break;
 
                 case ColliderType.Polygon:
                     polygonCollider.Disabled = false;
-
                     polygonCollider.Polygon = Config.PolygonPoints;
-
                     break;
 
                 default:
