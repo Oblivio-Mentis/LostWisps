@@ -39,8 +39,11 @@ namespace LostWisps.Player
 
             if (player.IsOnWallOnly() && player.frameInput != Vector2.Zero)
             {
-                var slopeUpDirection = Mathf.Abs(player.GetSlopeUpDirection().Y);
-                if (slopeUpDirection >= 0.7f && slopeUpDirection < 1f && Mathf.Sign(-player.GetSlopeUpDirection().Y) == player.frameInput.X)
+                var slopeUpDirection = player.GetSlopeUpDirection();
+                GD.Print(slopeUpDirection);
+                if (Mathf.Abs(slopeUpDirection.Y) >= 0.7f && Mathf.Abs(slopeUpDirection.Y) < 1f
+                    && Mathf.Sign(-slopeUpDirection.Y) == player.frameInput.X
+                    && slopeUpDirection.X > 0)
                 {
                     player.ChangeState(new SlopeClimbState(player));
                     return;

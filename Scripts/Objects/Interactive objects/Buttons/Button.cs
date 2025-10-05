@@ -1,38 +1,25 @@
+#nullable enable
+
 using Godot;
+using System;
 using System.Collections.Generic;
 
 namespace LostWisps.Object
 {
-    public partial class Button : Node2D
+    public partial class Button : BaseSynchronizer
     {
-        [Export] public Node2D[] TargetNodes { get; private set; }
-        private AnimationPlayer animationPlayer;
-        private IActivatable[] targets;
+        private AnimationPlayer? animationPlayer;
         private HashSet<Node2D> activeBodies = new HashSet<Node2D>();
         private bool isActivated = false;
 
         public override void _Ready()
         {
-            animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+            base._Ready();
 
-            if (TargetNodes == null)
+            animationPlayer ??= GetNode<AnimationPlayer>("AnimationPlayer");
+
+            if (TargetNodes == null || TargetNodes.Length == 0)
                 return;
-
-            var list = new List<IActivatable>();
-
-            foreach (var node in TargetNodes)
-            {
-                if (node is IActivatable activatable)
-                {
-                    list.Add(activatable);
-                }
-                else
-                {
-                    GD.PushWarning($"Node at path {node} does not implement IActivatable.");
-                }
-            }
-
-            targets = list.ToArray();
         }
 
         private void OnBodyEntered(Node2D body)
@@ -45,17 +32,14 @@ namespace LostWisps.Object
             if (!isActivated)
             {
                 isActivated = true;
-                animationPlayer.Play("Toggle");
-
-                foreach (var target in targets)
+                animationPlayer?.Play("Toggle");
+                
+                foreach (var node in TargetNodes)
                 {
-                    if (target == null)
-                        continue;
-
-                    if (target.IsActivated)
-                        target.Deactivate();
-                    else
-                        target.Activate();
+                    if (node is IActivatable activatable)
+                    {
+                        activatable.Activate();
+                    }
                 }
             }
         }
@@ -67,7 +51,7 @@ namespace LostWisps.Object
             if (activeBodies.Count == 0)
             {
                 isActivated = false;
-                animationPlayer.PlayBackwards("Toggle");
+                animationPlayer?.PlayBackwards("Toggle");
             }
         }
 
@@ -77,4 +61,3 @@ namespace LostWisps.Object
         }
     }
 }
-

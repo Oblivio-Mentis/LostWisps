@@ -49,8 +49,15 @@ namespace LostWisps.Player
 
         private void HandleHorizontalMovement(double delta)
         {
-            player.frameVelocity.X += player.Stats.Acceleration * player.frameInput.X * (float)delta;
-            player.frameVelocity.X = Mathf.Min(player.frameVelocity.X, player.Stats.MaxSpeed);
+            player.frameVelocity = new Vector2(
+                x: player.frameVelocity.X + player.Stats.Acceleration * player.frameInput.X * (float)delta,
+                y: player.frameVelocity.Y
+            );
+
+            float maxSpeed = player.Stats.MaxSpeed;
+            player.frameVelocity = player.frameVelocity with {
+                X = Mathf.Clamp(player.frameVelocity.X, -maxSpeed, maxSpeed)
+            };
         }
 	}
 }

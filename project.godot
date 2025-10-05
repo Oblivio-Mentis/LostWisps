@@ -15,9 +15,12 @@ run/main_scene="uid://de8vm4nenskxk"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Sprites/Icon.svg"
 
+[autoload]
+
+AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
+
 [debug]
 
-settings/stdout/print_fps=true
 settings/size/mode=3
 settings/size/viewport_height=1080
 settings/size/viewport_width=1920
@@ -25,6 +28,21 @@ settings/size/viewport_width=1920
 [dotnet]
 
 project/assembly_name="LostWisps"
+
+[file_customization]
+
+folder_colors={
+"res://Astronomical library/": "purple",
+"res://Global/": "gray",
+"res://Global/Systems/Destruction/Base/": "red",
+"res://Scenes/": "teal",
+"res://Scripts/": "blue",
+"res://Scripts/Objects/Base/": "red",
+"res://Scripts/Objects/Interactive objects/Base/": "red",
+"res://Scripts/Objects/Platforms/Base/": "red",
+"res://Scripts/Objects/Synchronization nodes/Base/": "red",
+"res://Shaders/": "pink"
+}
 
 [global_group]
 
@@ -73,3 +91,7 @@ ui_down={
 [physics]
 
 common/physics_interpolation=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_repeat=1

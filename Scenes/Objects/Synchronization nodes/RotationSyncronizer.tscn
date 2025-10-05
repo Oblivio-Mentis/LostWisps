@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx4qjrgqqwiio"]
+
+[ext_resource type="Script" uid="uid://dcj5o5mkqqjir" path="res://Scripts/Objects/Synchronization nodes/RotationSynchronizer.cs" id="1_wc4rt"]
+
+[node name="RotationSynchronizer" type="Node2D"]
+script = ExtResource("1_wc4rt")
+Speed = 5.0
+IsAlwaysActive = true
