@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsfb6sf0ft8jy"]
+
+[ext_resource type="Texture2D" uid="uid://sqy6nwk6jnfa" path="res://Sprites/icon.svg" id="1_3hi8e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3hi8e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wka7c"]
+radius = 8.0
+height = 32.0
+
+[node name="ChainSegment" type="RigidBody2D"]
+gravity_scale = 0.5
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.125, 0.25)
+texture = ExtResource("1_3hi8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_3hi8e")
+shape = SubResource("CapsuleShape2D_wka7c")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6poe3nv23cwc"]
+
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_cbgwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lyqh"]
+size = Vector2(246, 22)
+
+[node name="Platform" type="AnimatableBody2D" groups=["LightReflectors"]]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7lyqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cbgwd")

@@ -1,8 +1,7 @@
 using Godot;
-using Player;
 using System;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class FallState : PlayerState
 	{
@@ -28,13 +27,36 @@ namespace Player
 		public override void Update(double delta)
 		{
 			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0f)
+			{
 				player.ChangeState(new JumpState(player));
-			else if (player.KeyJumpPressed && player.CoyoteTimer.TimeLeft > 0f)
+				return;
+			}
+
+			if (player.KeyJumpPressed && player.CoyoteTimer.TimeLeft > 0f)
+			{
 				player.ChangeState(new JumpState(player));
-			else if (player.IsOnFloor() && (player.KeyLeft || player.KeyRight))
+				return;
+			}
+
+			if (player.IsOnFloor() && (player.KeyLeft || player.KeyRight))
+			{
 				player.ChangeState(new RunState(player));
-			else if (player.IsOnFloor())
+				return;
+			}
+
+			if (player.IsOnFloor())
+			{
 				player.ChangeState(new IdleState(player));
+				return;
+			}
+
+			var slopeUpDirection = player.GetSlopeUpDirection();
+			if (player.IsOnWallOnly() && slopeUpDirection.X > 0)
+			{
+				player.ChangeState(new SlideState(player));
+				return;
+			}
+				
 		}
 
 		private void HandleJumpBuffer()
@@ -50,15 +72,13 @@ namespace Player
 			// if (direction != 0)
 			// 	player.skeletonContainer.Scale = new Vector2(direction, 1);
 
-			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, player.frameInput.X * player.Stats.JumpPowerX,  player.Stats.AirDeceleration * (float)delta);
+			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, player.frameInput.X * player.Stats.JumpPowerX, player.Stats.AirDeceleration * (float)delta);
 		}
 
 		private void HandleGravity(double delta)
 		{
 			player.frameVelocity += new Vector2(0, player.Stats.GravityFall * (float)delta);
-
-			if (player.frameVelocity.Y > player.Stats.MaxFallSpeed)
-				player.frameVelocity.Y = player.Stats.MaxFallSpeed;
+			player.frameVelocity.Y = Mathf.Min(player.frameVelocity.Y, player.Stats.MaxFallSpeed);
 		}
 	}
 }

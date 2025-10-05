@@ -1,10 +1,9 @@
 using Godot;
-using Player;
 using System;
 
 using System.Runtime.CompilerServices;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class Player : CharacterBody2D
 	{
@@ -20,7 +19,6 @@ namespace Player
 		private PlayerState previousState;
 		private String currentAnimationState;
 
-		// Входные данные
 		public bool KeyUp { get; private set; }
 		public bool KeyDown { get; private set; }
 		public bool KeyLeft { get; private set; }
@@ -47,7 +45,59 @@ namespace Player
 
 			Velocity = frameVelocity;
 
+			// for (int i = 0; i < GetSlideCollisionCount(); i++)
+			// {
+			// 	KinematicCollision2D collision = GetSlideCollision(i);
+
+			// 	if (collision.GetCollider() is RigidBody2D rigidBody)
+			// 	{
+			// 		// 1. Вычисляем направление толчка
+			// 		Vector2 pushDir = -collision.GetNormal();
+
+			// 		// 2. Вычисляем разницу скоростей в направлении толчка
+			// 		float velocityDiffInPushDir = Velocity.Dot(pushDir) - rigidBody.LinearVelocity.Dot(pushDir);
+			// 		velocityDiffInPushDir = Mathf.Max(0.0f, velocityDiffInPushDir); // Только положительная разница
+
+			// 		// 3. Учитываем массу объекта
+			// 		float massRatio = Mathf.Min(1.0f, 100 / rigidBody.Mass);
+
+			// 		// 4. Вычисляем силу толчка
+			// 		Vector2 pushForce = pushDir * velocityDiffInPushDir * (massRatio * (IsOnFloor() ? 1 : 1.0f));
+
+			// 		// 5. Применяем импульс к объекту
+			// 		rigidBody.ApplyCentralImpulse(pushForce);
+			// 	}
+			// }
+
 			MoveAndSlide();
+
+			HandleForces();
+		}
+
+		private void HandleForces()
+		{
+			const float pushAngleThreshold = 0.2f;
+			const float maxPushForce = 500f;
+
+			for (int i = 0; i < GetSlideCollisionCount(); i++)
+			{
+				var collision = GetSlideCollision(i);
+				if (collision.GetCollider() is RigidBody2D body)
+				{
+					Vector2 pushDirection = -collision.GetNormal();
+					Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
+
+					float dot = pushDirection.Dot(playerDirection);
+
+					if (dot > pushAngleThreshold)
+					{
+						float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
+						float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
+
+						body.ApplyCentralForce(pushDirection * finalPushForce);
+					}
+				}
+			}
 		}
 
 		public override void _Process(double delta)
@@ -88,7 +138,7 @@ namespace Player
 			currentState = newState;
 			currentState.EnterState();
 
-			GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
+			// GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
 		}
 
 		public void SetAnimation(string newAnimationState)
@@ -102,10 +152,19 @@ namespace Player
 
 			if (currentAnimationState != newAnimationState)
 			{
-				// GD.Print($"Animation - Switching from '{currentAnimationState}' to '{newAnimationState}'");
 				stateMachine.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
 			}
+		}
+
+		public Vector2 GetSlopeUpDirection()
+		{
+			if (!IsOnWall())
+				return Vector2.Zero;
+
+			Vector2 normal = GetWallNormal();
+
+            return new Vector2(-normal.Y, normal.X).Normalized();
 		}
 	}
 }

@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://de8vm4nenskxk"]
+
+[ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="3_5n7br"]
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="4_1yx6m"]
+[ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://Scenes/Objects/Interactive objects/Lever.tscn" id="4_ewc4s"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="5_arb5r"]
+[ext_resource type="PackedScene" uid="uid://c6poe3nv23cwc" path="res://Scenes/Objects/Platforms/Platform.tscn" id="6_gjo11"]
+[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="7_idno8"]
+[ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="9_0ta0f"]
+[ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://Scenes/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="9_lq7ju"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="11_l2tm1"]
+
+[sub_resource type="Resource" id="Resource_0ta0f"]
+resource_local_to_scene = true
+script = ExtResource("4_1yx6m")
+MaxSpeed = 220.0
+Acceleration = 1000.0
+AirDeceleration = 1500.0
+GravityJump = 1100.0
+GravityFall = 1200.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
+MaxFallSpeed = 800.0
+AirAcceleration = 1500.0
+CoyoteTime = 0.012
+JumpBufferTime = 0.012
+PushForce = 200.0
+MinPushForce = 100.0
+metadata/_custom_type_script = "uid://dc3lsomwrsivi"
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [333.0]
+
+[node name="Platform" parent="." instance=ExtResource("6_gjo11")]
+position = Vector2(559, 663)
+scale = Vector2(7.64, 1)
+
+[node name="Lever" parent="." instance=ExtResource("4_ewc4s")]
+position = Vector2(312, 647)
+
+[node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_arb5r")]
+position = Vector2(848, 608)
+points = PackedVector2Array(-112, 0, 112, 0)
+TargetNodes = [NodePath("../OrbitSynchronizer")]
+
+[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_l2tm1")]
+position = Vector2(1010, 647)
+TargetNodes = [null]
+
+[node name="ButtonTimer" parent="." instance=ExtResource("7_idno8")]
+position = Vector2(1093, 647)
+
+[node name="PlayerTutorial" parent="." instance=ExtResource("3_5n7br")]
+position = Vector2(808, 640)
+Stats = SubResource("Resource_0ta0f")
+
+[node name="OrbitSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("9_lq7ju")]
+position = Vector2(512, 448)
+TargetAngle = 180.0
+Speed = 180.0
+TargetNodes = [null, null, null, null]
+
+[node name="LightSource" parent="." instance=ExtResource("9_0ta0f")]
+position = Vector2(528, 488)
+rotation = -0.523598

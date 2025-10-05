@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Player
+namespace LostWisps.Player
 {
 	public partial class IdleState : PlayerState
 	{
@@ -23,21 +23,36 @@ namespace Player
 			{
 				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
+				return;
 			}
-			else if (player.KeyJump)
+
+			if (player.KeyJump)
 			{
 				player.ChangeState(new JumpState(player));
+				return;
 			}
-			else if (player.KeyLeft || player.KeyRight)
+
+			if (player.KeyLeft || player.KeyRight)
 			{
 				player.ChangeState(new RunState(player));
+				return;
 			}
+
+			if (player.IsOnWallOnly())
+            {
+                player.ChangeState(new SlideState(player));
+                return;
+            }
 		}
 
 		private void HandleHorizontalMovement(double delta)
 		{
-			
-			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, 0,  Mathf.Abs(player.frameVelocity.X) / 0.05f * (float)delta);
+			float groundFriction = 600f;
+			player.frameVelocity.X = Mathf.MoveToward(
+				player.frameVelocity.X,
+				0,
+				groundFriction * (float)delta
+			);
 		}
 	}
 }

@@ -18,10 +18,12 @@ MaxFallSpeed = 800.0
 AirAcceleration = 1500.0
 CoyoteTime = 0.012
 JumpBufferTime = 0.012
+PushForce = 200.0
+MinPushForce = 100.0
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f124h"]
-radius = 18.0
+radius = 16.0
 height = 85.0
 
 [sub_resource type="Animation" id="Animation_7tjpo"]
@@ -1791,7 +1793,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-131, 59)
 
 [node name="PlayerTutorial" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "CoyoteTimer", "animationTree", "skeletonContainer")]
-floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("1_1pfiu")
 Stats = SubResource("Resource_5gxpp")
@@ -1961,6 +1962,7 @@ rest = Transform2D(1, 0, 0, 1, -20, 99)
 [node name="right_foot" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/right_thigh/right_leg"]
 position = Vector2(-7, 140)
 rotation = 0.304918
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -7, 140)
 auto_calculate_length_and_angle = false
 length = 45.0
