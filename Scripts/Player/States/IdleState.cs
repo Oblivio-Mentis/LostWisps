@@ -39,10 +39,10 @@ namespace LostWisps.Player
 			}
 
 			if (player.IsOnWallOnly())
-            {
-                player.ChangeState(new SlideState(player));
-                return;
-            }
+			{
+				player.ChangeState(new SlideState(player));
+				return;
+			}
 		}
 
 		private void HandleHorizontalMovement(double delta)

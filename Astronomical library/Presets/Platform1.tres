@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelObjectConfig" load_steps=3 format=3 uid="uid://dkqch4snv1s8v"]
+
+[ext_resource type="Script" uid="uid://enwwjlw3rv4v" path="res://Scripts/Objects/Platforms/Base/LevelObjectConfig.cs" id="1_5ivpy"]
+[ext_resource type="Texture2D" uid="uid://bmf6b8rdbmj2u" path="res://Sprites/Без имени.png" id="1_toqfk"]
+
+[resource]
+script = ExtResource("1_5ivpy")
+TextureAtlas = ExtResource("1_toqfk")
+TextureRegion = Rect2(0, 0, 0, 0)
+ColliderType = 0
+ColliderSize = Vector2(50, 10)
+CircleRadius = 32.0
+PolygonPoints = PackedVector2Array()
+metadata/_custom_type_script = "uid://enwwjlw3rv4v"

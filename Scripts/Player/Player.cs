@@ -164,7 +164,7 @@ namespace LostWisps.Player
 
 			Vector2 normal = GetWallNormal();
 
-            return new Vector2(-normal.Y, normal.X).Normalized();
+			return new Vector2(-normal.Y, normal.X).Normalized();
 		}
 	}
 }

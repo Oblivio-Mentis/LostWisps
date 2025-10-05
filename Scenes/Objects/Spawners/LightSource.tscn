@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtquhmraud82a" path="res://Scripts/Objects/Spawners/LightSource.cs" id="1_ic83r"]
 
 [node name="LightSource" type="RayCast2D"]
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_ic83r")
 metadata/_edit_group_ = true
 

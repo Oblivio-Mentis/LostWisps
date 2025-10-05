@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://gfugd8vkw60"]
 
-[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_1edws"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platform.jpg" id="1_1edws"]
 [ext_resource type="Script" uid="uid://bjibhulmkonuu" path="res://Global/Systems/Destruction/Base/DestructionSystem.cs" id="2_1edws"]
-[ext_resource type="Script" uid="uid://cj4pw8bvx6au0" path="res://Global/Systems/Destruction/Triggers/DamageOverTimeTrigger.cs" id="5_l4lii"]
+[ext_resource type="Script" uid="uid://crdlsd0eodlxk" path="res://Global/Systems/Destruction/Triggers/DamageOnContactTrigger.cs" id="3_1edws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrnnd"]
 size = Vector2(240, 30)
@@ -26,8 +26,7 @@ Durability = 3
 metadata/_custom_type_script = "uid://bjibhulmkonuu"
 
 [node name="ContactTrigger" type="Area2D" parent="DestructionSystem"]
-script = ExtResource("5_l4lii")
-interval = 3.0
+script = ExtResource("3_1edws")
 metadata/_custom_type_script = "uid://cj4pw8bvx6au0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionSystem/ContactTrigger"]
