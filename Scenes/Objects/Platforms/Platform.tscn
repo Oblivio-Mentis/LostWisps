@@ -1,15 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6poe3nv23cwc"]
+[gd_scene load_steps=2 format=3 uid="uid://c6poe3nv23cwc"]
 
-[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_cbgwd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lyqh"]
-size = Vector2(246, 22)
+[ext_resource type="Script" uid="uid://biidqsahea6dp" path="res://Scripts/Objects/Platforms/Platform.cs" id="1_sc764"]
 
 [node name="Platform" type="AnimatableBody2D" groups=["LightReflectors"]]
 collision_layer = 3
+script = ExtResource("1_sc764")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7lyqh")
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-06, 7.15256e-07)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cbgwd")
+[node name="Collider" type="CollisionShape2D" parent="."]
+disabled = true

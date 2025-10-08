@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://ctglfvwiqb0pu"]
 
 [ext_resource type="Texture2D" uid="uid://y0qaqtnfax5v" path="res://Astronomical library/Levels/Templates/lvl1.drawio.png" id="1_jvttk"]
-[ext_resource type="PackedScene" uid="uid://dngt8hur6acq1" path="res://Scenes/Objects/Platforms/AnimatableLevelObject.tscn" id="2_10d03"]
-[ext_resource type="Resource" uid="uid://dkqch4snv1s8v" path="res://Astronomical library/Presets/Platform1.tres" id="3_0r3l5"]
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="4_8a4xe"]
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="5_eybc1"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="6_gbjom"]
 [ext_resource type="PackedScene" uid="uid://gfugd8vkw60" path="res://Scenes/Objects/Platforms/DestructiblePlatform.tscn" id="7_ugq73"]
 [ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="8_qed61"]
 [ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://Scenes/Objects/Fluids/Water.tscn" id="9_4jrj1"]
-[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="10_dli64"]
+[ext_resource type="PackedScene" uid="uid://c6poe3nv23cwc" path="res://Scenes/Objects/Platforms/Platform.tscn" id="10_jvttk"]
+[ext_resource type="Resource" uid="uid://cygo3eactelp5" path="res://Astronomical library/Assets/Test1.tres" id="11_10d03"]
 [ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://Scenes/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="11_v6d5c"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="12_0r3l5"]
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://Scenes/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_lvhc0"]
 
 [sub_resource type="Resource" id="Resource_0k8ja"]
@@ -52,100 +52,14 @@ point_count = 2
 [node name="Level1" type="Node2D"]
 
 [node name="Lvl1_drawio" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(326, 236)
-scale = Vector2(0.604435, 0.604435)
+position = Vector2(533.914, 403.125)
+scale = Vector2(0.987303, 0.987303)
 texture = ExtResource("1_jvttk")
 
-[node name="AnimatableLevelObject" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(578, 134)
-scale = Vector2(-3.36686, 2.36)
-Config = ExtResource("3_0r3l5")
-
 [node name="PlayerTutorial" parent="." instance=ExtResource("4_8a4xe")]
-position = Vector2(532, 118)
+position = Vector2(871, 216)
 scale = Vector2(1, 0.400001)
 Stats = SubResource("Resource_0k8ja")
-
-[node name="AnimatableLevelObject2" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(296, 364)
-scale = Vector2(2.52, 2.24975)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject3" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(396, 423)
-scale = Vector2(2.16, 2.4)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject4" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(485, 485)
-scale = Vector2(1.8, 2.36)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject5" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(578, 546)
-scale = Vector2(1.92, 2.4)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject6" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(722, 473)
-scale = Vector2(1.86862, -2.1584)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject7" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(1013, 255)
-scale = Vector2(1.91999, 2.36)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject8" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(1095, 575)
-scale = Vector2(1.6, 2)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject9" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(61, 59)
-scale = Vector2(1.6, 1.88)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject10" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(215, 34)
-scale = Vector2(1, 1.76)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject11" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(578, 34)
-scale = Vector2(5.80572, 1.8766)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject12" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(940, 34)
-scale = Vector2(1, 1.84)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject13" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(407, 648)
-scale = Vector2(16.52, 1.24)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject14" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(917, 326)
-scale = Vector2(2, 2.37749)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject15" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(819, 399)
-scale = Vector2(1.92, 2.32)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject16" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(372, 285)
-scale = Vector2(2.88, 2.36)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject17" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(215, 222)
-scale = Vector2(3.88, 1.76)
-Config = ExtResource("3_0r3l5")
 
 [node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
 position = Vector2(213, 188)
@@ -172,16 +86,6 @@ scale = Vector2(0.022, 4.092)
 position = Vector2(926, 623)
 points = PackedVector2Array(-82, 0, 87, 0)
 TargetNodes = [NodePath("../RotationSynchronizer")]
-
-[node name="AnimatableLevelObject18" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(1096, 648)
-scale = Vector2(1, 2.23997)
-Config = ExtResource("3_0r3l5")
-
-[node name="AnimatableLevelObject19" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(61, 10)
-scale = Vector2(1, 1.76)
-Config = ExtResource("3_0r3l5")
 
 [node name="LightSource2" parent="." instance=ExtResource("8_qed61")]
 position = Vector2(61, 20)
@@ -215,28 +119,25 @@ position = Vector2(579, 97)
 points = PackedVector2Array(-460, 0, 458, 0)
 TargetNodes = [NodePath("../PositionSynchronizer")]
 
-[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("10_dli64")]
-position = Vector2(579, 532)
-TargetNodes = [NodePath("../PositionSynchronizer2"), NodePath("../PositionSynchronizer3")]
-
 [node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(594, 135)
 curve = SubResource("Curve2D_fu0ab")
-TargetNodes = [NodePath("../AnimatableLevelObject")]
+TargetNodes = [NodePath("../Platform9")]
 
 [node name="PositionSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(61, 76)
 curve = SubResource("Curve2D_21tia")
 CanBeDeactivated = false
 IsAdditive = true
-TargetNodes = [NodePath("../AnimatableLevelObject9")]
+TargetNodes = [null]
 
 [node name="PositionSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(1079, 591)
 curve = SubResource("Curve2D_73oqv")
+Speed = 0.2
 CanBeDeactivated = false
 IsAdditive = true
-TargetNodes = [NodePath("../AnimatableLevelObject8")]
+TargetNodes = [NodePath("../Platform14")]
 
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
 position = Vector2(1095, 327)
@@ -250,11 +151,95 @@ Speed = 90.0
 IsAlwaysActive = false
 TargetNodes = [NodePath("../DestructiblePlatform2")]
 
-[node name="AnimatableLevelObject20" parent="." instance=ExtResource("2_10d03")]
-position = Vector2(441, 736)
-scale = Vector2(55.7989, 16.2694)
-Config = ExtResource("3_0r3l5")
-
 [node name="LightSource" parent="." instance=ExtResource("8_qed61")]
 position = Vector2(1096, 635)
 rotation = -3.14159
+
+[node name="Platform" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(297, 364)
+scale = Vector2(0.511241, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform2" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(397, 423)
+scale = Vector2(0.44, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform3" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(485, 485)
+scale = Vector2(0.359995, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform4" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(578, 545)
+scale = Vector2(0.4, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform5" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(724, 472)
+scale = Vector2(0.4, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform6" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(819, 399)
+scale = Vector2(0.399995, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform7" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(916, 327)
+scale = Vector2(0.4, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform8" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(1013, 256)
+scale = Vector2(0.4, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform9" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(577, 134)
+scale = Vector2(0.679998, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform10" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(61, 57)
+scale = Vector2(0.36, 1)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform11" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(578, 34)
+scale = Vector2(1.16, 0.778442)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform12" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(215, 35)
+scale = Vector2(0.203057, 0.851445)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform13" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(941, 35)
+scale = Vector2(0.217935, 0.831419)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform14" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(1095, 576)
+scale = Vector2(0.359995, 0.84)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform15" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(444, 651)
+scale = Vector2(4.88, 0.72)
+Asset = ExtResource("11_10d03")
+
+[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_0r3l5")]
+position = Vector2(578, 534)
+TargetNodes = [NodePath("../PositionSynchronizer3"), NodePath("../PositionSynchronizer2")]
+
+[node name="Platform16" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(216, 228)
+scale = Vector2(0.8, 0.8)
+Asset = ExtResource("11_10d03")
+
+[node name="Platform17" parent="." instance=ExtResource("10_jvttk")]
+position = Vector2(373, 288)
+scale = Vector2(0.598756, 1)
+Asset = ExtResource("11_10d03")
