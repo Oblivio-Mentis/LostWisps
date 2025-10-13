@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://de8vm4nenskxk"]
+[gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
 
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="3_5n7br"]
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="4_1yx6m"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="5_arb5r"]
 [ext_resource type="PackedScene" uid="uid://c6poe3nv23cwc" path="res://Scenes/Objects/Platforms/Platform.tscn" id="6_gjo11"]
 [ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="7_idno8"]
-[ext_resource type="PackedScene" uid="uid://uy1niwobaitt" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="9_0ta0f"]
+[ext_resource type="Resource" uid="uid://cygo3eactelp5" path="res://Astronomical library/Assets/Test1.tres" id="9_0ta0f"]
 [ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://Scenes/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="9_lq7ju"]
-[ext_resource type="Resource" uid="uid://cygo3eactelp5" path="res://Astronomical library/Assets/Test1.tres" id="10_0ta0f"]
+[ext_resource type="PackedScene" uid="uid://bxsftmno0nvmi" path="res://Scenes/Objects/Spawners/LightRayEmitter2D.tscn" id="10_0ta0f"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="11_l2tm1"]
+[ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://Scenes/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="11_v1q72"]
 
 [sub_resource type="Resource" id="Resource_0ta0f"]
 resource_local_to_scene = true
@@ -39,14 +40,15 @@ position = Vector2(312, 647)
 position = Vector2(848, 608)
 points = PackedVector2Array(-112, 0, 112, 0)
 
-[node name="Button" parent="." instance=ExtResource("11_l2tm1")]
+[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_l2tm1")]
 position = Vector2(1010, 647)
+TargetNodes = [NodePath("../RotationSynchronizer")]
 
 [node name="ButtonTimer" parent="." instance=ExtResource("7_idno8")]
 position = Vector2(1093, 647)
 
 [node name="PlayerTutorial" parent="." instance=ExtResource("3_5n7br")]
-position = Vector2(808, 640)
+position = Vector2(119, 632)
 Stats = SubResource("Resource_0ta0f")
 
 [node name="OrbitSynchronizer" parent="." instance=ExtResource("9_lq7ju")]
@@ -54,11 +56,29 @@ position = Vector2(512, 448)
 TargetAngle = 180.0
 Speed = 180.0
 
-[node name="LightSource" parent="." instance=ExtResource("9_0ta0f")]
-position = Vector2(929, 439)
-rotation = -0.523598
-
 [node name="Platform" parent="." instance=ExtResource("6_gjo11")]
-position = Vector2(775, 654)
-scale = Vector2(8.92, 1)
-Asset = ExtResource("10_0ta0f")
+position = Vector2(510, 658)
+scale = Vector2(5.92, 1)
+Asset = ExtResource("9_0ta0f")
+
+[node name="Platform2" parent="." instance=ExtResource("6_gjo11")]
+position = Vector2(681, 560)
+rotation = 2.40597
+Asset = ExtResource("9_0ta0f")
+
+[node name="Platform3" parent="." instance=ExtResource("6_gjo11")]
+position = Vector2(360, 196)
+rotation = -0.393788
+Asset = ExtResource("9_0ta0f")
+
+[node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v1q72")]
+position = Vector2(695, 509)
+TargetAngle = 360.0
+Speed = 30.0
+IsAlwaysActive = false
+TargetNodes = [NodePath("../Platform3")]
+
+[node name="LightRayEmitter2D" parent="." instance=ExtResource("10_0ta0f")]
+position = Vector2(44, 459)
+rotation = 0.275694
+EditorTickMs = 16

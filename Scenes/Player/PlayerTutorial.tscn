@@ -22,9 +22,8 @@ PushForce = 200.0
 MinPushForce = 100.0
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f124h"]
-radius = 16.0
-height = 85.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f124h"]
+size = Vector2(20, 80)
 
 [sub_resource type="Animation" id="Animation_7tjpo"]
 length = 0.001
@@ -1981,8 +1980,8 @@ bone_angle = 0.0
 [node name="JumpPeak" type="Node2D" parent="StateMachine"]
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -43)
-shape = SubResource("CapsuleShape2D_f124h")
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_f124h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
