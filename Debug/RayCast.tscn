@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://dldks378a5idy"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://Scenes/Objects/Platforms/PlatformBase.tscn" id="1_gxqak"]
+[ext_resource type="PackedScene" uid="uid://bxsftmno0nvmi" path="res://Scenes/Objects/Spawners/LightRayEmitter2D.tscn" id="2_4jnpf"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platform.jpg" id="2_30y1l"]
+[ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="3_d4l3u"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="3_o1ql2"]
+[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="4_jjpof"]
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="4_vb57p"]
+[ext_resource type="PackedScene" uid="uid://dm25au46lb645" path="res://Scenes/Objects/Interactive objects/InteractionObject.tscn" id="5_6yx0q"]
+[ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://Scenes/Objects/Interactive objects/Lever.tscn" id="6_30y1l"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="7_d4l3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30y1l"]
+resource_local_to_scene = true
+size = Vector2(247, 23)
+
+[sub_resource type="Resource" id="Resource_q5xxr"]
+resource_local_to_scene = true
+script = ExtResource("4_vb57p")
+MaxSpeed = 220.0
+Acceleration = 1000.0
+AirDeceleration = 1500.0
+GravityJump = 1100.0
+GravityFall = 1200.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
+MaxFallSpeed = 800.0
+AirAcceleration = 1500.0
+CoyoteTime = 0.012
+JumpBufferTime = 0.012
+PushForce = 200.0
+MinPushForce = 100.0
+metadata/_custom_type_script = "uid://dc3lsomwrsivi"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjpof"]
+resource_local_to_scene = true
+size = Vector2(247, 23)
+
+[node name="RayCast" type="Node2D"]
+
+[node name="PlatformBase4" parent="." instance=ExtResource("1_gxqak")]
+position = Vector2(326, 473)
+
+[node name="Texture" parent="PlatformBase4" index="0"]
+texture = ExtResource("2_30y1l")
+region_rect = Rect2(0, 0, 247, 23)
+
+[node name="Collider" parent="PlatformBase4" index="1"]
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="PlayerTutorial" parent="." instance=ExtResource("3_d4l3u")]
+position = Vector2(501, 462)
+Stats = SubResource("Resource_q5xxr")
+
+[node name="PlatformBase" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(536, 66)
+
+[node name="PlatformBase2" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(846, 349)
+
+[node name="PlatformBase3" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(549, 502)
+
+[node name="Texture" parent="PlatformBase3" index="0"]
+texture = ExtResource("2_30y1l")
+region_rect = Rect2(0, 0, 247, 23)
+
+[node name="Collider" parent="PlatformBase3" index="1"]
+shape = SubResource("RectangleShape2D_jjpof")
+
+[node name="LightRayEmitter2D" parent="." instance=ExtResource("2_4jnpf")]
+position = Vector2(89, 301)
+rotation = -0.431367
+
+[node name="Button" parent="." instance=ExtResource("3_o1ql2")]
+position = Vector2(252, 536)
+
+[node name="ButtonTimer" parent="." instance=ExtResource("4_jjpof")]
+position = Vector2(327, 538)
+
+[node name="InteractionObject" parent="." instance=ExtResource("5_6yx0q")]
+position = Vector2(298, 435)
+
+[node name="Lever" parent="." instance=ExtResource("6_30y1l")]
+position = Vector2(390, 375)
+
+[node name="Slider" parent="." instance=ExtResource("7_d4l3u")]
+position = Vector2(586, 420)
+rotation = 0.0199496
+points = PackedVector2Array(-178.865, 8.56979, 236.993, -2.72815)
+
+[editable path="PlatformBase4"]
+[editable path="PlatformBase3"]

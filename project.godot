@@ -17,8 +17,7 @@ config/icon="res://Sprites/Icon.svg"
 
 [autoload]
 
-AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
-DebugController="*res://UnitTests/Base/DebugController.cs"
+DebugController="*res://UI/Base/Debug/DebugController.cs"
 
 [debug]
 
@@ -34,6 +33,7 @@ project/assembly_name="LostWisps"
 
 folder_colors={
 "res://Astronomical library/": "purple",
+"res://Debug/": "purple",
 "res://Global/": "gray",
 "res://Global/Systems/Destruction/Base/": "red",
 "res://Scenes/": "teal",
@@ -41,12 +41,11 @@ folder_colors={
 "res://Scripts/": "blue",
 "res://Scripts/Objects/Base/": "red",
 "res://Scripts/Objects/Interactive objects/Base/": "red",
-"res://Scripts/Objects/Platforms/Base/": "red",
 "res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
 "res://Shaders/": "pink",
-"res://UnitTests/": "orange",
-"res://UnitTests/Base/": "red"
+"res://UI/": "green",
+"res://UI/Base/": "red"
 }
 
 [global_group]
@@ -105,3 +104,4 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_repeat=1
+viewport/hdr_2d=true

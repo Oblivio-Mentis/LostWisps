@@ -1878,13 +1878,13 @@ rest = Transform2D(1, 0, 0, 1, 0, -277)
 [node name="chest" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip"]
 position = Vector2(2, -49)
 rotation = 0.137269
-rest = Transform2D(1, 0, 0, 1, -0.653414, -76.4186)
+rest = Transform2D(1, 0, 0, 1, -0.723392, -77.1417)
 
 [node name="neck" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-4, -194)
 rotation = 0.342237
 scale = Vector2(1, 1)
-rest = Transform2D(1, 0, 0, 1, -6.65341, -177.195)
+rest = Transform2D(1, 0, 0, 1, -6.72339, -176.752)
 
 [node name="jaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/neck"]
 position = Vector2(-20.6932, -65.3864)
@@ -1896,7 +1896,7 @@ bone_angle = 0.0
 [node name="left_arm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(59, -104)
 rotation = -0.736917
-rest = Transform2D(1, 0, 0, 1, 64.3068, -118.152)
+rest = Transform2D(1, 0, 0, 1, 64.4468, -118.525)
 
 [node name="left_forearm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/left_arm"]
 position = Vector2(-13, 107)
@@ -1907,7 +1907,7 @@ rest = Transform2D(1, 0, 0, 1, -13, 107)
 position = Vector2(12, 85)
 rotation = 0.930087
 scale = Vector2(1, 1)
-rest = Transform2D(0.279829, 0.96005, -0.96005, 0.279829, 13.3466, 128.57)
+rest = Transform2D(0.279829, 0.96005, -0.96005, 0.279829, 12, 85)
 auto_calculate_length_and_angle = false
 length = 40.825
 bone_angle = 346.19
@@ -1915,7 +1915,7 @@ bone_angle = 346.19
 [node name="right_arm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest"]
 position = Vector2(-102, -92)
 rotation = 1.04778
-rest = Transform2D(1, 0, 0, 1, -96.6932, -111.458)
+rest = Transform2D(1, 0, 0, 1, -96.5532, -111.972)
 
 [node name="right_forearm" type="Bone2D" parent="SkeletonContainer/Skeleton2D/hip/chest/right_arm"]
 position = Vector2(-2, 100)
@@ -1926,7 +1926,7 @@ rest = Transform2D(1, 0, 0, 1, -2, 100)
 position = Vector2(5, 113)
 rotation = -0.356234
 scale = Vector2(1, 1)
-rest = Transform2D(1, 0.000858456, -0.000858456, 1, 2.34658, 161.877)
+rest = Transform2D(1, 0.000858456, -0.000858456, 1, 5, 113)
 auto_calculate_length_and_angle = false
 length = 43.063
 bone_angle = 70.968

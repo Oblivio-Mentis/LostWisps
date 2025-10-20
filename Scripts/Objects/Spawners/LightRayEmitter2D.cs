@@ -70,7 +70,6 @@ namespace LostWisps.Object
             {
                 if (!EditorInteractive)
                 {
-                    // В редакторе визуал оставляем как есть, пересчёт выключен.
                     return;
                 }
 

@@ -4,7 +4,7 @@ namespace LostWisps.Debug
 {
     public partial class DebugController : Node
     {
-        private const string DebugPanelPath = "res://UnitTests/DebugPanel.tscn"; // путь к вашей панели
+        private const string DebugPanelPath = "res://UI/DebugPanel.tscn";
         private PackedScene _panelScene;
         private DebugPanel _panel;
 

@@ -7,15 +7,15 @@ uniform vec4 col_low  : source_color = vec4(0.35, 0.12, 0.05, 1.0);
 
 /* Интенсивности (сдержанные) */
 uniform float emissive_gain : hint_range(0.0, 1.5) = 0.35;
-uniform float fire_mix      : hint_range(0.0, 1.0) = 0.45;
+uniform float fire_mix      : hint_range(0.0, 1.0) = 0.3;
 
 /* Движение/мерцание */
-uniform float noise_scale   : hint_range(0.5, 8.0) = 3.0;
-uniform float flow_speed    : hint_range(0.0, 6.0) = 0.9;
-uniform float flicker_amp   : hint_range(0.0, 0.5) = 0.12;
+uniform float noise_scale   : hint_range(0.5, 8.0) = 1.5;
+uniform float flow_speed    : hint_range(0.0, 6.0) = 0.1;
+uniform float flicker_amp   : hint_range(0.0, 0.5) = 0.5;
 
 /* Мягкость и дезеринг */
-uniform float edge_softness   : hint_range(0.0, 2.0) = 0.9;
+uniform float edge_softness   : hint_range(0.0, 2.0) = 0.1;
 uniform float dither_strength : hint_range(0.0, 0.02) = 0.006;
 
 /* Шум */

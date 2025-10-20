@@ -1,7 +1,6 @@
 #nullable enable
 
 using Godot;
-using LostWisps.Global.Animation;
 
 namespace LostWisps.Object
 {

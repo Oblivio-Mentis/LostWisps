@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlatformAsset" load_steps=4 format=3 uid="uid://bnifpi4mqqf8v"]
+
+[ext_resource type="Script" uid="uid://2bmto5w7npjs" path="res://Scripts/Objects/Platforms/Base/PlatformAsset.cs" id="1_jg6x8"]
+[ext_resource type="Texture2D" uid="uid://cqio8xemk3m2r" path="res://Debug/Assets/Textures/PlatformPrototype.png" id="1_qtd1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc2c6"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_jg6x8")
+Texture = ExtResource("1_qtd1x")
+Collider = SubResource("RectangleShape2D_lc2c6")
+metadata/_custom_type_script = "uid://2bmto5w7npjs"

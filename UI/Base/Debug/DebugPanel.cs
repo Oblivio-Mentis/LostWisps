@@ -8,7 +8,7 @@ namespace LostWisps.Debug
     {
         private VBoxContainer LevelsGroup;
 
-        private const string LevelsFolderPath = "res://UnitTests/UnitTestLevels/";
+        private const string LevelsFolderPath = "res://Debug/";
 
         public override void _Ready()
         {
@@ -62,12 +62,6 @@ namespace LostWisps.Debug
                 };
 
                 LevelsGroup.AddChild(btn);
-            }
-
-            if (sceneFiles.Count == 0)
-            {
-                var lbl = new Label { Text = "Нет доступных тестовых уровней!" };
-                LevelsGroup.AddChild(lbl);
             }
         }
 
