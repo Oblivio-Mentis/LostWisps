@@ -5,17 +5,16 @@ namespace LostWisps.Player
 {
 	public partial class RunState : PlayerState
 	{
-
-		public RunState(Player player) : base(player) { }
+		public RunState(Player player) : base(player, "walk") { }
 
 		public override void EnterState()
 		{
-			player.SetAnimation("walk");
+			player.SetAnimation(animationState);
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
-			HandleHorizontalMovement(delta);
+			player.MovementController.ApplyGroundMovement(player.frameInput.X, delta);
 		}
 
 		public override void Update(double delta)
@@ -37,16 +36,6 @@ namespace LostWisps.Player
 			{
 				player.ChangeState(new IdleState(player));
 				return;
-			}
-		}
-
-		private void HandleHorizontalMovement(double delta)
-		{
-			float direction = player.frameInput.X;
-
-			if (direction != 0)
-			{
-				player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, direction * player.Stats.MaxSpeed, player.Stats.Acceleration * (float)delta);
 			}
 		}
 	}

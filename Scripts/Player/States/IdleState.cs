@@ -5,16 +5,16 @@ namespace LostWisps.Player
 {
 	public partial class IdleState : PlayerState
 	{
-		public IdleState(Player player) : base(player) {}
+		public IdleState(Player player) : base(player, "idle") {}
 
 		public override void EnterState()
 		{
-			player.SetAnimation("idle");
+			player.SetAnimation(animationState);
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
-			HandleHorizontalMovement(delta);
+			player.MovementController.ApplyGroundMovement(0, delta);
 		}
 
 		public override void Update(double delta)
@@ -43,16 +43,6 @@ namespace LostWisps.Player
 				player.ChangeState(new SlideState(player));
 				return;
 			}
-		}
-
-		private void HandleHorizontalMovement(double delta)
-		{
-			float groundFriction = 600f;
-			player.frameVelocity.X = Mathf.MoveToward(
-				player.frameVelocity.X,
-				0,
-				groundFriction * (float)delta
-			);
 		}
 	}
 }

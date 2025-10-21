@@ -213,7 +213,6 @@ namespace LostWisps.Object
                     return;
 
                 _manuallyDeactivated = false;
-                // AnimationPriorityManager.RequestActivation(this);
                 _activatable.Activate();
                 return;
             }
@@ -233,7 +232,6 @@ namespace LostWisps.Object
                 target = GetTarget();
             }
             
-            // AnimationPriorityManager.RequestActivation(this);
             _activatable.Activate();
         }
 

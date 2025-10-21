@@ -5,7 +5,7 @@ namespace LostWisps.Player
 {
 	public partial class JumpPeakState : PlayerState
 	{
-		public JumpPeakState(Player player) : base(player) {}
+		public JumpPeakState(Player player) : base(player, "jump_peak") {}
 
 		public override void EnterState()
 		{
@@ -16,14 +16,6 @@ namespace LostWisps.Player
 		}
 
 		public override void Update(double delta)
-		{
-		}
-
-		private void HandleHorizontalMovement(double delta)
-		{
-		}
-
-		private void HandleGravity(double delta)
 		{
 		}
 	}

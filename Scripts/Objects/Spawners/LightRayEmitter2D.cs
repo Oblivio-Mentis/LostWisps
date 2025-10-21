@@ -1,4 +1,5 @@
 using Godot;
+using LostWisps.Debug;
 using System;
 
 namespace LostWisps.Object
@@ -116,7 +117,8 @@ namespace LostWisps.Object
             {
                 if (!_warnedMissingLine)
                 {
-                    GD.PushWarning("[LightRayEmitter2D] Line2D is not assigned; visualization disabled.");
+                    Logger.Warn(LogCategory.Raycast, "Line2D is not assigned; visualization disabled.", this);
+                    // GD.PushWarning("[LightRayEmitter2D] Line2D is not assigned; visualization disabled.");
                     _warnedMissingLine = true;
                 }
                 return;

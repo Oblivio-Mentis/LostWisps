@@ -1,4 +1,5 @@
 using Godot;
+using LostWisps.Debug;
 using System;
 using System.Collections.Generic;
 
@@ -57,7 +58,7 @@ namespace LostWisps.Object
             var dss = _world.DirectSpaceState;
             if (dss == null)
             {
-                LogWarn("DirectSpaceState is null; cannot trace.");
+                Logger.Warn(LogCategory.Raycast, "DirectSpaceState is null; cannot trace.", _ownerForLogging);
                 return new TraceResult { Segments = segments, Points = points };
             }
 
@@ -65,7 +66,7 @@ namespace LostWisps.Object
             var dir = Direction;
             if (dir.LengthSquared() <= 0.0f)
             {
-                LogWarn("Direction is zero; no trace performed.");
+                Logger.Warn(LogCategory.Raycast, "Direction is zero; no trace performed.", null);
                 return new TraceResult { Segments = segments, Points = points };
             }
             dir = dir.Normalized();
@@ -135,7 +136,7 @@ namespace LostWisps.Object
                     }
                     catch (Exception e)
                     {
-                        LogWarn($"Hit notification threw: {e.Message}");
+                        Logger.Warn(LogCategory.Raycast, $"Hit notification threw: {e.Message}", null);
                     }
                 }
 
@@ -159,14 +160,6 @@ namespace LostWisps.Object
             }
 
             return new TraceResult { Segments = segments, Points = points };
-        }
-
-        private void LogWarn(string msg)
-        {
-            if (_ownerForLogging != null)
-                GD.PrintRich($"[color=yellow][LightRayTracer2D] {msg}[/color]");
-            else
-                GD.Print($"[LightRayTracer2D] {msg}");
         }
     }
 }

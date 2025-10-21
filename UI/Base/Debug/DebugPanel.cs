@@ -10,6 +10,8 @@ namespace LostWisps.Debug
 
         private const string LevelsFolderPath = "res://Debug/";
 
+        private Dictionary<LogCategory, CheckBox> LogCheckboxes = new();
+
         public override void _Ready()
         {
             Visible = false;
@@ -17,6 +19,34 @@ namespace LostWisps.Debug
             LevelsGroup = GetNode<VBoxContainer>("PanelContainer/MarginContainer/VBoxContainer/LevelsGroup");
 
             AddLevelButtons();
+            AddLogCategoryCheckboxes();
+        }
+
+        private void AddLogCategoryCheckboxes()
+        {
+            var logGroup = GetNode<VBoxContainer>("PanelContainer/MarginContainer/VBoxContainer/LogCategoriesGroup");
+            if (logGroup == null)
+            {
+                Logger.Warn(LogCategory.UI, "LogCategoriesGroup is not found in the DebugPanel.", this);
+                return;
+            }
+
+            foreach (LogCategory category in Enum.GetValues<LogCategory>())
+            {
+                var cb = new CheckBox
+                {
+                    Text = $"Log: {category}",
+                    ButtonPressed = Logger.IsCategoryEnabled(category)
+                };
+
+                cb.Toggled += (bool pressed) =>
+                {
+                    Logger.SetCategoryEnabled(category, pressed);
+                };
+
+                LogCheckboxes[category] = cb;
+                logGroup.AddChild(cb);
+            }
         }
 
         private void AddLevelButtons()
@@ -24,7 +54,7 @@ namespace LostWisps.Debug
             var dir = DirAccess.Open(LevelsFolderPath);
             if (dir == null)
             {
-                GD.PushError($"[DebugPanel] Не удалось открыть директорию: {LevelsFolderPath}");
+                Logger.Error(LogCategory.UI, $"Failed to open the directory: {LevelsFolderPath}", this);
                 return;
             }
 

@@ -36,7 +36,7 @@ namespace LostWisps.Debug
 
             _panel = _panelScene.Instantiate<DebugPanel>();
             GetTree().Root.AddChild(_panel);
-            _panel.Owner = null; // не сохранять в сцену
+            _panel.Owner = null;
         }
     }
 }

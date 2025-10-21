@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="3_d4l3u"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="3_o1ql2"]
 [ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://Scenes/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="4_jjpof"]
-[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="4_vb57p"]
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="4_vb57p"]
 [ext_resource type="PackedScene" uid="uid://dm25au46lb645" path="res://Scenes/Objects/Interactive objects/InteractionObject.tscn" id="5_6yx0q"]
 [ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://Scenes/Objects/Interactive objects/Lever.tscn" id="6_30y1l"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://Scenes/Objects/Interactive objects/Slider.tscn" id="7_d4l3u"]

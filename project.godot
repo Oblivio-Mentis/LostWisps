@@ -43,6 +43,7 @@ folder_colors={
 "res://Scripts/Objects/Interactive objects/Base/": "red",
 "res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
+"res://Scripts/Player/States/Base/": "red",
 "res://Shaders/": "pink",
 "res://UI/": "green",
 "res://UI/Base/": "red"

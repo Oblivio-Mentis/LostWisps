@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace LostWisps.Player
@@ -6,7 +7,13 @@ namespace LostWisps.Player
 	{
 		protected Player player;
 
-		protected PlayerState(Player player) => this.player = player;
+		protected readonly String animationState = default;
+
+		protected PlayerState(Player player, String animationState)
+        {
+			this.player = player;
+			this.animationState = animationState;
+        }
 
 		public virtual void EnterState() { }
 		public virtual void ExitState() { }
