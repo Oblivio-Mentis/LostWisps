@@ -13,8 +13,11 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			player.SetAnimation("fall");
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -37,8 +40,13 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			HandleHorizontalMovement(delta);
 			HandleGravity(delta);
+=======
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+			player.MovementController.ApplyFallGravity(delta, false);
+>>>>>>> Stashed changes
 =======
 			player.MovementController.ApplyMovement(player.frameInput.X, delta);
 			player.MovementController.ApplyFallGravity(delta, false);
@@ -99,6 +107,7 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		}
 
 		private void HandleHorizontalMovement(double delta)
@@ -115,6 +124,8 @@ namespace LostWisps.Player
 		{
 			player.frameVelocity += new Vector2(0, player.Stats.GravityFall * (float)delta);
 			player.frameVelocity.Y = Mathf.Min(player.frameVelocity.Y, player.Stats.MaxFallSpeed);
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======

@@ -1,6 +1,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=11 format=3 uid="uid://de8vm4nenskxk"]
 
 <<<<<<< Updated upstream:Scenes/Levels/TestScene.tscn
@@ -26,6 +27,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
 
 >>>>>>> Stashed changes
+=======
+[gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
+
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://GameObjects/Objects/Interactive objects/Lever.tscn" id="4_ewc4s"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="5_arb5r"]
 [ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://GameObjects/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="7_idno8"]
@@ -35,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="11_v1q72"]
 [ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="11_wrexh"]
 [ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="12_v1q72"]
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -62,6 +68,8 @@ metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 [sub_resource type="Environment" id="Environment_l2tm1"]
 background_mode = 3
@@ -77,6 +85,9 @@ resource_local_to_scene = true
 size = Vector2(1238, 100)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -86,6 +97,7 @@ size = Vector2(1238, 100)
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [333.0]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -128,6 +140,8 @@ rotation = -0.523598
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_l2tm1")
 
@@ -153,6 +167,9 @@ Speed = 180.0
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -189,7 +206,10 @@ position = Vector2(266, 446)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes:GameObjects/Levels/TestScene.tscn
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======

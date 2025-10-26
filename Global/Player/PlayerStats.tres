@@ -4,7 +4,11 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="1_n80jm"]
+=======
+[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
+>>>>>>> Stashed changes
 =======
 [ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
 >>>>>>> Stashed changes
