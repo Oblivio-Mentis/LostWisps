@@ -17,34 +17,7 @@ config/icon="res://Sprites/Icon.svg"
 
 [autoload]
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
-=======
-=======
->>>>>>> Stashed changes
 DebugController="*res://Scripts/Debug/DebugController.cs"
->>>>>>> Stashed changes
-=======
-DebugController="*res://Scripts/Debug/DebugController.cs"
->>>>>>> Stashed changes
-=======
-DebugController="*res://Scripts/Debug/DebugController.cs"
->>>>>>> Stashed changes
-=======
-DebugController="*res://Scripts/Debug/DebugController.cs"
->>>>>>> Stashed changes
-=======
-DebugController="*res://Scripts/Debug/DebugController.cs"
->>>>>>> Stashed changes
-=======
-AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
->>>>>>> parent of ca63d9b (Rework movement controller)
 
 [debug]
 
@@ -60,86 +33,19 @@ project/assembly_name="LostWisps"
 
 folder_colors={
 "res://Astronomical library/": "purple",
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+"res://Debug/": "purple",
+"res://GameObjects/": "teal",
+"res://GameObjects/Objects/Spawners/Base/": "red",
 "res://Global/": "gray",
 "res://Global/Systems/Destruction/Base/": "red",
-"res://Scenes/": "teal",
-=======
-=======
->>>>>>> Stashed changes
-"res://Debug/": "purple",
-"res://GameObjects/": "teal",
-"res://GameObjects/Objects/Spawners/Base/": "red",
-"res://Global/": "gray",
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-"res://Debug/": "purple",
-"res://GameObjects/": "teal",
-"res://GameObjects/Objects/Spawners/Base/": "red",
-"res://Global/": "gray",
->>>>>>> Stashed changes
-=======
-"res://Debug/": "purple",
-"res://GameObjects/": "teal",
-"res://GameObjects/Objects/Spawners/Base/": "red",
-"res://Global/": "gray",
->>>>>>> Stashed changes
-=======
-"res://Debug/": "purple",
-"res://GameObjects/": "teal",
-"res://GameObjects/Objects/Spawners/Base/": "red",
-"res://Global/": "gray",
->>>>>>> Stashed changes
-=======
-"res://Debug/": "purple",
-"res://GameObjects/": "teal",
-"res://GameObjects/Objects/Spawners/Base/": "red",
-"res://Global/": "gray",
->>>>>>> Stashed changes
-=======
-"res://Global/": "gray",
-"res://Global/Systems/Destruction/Base/": "red",
-"res://Scenes/": "teal",
->>>>>>> parent of ca63d9b (Rework movement controller)
-=======
-"res://Global/Systems/Destruction/Base/": "red",
->>>>>>> Stashed changes
 "res://Scripts/": "blue",
 "res://Scripts/Objects/Base/": "red",
 "res://Scripts/Objects/Interactive objects/Base/": "red",
-"res://Scripts/Objects/Platforms/Base/": "red",
+"res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
-"res://Shaders/": "pink"
-<<<<<<< HEAD
-=======
 "res://Scripts/Player/States/Base/": "red",
 "res://Shaders/": "pink",
 "res://UI/": "green"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
-=======
->>>>>>> Stashed changes
 }
 
 [global_group]
@@ -180,9 +86,6 @@ ui_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 debug_toggle={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
@@ -203,21 +106,6 @@ jump={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
 
 [layer_names]
 
@@ -231,7 +119,4 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_repeat=1
-<<<<<<< Updated upstream
-=======
 viewport/hdr_2d=true
->>>>>>> Stashed changes

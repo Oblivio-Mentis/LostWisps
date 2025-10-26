@@ -29,36 +29,8 @@ namespace LostWisps.Player
 
 		public override void _Ready()
 		{
-<<<<<<< Updated upstream
-			if (Stats == null)
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
-				GD.PrintErr("PlayerStats не назначен!");
 
-			animationTree.Active = true;
-			currentAnimationState = "idle";
-
-			currentState = new IdleState(this);
-			currentState.EnterState();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
 			if (PlayerStats == null)
->>>>>>> Stashed changes
 			{
 				Logger.Error(LogCategory.Player, "Player.Stats is not assigned! Assign it in the inspector.", this);
 				return;
@@ -96,9 +68,6 @@ namespace LostWisps.Player
 			currentState.EnterState();
 
 			MovementController.Initialize(this);
->>>>>>> Stashed changes
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
 		}
 
 		public override void _PhysicsProcess(double delta)
