@@ -29,6 +29,7 @@ namespace LostWisps.Player
 		public override void _Ready()
 		{
 			if (Stats == null)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -43,6 +44,7 @@ namespace LostWisps.Player
 
 			currentState = new IdleState(this);
 			currentState.EnterState();
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Stashed changes
@@ -153,10 +155,10 @@ namespace LostWisps.Player
 
 					if (dot > pushAngleThreshold)
 					{
-						//float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
-						//float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
+						float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
+						float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
 
-						//body.ApplyCentralForce(pushDirection * finalPushForce);
+						body.ApplyCentralForce(pushDirection * finalPushForce);
 					}
 				}
 			}
@@ -181,7 +183,12 @@ namespace LostWisps.Player
 		{
 			KeyUp = Input.IsActionPressed("ui_up");
 			KeyDown = Input.IsActionPressed("ui_down");
+			KeyLeft = Input.IsActionPressed("ui_left");
+			KeyRight = Input.IsActionPressed("ui_right");
+			KeyJumpPressed = Input.IsActionJustPressed("ui_accept");
+			KeyJump = Input.IsActionPressed("ui_accept");
 
+			frameInput.X = Input.GetAxis("ui_left", "ui_right");
 		}
 
 		public void ChangeState(PlayerState newState)

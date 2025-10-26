@@ -17,6 +17,7 @@ namespace LostWisps.Player
             Jump();
         }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -93,6 +94,7 @@ namespace LostWisps.Player
             return false;
         }
     }
+<<<<<<< HEAD
 }
 =======
 =======

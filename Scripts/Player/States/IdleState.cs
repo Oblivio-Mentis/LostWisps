@@ -14,6 +14,7 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream

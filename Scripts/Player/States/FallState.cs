@@ -9,6 +9,7 @@ namespace LostWisps.Player
 
 		public override void EnterState()
 		{
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -34,11 +35,13 @@ namespace LostWisps.Player
 		
 		public override void ExitState()
 		{
+			player.frameVelocity.Y = 0;
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleJumpBuffer();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -109,6 +112,7 @@ namespace LostWisps.Player
 
 		private void HandleJumpBuffer()
 		{
+<<<<<<< HEAD
 			// if (player.KeyJumpPressed)
 			// 	player.JumpBuffer.Start(player.Stats.JumpBufferTime);
 <<<<<<< Updated upstream

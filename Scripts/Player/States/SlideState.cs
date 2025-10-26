@@ -17,10 +17,10 @@ namespace LostWisps.Player
 
         public override void PhysicsUpdate(double delta)
         {
-<<<<<<< Updated upstream
             HandleHorizontalMovement(delta);
             ApplySlideFriction(delta);
             HandleGravity(delta);
+<<<<<<< HEAD
 =======
             float slopeDirection = -player.GetSlopeUpDirection().Y;
             // player.MovementController.Velocity = new Vector2(
@@ -56,6 +56,7 @@ namespace LostWisps.Player
         {
             if (player.IsOnFloor())
             {
+                player.frameVelocity.Y = 0;
                 player.ChangeState(new IdleState(player));
                 return;
             }

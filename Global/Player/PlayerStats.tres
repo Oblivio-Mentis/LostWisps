@@ -28,3 +28,17 @@
 
 [resource]
 script = ExtResource("1_n80jm")
+MaxSpeed = 600.0
+Acceleration = 800.0
+AirDeceleration = 300.0
+GravityJump = 600.0
+GravityFall = 750.0
+JumpPowerX = 300.0
+JumpPowerY = 600.0
+MaxFallSpeed = 600.0
+AirAcceleration = 1500.0
+CoyoteTime = 0.15
+JumpBufferTime = 0.15
+PushForce = 200.0
+MinPushForce = 100.0
+metadata/_custom_type_script = "uid://dc3lsomwrsivi"
