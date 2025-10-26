@@ -48,8 +48,54 @@ namespace LostWisps.Player
 			currentState = new IdleState(this);
 			currentState.EnterState();
 
+
 			if (MovementController == null)
 				Logger.Error(LogCategory.Player, "MovementController is not assigned!", this);
+
+			MovementController.Initialize(this);
+
+			if (PlayerStats == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.Stats is not assigned! Assign it in the inspector.", this);
+				return;
+			}
+
+			if (MovementController == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.MovementController is not assigned! Assign it in the inspector.", this);
+				return;
+			}
+
+			if (animationTree == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.animationTree is not assigned! Make sure it's exported and connected in the inspector.", this);
+				return;
+			}
+
+			animationTree.Active = true;
+
+			var playbackVariant = animationTree.Get("parameters/playback");
+			if (playbackVariant.VariantType == Variant.Type.Nil)
+			{
+				Logger.Error(LogCategory.Player, "AnimationTree does not contain a 'playback' parameter. Check your AnimationTree setup.", this);
+				return;
+			}
+
+			animationNodeStateMachinePlayback = playbackVariant.As<AnimationNodeStateMachinePlayback>();
+			if (animationNodeStateMachinePlayback == null)
+			{
+				Logger.Error(LogCategory.Player, "Failed to cast playback to AnimationNodeStateMachinePlayback. Ensure the root of your AnimationTree is a StateMachine.", this);
+				return;
+			}
+
+			if (Collider == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.Collider is not assigned! Make sure it's exported and connected in the inspector.", this);
+				return;
+			}
+
+			currentState = new IdleState(this);
+			currentState.EnterState();
 
 			MovementController.Initialize(this);
 		}

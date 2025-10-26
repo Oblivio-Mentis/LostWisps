@@ -14,6 +14,7 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
+
 			player.MovementController.ApplyGroundMovement(player.frameInput.X, delta);
 		}
 

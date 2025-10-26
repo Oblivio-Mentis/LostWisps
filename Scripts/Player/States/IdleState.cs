@@ -14,7 +14,8 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
-			player.MovementController.ApplyGroundMovement(0, delta);
+
+			player.MovementController.ApplyMovement(0, delta);
 		}
 
 		public override void Update(double delta)

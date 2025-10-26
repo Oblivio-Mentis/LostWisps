@@ -10,6 +10,10 @@ namespace LostWisps.Player
 		public override void EnterState()
 		{
 			player.SetAnimation(animationState);
+
+
+			player.MovementController.ResetVerticalVelocity();
+			player.SetAnimation(animationState);
 		}
 		
 		public override void ExitState()
@@ -20,8 +24,9 @@ namespace LostWisps.Player
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleJumpBuffer();
-			player.MovementController.ApplyGroundMovement(player.frameInput.X, delta);
-			player.MovementController.ApplyGravity(delta, false);
+
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+			player.MovementController.ApplyFallGravity(delta, false);
 		}
 
 		public override void Update(double delta)
@@ -63,6 +68,22 @@ namespace LostWisps.Player
 		{
 			if (player.KeyJumpPressed)
 				player.JumpBuffer.Start(player.Stats.JumpBufferTime);
+		}
+
+		private void HandleHorizontalMovement(double delta)
+		{
+			float direction = player.frameInput.X;
+
+			// if (direction != 0)
+			// 	player.skeletonContainer.Scale = new Vector2(direction, 1);
+
+			player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, player.frameInput.X * player.Stats.JumpPowerX, player.Stats.AirDeceleration * (float)delta);
+		}
+
+		private void HandleGravity(double delta)
+		{
+			player.frameVelocity += new Vector2(0, player.Stats.GravityFall * (float)delta);
+			player.frameVelocity.Y = Mathf.Min(player.frameVelocity.Y, player.Stats.MaxFallSpeed);
 		}
 	}
 }
