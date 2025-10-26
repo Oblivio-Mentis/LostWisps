@@ -13,7 +13,8 @@ namespace LostWisps.Player
 		[Export] public AnimationTree animationTree;
 		[Export] public Node2D skeletonContainer;
 
-		public Vector2 frameVelocity = Vector2.Zero;
+		[Export] public CollisionShape2D Collider;
+
 		public Vector2 frameInput = Vector2.Zero;
 		private PlayerState currentState;
 		private PlayerState previousState;
@@ -25,10 +26,12 @@ namespace LostWisps.Player
 		public bool KeyRight { get; private set; }
 		public bool KeyJump { get; private set; }
 		public bool KeyJumpPressed { get; private set; }
+		public bool KeyJumpReleased { get; private set; }
 
 		public override void _Ready()
 		{
 			if (Stats == null)
+<<<<<<< Updated upstream
 				GD.PrintErr("PlayerStats не назначен!");
 
 			animationTree.Active = true;
@@ -36,6 +39,51 @@ namespace LostWisps.Player
 
 			currentState = new IdleState(this);
 			currentState.EnterState();
+=======
+			{
+				Logger.Error(LogCategory.Player, "Player.Stats is not assigned! Assign it in the inspector.", this);
+				return;
+			}
+
+			if (MovementController == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.MovementController is not assigned! Assign it in the inspector.", this);
+				return;
+			}
+
+			if (animationTree == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.animationTree is not assigned! Make sure it's exported and connected in the inspector.", this);
+				return;
+			}
+
+			animationTree.Active = true;
+
+			var playbackVariant = animationTree.Get("parameters/playback");
+			if (playbackVariant.VariantType == Variant.Type.Nil)
+			{
+				Logger.Error(LogCategory.Player, "AnimationTree does not contain a 'playback' parameter. Check your AnimationTree setup.", this);
+				return;
+			}
+
+			animationNodeStateMachinePlayback = playbackVariant.As<AnimationNodeStateMachinePlayback>();
+			if (animationNodeStateMachinePlayback == null)
+			{
+				Logger.Error(LogCategory.Player, "Failed to cast playback to AnimationNodeStateMachinePlayback. Ensure the root of your AnimationTree is a StateMachine.", this);
+				return;
+			}
+
+			if (Collider == null)
+			{
+				Logger.Error(LogCategory.Player, "Player.Collider is not assigned! Make sure it's exported and connected in the inspector.", this);
+				return;
+			}
+
+			currentState = new IdleState(this);
+			currentState.EnterState();
+
+			MovementController.Initialize(this);
+>>>>>>> Stashed changes
 		}
 
 		public override void _PhysicsProcess(double delta)
@@ -91,10 +139,10 @@ namespace LostWisps.Player
 
 					if (dot > pushAngleThreshold)
 					{
-						float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
-						float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
+						//float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
+						//float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
 
-						body.ApplyCentralForce(pushDirection * finalPushForce);
+						//body.ApplyCentralForce(pushDirection * finalPushForce);
 					}
 				}
 			}
@@ -119,12 +167,13 @@ namespace LostWisps.Player
 		{
 			KeyUp = Input.IsActionPressed("ui_up");
 			KeyDown = Input.IsActionPressed("ui_down");
-			KeyLeft = Input.IsActionPressed("ui_left");
-			KeyRight = Input.IsActionPressed("ui_right");
-			KeyJumpPressed = Input.IsActionJustPressed("ui_accept");
-			KeyJump = Input.IsActionPressed("ui_accept");
+			KeyLeft = Input.IsActionPressed("move_left");
+			KeyRight = Input.IsActionPressed("move_right");
+			KeyJumpPressed = Input.IsActionJustPressed("jump");
+			KeyJumpReleased = Input.IsActionJustReleased("jump");
+			KeyJump = Input.IsActionPressed("jump");
 
-			frameInput.X = Input.GetAxis("ui_left", "ui_right");
+			frameInput.X = Input.GetAxis("move_left", "move_right");
 		}
 
 		public void ChangeState(PlayerState newState)

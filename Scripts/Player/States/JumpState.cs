@@ -3,11 +3,17 @@ using System;
 
 namespace LostWisps.Player
 {
+<<<<<<< Updated upstream
     public partial class JumpState : PlayerState
     {
         private bool isBlockedByCeiling = false;
 
         public JumpState(Player player) : base(player) { }
+=======
+	public partial class JumpState : PlayerState
+	{
+		public JumpState(Player player) : base(player, "jump") { }
+>>>>>>> Stashed changes
 
         public override void EnterState()
         {
@@ -17,6 +23,7 @@ namespace LostWisps.Player
             Jump();
         }
 
+<<<<<<< Updated upstream
         public override void PhysicsUpdate(double delta)
         {
             HandleHorizontalMovement(delta);
@@ -87,3 +94,30 @@ namespace LostWisps.Player
         }
     }
 }
+=======
+			player.MovementController.Velocity = new Vector2(player.MovementController.Velocity.X, player.Stats.JumpVelocity);
+		}
+
+		public override void PhysicsUpdate(double delta)
+		{
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+			player.MovementController.ApplyJumpGravity(delta);
+		}
+
+		public override void Update(double delta)
+		{
+			if (player.KeyJumpReleased || player.Velocity.Y >= 0)
+			{
+				player.ChangeState(new FallState(player));
+				return;
+			}
+
+			// if (player.frameInput.X != 0 && Mathf.Sign(player.Velocity.X) != player.frameInput.X)
+			// {
+			// 	player.ChangeState(new FallState(player));
+			// 	return;
+			// }
+		}
+	}
+}
+>>>>>>> Stashed changes

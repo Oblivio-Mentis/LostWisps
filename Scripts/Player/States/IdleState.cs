@@ -14,14 +14,18 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
+<<<<<<< Updated upstream
 			HandleHorizontalMovement(delta);
+=======
+			player.MovementController.ApplyMovement(0, delta);
+>>>>>>> Stashed changes
 		}
 
 		public override void Update(double delta)
 		{
 			if (!player.IsOnFloor())
 			{
-				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
+				// player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
 				return;
 			}

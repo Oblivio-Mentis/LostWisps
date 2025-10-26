@@ -9,19 +9,28 @@ namespace LostWisps.Player
 
 		public override void EnterState()
 		{
+<<<<<<< Updated upstream
 			player.SetAnimation("fall");
+=======
+			player.MovementController.ResetVerticalVelocity();
+			player.SetAnimation(animationState);
+>>>>>>> Stashed changes
 		}
 		
 		public override void ExitState()
 		{
-			player.frameVelocity.Y = 0;
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleJumpBuffer();
+<<<<<<< Updated upstream
 			HandleHorizontalMovement(delta);
 			HandleGravity(delta);
+=======
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+			player.MovementController.ApplyFallGravity(delta, false);
+>>>>>>> Stashed changes
 		}
 
 		public override void Update(double delta)
@@ -61,8 +70,8 @@ namespace LostWisps.Player
 
 		private void HandleJumpBuffer()
 		{
-			if (player.KeyJumpPressed)
-				player.JumpBuffer.Start(player.Stats.JumpBufferTime);
+			// if (player.KeyJumpPressed)
+			// 	player.JumpBuffer.Start(player.Stats.JumpBufferTime);
 		}
 
 		private void HandleHorizontalMovement(double delta)

@@ -17,7 +17,11 @@ config/icon="res://Sprites/Icon.svg"
 
 [autoload]
 
+<<<<<<< Updated upstream
 AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
+=======
+DebugController="*res://Scripts/Debug/DebugController.cs"
+>>>>>>> Stashed changes
 
 [debug]
 
@@ -33,15 +37,28 @@ project/assembly_name="LostWisps"
 
 folder_colors={
 "res://Astronomical library/": "purple",
+<<<<<<< Updated upstream
 "res://Global/": "gray",
 "res://Global/Systems/Destruction/Base/": "red",
 "res://Scenes/": "teal",
+=======
+"res://Debug/": "purple",
+"res://GameObjects/": "teal",
+"res://GameObjects/Objects/Spawners/Base/": "red",
+"res://Global/": "gray",
+>>>>>>> Stashed changes
 "res://Scripts/": "blue",
 "res://Scripts/Objects/Base/": "red",
 "res://Scripts/Objects/Interactive objects/Base/": "red",
 "res://Scripts/Objects/Platforms/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
+<<<<<<< Updated upstream
 "res://Shaders/": "pink"
+=======
+"res://Scripts/Player/States/Base/": "red",
+"res://Shaders/": "pink",
+"res://UI/": "green"
+>>>>>>> Stashed changes
 }
 
 [global_group]
@@ -82,6 +99,29 @@ ui_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+<<<<<<< Updated upstream
+=======
+debug_toggle={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+>>>>>>> Stashed changes
 
 [layer_names]
 

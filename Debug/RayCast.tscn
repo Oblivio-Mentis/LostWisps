@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://dldks378a5idy"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_gxqak"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_gxqak"]
+[ext_resource type="Texture2D" uid="uid://dcikbgy5m18dl" path="res://Sprites/Assets/UI/help_icon.png" id="3_4jnpf"]
+[ext_resource type="PackedScene" uid="uid://bxsftmno0nvmi" path="res://GameObjects/Objects/Spawners/LightRayEmitter2D.tscn" id="4_2a1bu"]
+[ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://GameObjects/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="5_o1ql2"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="6_jjpof"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jnpf"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m4wb"]
+resource_local_to_scene = true
+size = Vector2(1152, 24)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6yx0q"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30y1l"]
+resource_local_to_scene = true
+size = Vector2(160, 8)
+
+[node name="RayCast" type="Node2D"]
+
+[node name="FireElementModel" parent="." instance=ExtResource("2_gxqak")]
+position = Vector2(576, 648)
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="PlatformBase" parent="Platforms" instance=ExtResource("1_gxqak")]
+position = Vector2(506, 661)
+
+[node name="Texture" parent="Platforms/PlatformBase" index="0"]
+position = Vector2(70, -1.00001)
+scale = Vector2(11.52, 0.24)
+texture = SubResource("CompressedTexture2D_4jnpf")
+
+[node name="Collider" parent="Platforms/PlatformBase" index="1"]
+position = Vector2(70, -1)
+shape = SubResource("RectangleShape2D_5m4wb")
+
+[node name="Test1" type="Node" parent="."]
+
+[node name="Description" type="Button" parent="Test1"]
+offset_left = 176.0
+offset_top = 368.0
+offset_right = 232.0
+offset_bottom = 424.0
+scale = Vector2(0.56, 0.56)
+tooltip_text = "Проверка корректности лучей на отражения и поглощения.
+Луч можно вращать при помощи курсора мыши.
+Нажание на кнопку активирует вращение куба."
+disabled = true
+toggle_mode = true
+icon = ExtResource("3_4jnpf")
+flat = true
+
+[node name="PlatformBase" parent="Test1" instance=ExtResource("1_gxqak")]
+position = Vector2(264, 464)
+rotation = -1.57079
+metadata/_edit_group_ = true
+
+[node name="Texture" parent="Test1/PlatformBase" index="0"]
+position = Vector2(-2.86102e-06, -3.99999)
+scale = Vector2(1.6, 0.0800001)
+texture = SubResource("CompressedTexture2D_6yx0q")
+
+[node name="Collider" parent="Test1/PlatformBase" index="1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="PlatformBase2" parent="Test1" groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(336, 384)
+rotation = -3.14159
+metadata/_edit_group_ = true
+
+[node name="Texture" parent="Test1/PlatformBase2" index="0"]
+position = Vector2(-2.86102e-06, -3.99999)
+scale = Vector2(1.6, 0.0800001)
+texture = SubResource("CompressedTexture2D_6yx0q")
+
+[node name="Collider" parent="Test1/PlatformBase2" index="1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="PlatformBase3" parent="Test1" groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(408, 464)
+rotation = 1.57079
+metadata/_edit_group_ = true
+
+[node name="Texture" parent="Test1/PlatformBase3" index="0"]
+position = Vector2(-2.86102e-06, -3.99999)
+scale = Vector2(1.6, 0.0800001)
+texture = SubResource("CompressedTexture2D_6yx0q")
+
+[node name="Collider" parent="Test1/PlatformBase3" index="1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="PlatformBase4" parent="Test1" instance=ExtResource("1_gxqak")]
+position = Vector2(336, 544)
+metadata/_edit_group_ = true
+
+[node name="Texture" parent="Test1/PlatformBase4" index="0"]
+position = Vector2(-2.86102e-06, -3.99999)
+scale = Vector2(1.6, 0.0800001)
+texture = SubResource("CompressedTexture2D_6yx0q")
+
+[node name="Collider" parent="Test1/PlatformBase4" index="1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="LightRayEmitter2D" parent="Test1" instance=ExtResource("4_2a1bu")]
+position = Vector2(336, 464)
+
+[node name="OrbitSynchronizer" parent="Test1" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_o1ql2")]
+position = Vector2(336, 464)
+AlwaysFaceCenter = true
+Speed = 60.0
+TargetNodes = [NodePath("../PlatformBase"), NodePath("../PlatformBase2"), NodePath("../PlatformBase3"), NodePath("../PlatformBase4")]
+
+[node name="Button" parent="Test1" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_jjpof")]
+position = Vector2(192, 648)
+TargetNodes = [NodePath("../OrbitSynchronizer")]
+
+[editable path="Platforms/PlatformBase"]
+[editable path="Test1/PlatformBase"]
+[editable path="Test1/PlatformBase2"]
+[editable path="Test1/PlatformBase3"]
+[editable path="Test1/PlatformBase4"]
