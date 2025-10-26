@@ -7,7 +7,7 @@ namespace LostWisps.Player
 {
 	public partial class Player : CharacterBody2D
 	{
-		[Export] public PlayerStats Stats;
+		[Export] public PlayerStats PlayerStats;
 		[Export] public Timer JumpBuffer;
 		[Export] public Timer CoyoteTimer;
 		[Export] public AnimationTree animationTree;
@@ -25,9 +25,11 @@ namespace LostWisps.Player
 		public bool KeyRight { get; private set; }
 		public bool KeyJump { get; private set; }
 		public bool KeyJumpPressed { get; private set; }
+		public bool KeyJumpReleased { get; private set; }
 
 		public override void _Ready()
 		{
+<<<<<<< Updated upstream
 			if (Stats == null)
 <<<<<<< HEAD
 <<<<<<< Updated upstream
@@ -53,6 +55,9 @@ namespace LostWisps.Player
 =======
 >>>>>>> Stashed changes
 =======
+>>>>>>> Stashed changes
+=======
+			if (PlayerStats == null)
 >>>>>>> Stashed changes
 			{
 				Logger.Error(LogCategory.Player, "Player.Stats is not assigned! Assign it in the inspector.", this);
@@ -84,12 +89,6 @@ namespace LostWisps.Player
 			if (animationNodeStateMachinePlayback == null)
 			{
 				Logger.Error(LogCategory.Player, "Failed to cast playback to AnimationNodeStateMachinePlayback. Ensure the root of your AnimationTree is a StateMachine.", this);
-				return;
-			}
-
-			if (Collider == null)
-			{
-				Logger.Error(LogCategory.Player, "Player.Collider is not assigned! Make sure it's exported and connected in the inspector.", this);
 				return;
 			}
 
@@ -140,28 +139,28 @@ namespace LostWisps.Player
 
 		private void HandleForces()
 		{
-			const float pushAngleThreshold = 0.2f;
-			const float maxPushForce = 500f;
+			// const float pushAngleThreshold = 0.2f;
+			// const float maxPushForce = 500f;
 
-			for (int i = 0; i < GetSlideCollisionCount(); i++)
-			{
-				var collision = GetSlideCollision(i);
-				if (collision.GetCollider() is RigidBody2D body)
-				{
-					Vector2 pushDirection = -collision.GetNormal();
-					Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
+			// for (int i = 0; i < GetSlideCollisionCount(); i++)
+			// {
+			// 	var collision = GetSlideCollision(i);
+			// 	if (collision.GetCollider() is RigidBody2D body)
+			// 	{
+			// 		Vector2 pushDirection = -collision.GetNormal();
+			// 		Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
 
-					float dot = pushDirection.Dot(playerDirection);
+			// 		float dot = pushDirection.Dot(playerDirection);
 
-					if (dot > pushAngleThreshold)
-					{
-						float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
-						float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
+			// 		if (dot > pushAngleThreshold)
+			// 		{
+			// 			float rawPushForce = (PlayerStats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
+			// 			float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
 
-						body.ApplyCentralForce(pushDirection * finalPushForce);
-					}
-				}
-			}
+			// 			body.ApplyCentralForce(pushDirection * finalPushForce);
+			// 		}
+			// 	}
+			// }
 		}
 
 		public override void _Process(double delta)
@@ -183,12 +182,13 @@ namespace LostWisps.Player
 		{
 			KeyUp = Input.IsActionPressed("ui_up");
 			KeyDown = Input.IsActionPressed("ui_down");
-			KeyLeft = Input.IsActionPressed("ui_left");
-			KeyRight = Input.IsActionPressed("ui_right");
-			KeyJumpPressed = Input.IsActionJustPressed("ui_accept");
-			KeyJump = Input.IsActionPressed("ui_accept");
+			KeyLeft = Input.IsActionPressed("move_left");
+			KeyRight = Input.IsActionPressed("move_right");
+			KeyJumpPressed = Input.IsActionJustPressed("jump");
+			KeyJumpReleased = Input.IsActionJustReleased("jump");
+			KeyJump = Input.IsActionPressed("jump");
 
-			frameInput.X = Input.GetAxis("ui_left", "ui_right");
+			frameInput.X = Input.GetAxis("move_left", "move_right");
 		}
 
 		public void ChangeState(PlayerState newState)

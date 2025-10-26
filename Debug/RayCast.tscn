@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://dldks378a5idy"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_gxqak"]
+[ext_resource type="PackedScene" uid="uid://bxsftmno0nvmi" path="res://GameObjects/Objects/Spawners/LightRayEmitter2D.tscn" id="2_4jnpf"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platform.jpg" id="2_30y1l"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="3_o1ql2"]
+[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://GameObjects/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="4_jjpof"]
+[ext_resource type="PackedScene" uid="uid://dm25au46lb645" path="res://GameObjects/Objects/Interactive objects/InteractionObject.tscn" id="5_6yx0q"]
+[ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://GameObjects/Objects/Interactive objects/Lever.tscn" id="6_30y1l"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="7_d4l3u"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="9_6yx0q"]
+[ext_resource type="PackedScene" uid="uid://dsfb6sf0ft8jy" path="res://GameObjects/Objects/Chains/ChainSegment.tscn" id="10_d4l3u"]
+[ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://GameObjects/Objects/Fluids/Water.tscn" id="11_vb57p"]
+[ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_kxrd6"]
+[ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="13_oc8w0"]
+[ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://GameObjects/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="14_tqf2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30y1l"]
+resource_local_to_scene = true
+size = Vector2(247, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjpof"]
+resource_local_to_scene = true
+size = Vector2(247, 23)
+
+[node name="RayCast" type="Node2D"]
+
+[node name="PlatformBase4" parent="." instance=ExtResource("1_gxqak")]
+position = Vector2(326, 473)
+
+[node name="Texture" parent="PlatformBase4" index="0"]
+texture = ExtResource("2_30y1l")
+region_rect = Rect2(0, 0, 247, 23)
+
+[node name="Collider" parent="PlatformBase4" index="1"]
+shape = SubResource("RectangleShape2D_30y1l")
+
+[node name="PlatformBase" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(536, 66)
+
+[node name="PlatformBase2" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(846, 349)
+
+[node name="PlatformBase3" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
+position = Vector2(549, 502)
+
+[node name="Texture" parent="PlatformBase3" index="0"]
+texture = ExtResource("2_30y1l")
+region_rect = Rect2(0, 0, 247, 23)
+
+[node name="Collider" parent="PlatformBase3" index="1"]
+shape = SubResource("RectangleShape2D_jjpof")
+
+[node name="LightRayEmitter2D" parent="." instance=ExtResource("2_4jnpf")]
+position = Vector2(89, 301)
+rotation = -0.431367
+
+[node name="Button" parent="." instance=ExtResource("3_o1ql2")]
+position = Vector2(252, 536)
+
+[node name="ButtonTimer" parent="." instance=ExtResource("4_jjpof")]
+position = Vector2(327, 538)
+
+[node name="InteractionObject" parent="." instance=ExtResource("5_6yx0q")]
+position = Vector2(298, 435)
+
+[node name="Lever" parent="." instance=ExtResource("6_30y1l")]
+position = Vector2(390, 375)
+
+[node name="Slider" parent="." instance=ExtResource("7_d4l3u")]
+position = Vector2(586, 420)
+rotation = 0.0199496
+points = PackedVector2Array(-178.865, 8.56979, 236.993, -2.72815)
+
+[node name="FireElementModel" parent="." instance=ExtResource("9_6yx0q")]
+position = Vector2(530, 475)
+
+[node name="ChainSegment" parent="." instance=ExtResource("10_d4l3u")]
+position = Vector2(57, 371)
+
+[node name="Water" parent="." instance=ExtResource("11_vb57p")]
+position = Vector2(195, 397)
+
+[node name="Button2" parent="." instance=ExtResource("3_o1ql2")]
+position = Vector2(297, 399)
+
+[node name="ButtonTimer2" parent="." instance=ExtResource("4_jjpof")]
+position = Vector2(277, 363)
+
+[node name="InteractionObject2" parent="." instance=ExtResource("5_6yx0q")]
+position = Vector2(298, 332)
+
+[node name="Lever2" parent="." instance=ExtResource("6_30y1l")]
+position = Vector2(371, 267)
+
+[node name="Slider2" parent="." instance=ExtResource("7_d4l3u")]
+position = Vector2(409, 330)
+
+[node name="LightRayEmitter2D2" parent="." instance=ExtResource("2_4jnpf")]
+position = Vector2(456, 261)
+
+[node name="RotationSynchronizer" parent="." instance=ExtResource("12_kxrd6")]
+position = Vector2(166, 248)
+
+[node name="PositionSynchronizer" parent="." instance=ExtResource("13_oc8w0")]
+position = Vector2(266, 174)
+
+[node name="OrbitSynchronizer" parent="." instance=ExtResource("14_tqf2w")]
+position = Vector2(344, 204)
+
+[editable path="PlatformBase4"]
+[editable path="PlatformBase3"]

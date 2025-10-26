@@ -45,7 +45,7 @@ namespace LostWisps.Player
 		{
 			if (!player.IsOnFloor())
 			{
-				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
+				player.CoyoteTimer.Start();
 				player.ChangeState(new FallState(player));
 				return;
 			}

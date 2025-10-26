@@ -9,6 +9,7 @@ namespace LostWisps.Player
 
 		public override void EnterState()
 		{
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -17,6 +18,8 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 			player.SetAnimation("fall");
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -35,7 +38,7 @@ namespace LostWisps.Player
 		
 		public override void ExitState()
 		{
-			player.frameVelocity.Y = 0;
+			player.MovementController.ResetVerticalVelocity();
 		}
 
 		public override void PhysicsUpdate(double delta)
@@ -121,6 +124,7 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 =======
 			if (player.KeyJumpPressed)
+<<<<<<< Updated upstream
 				player.JumpBuffer.Start(player.Stats.JumpBufferTime);
 >>>>>>> parent of ca63d9b (Rework movement controller)
 		}
@@ -146,6 +150,9 @@ namespace LostWisps.Player
 =======
 >>>>>>> Stashed changes
 =======
+>>>>>>> Stashed changes
+=======
+				player.JumpBuffer.Start();
 >>>>>>> Stashed changes
 		}
 	}

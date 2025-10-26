@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2w4w7djofmja"]
+
+[ext_resource type="Shader" uid="uid://brtqvn2gyq1t" path="res://Shaders/Water.gdshader" id="1_wsvc7"]
+[ext_resource type="Texture2D" uid="uid://dd7k7nl7a0yph" path="res://Sprites/icon.png" id="1_xwp6q"]
+[ext_resource type="Script" uid="uid://cuob70gffegrv" path="res://Scripts/Objects/Fluids/LiquidArea.cs" id="2_o5qco"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggr0k"]
+shader = ExtResource("1_wsvc7")
+shader_parameter/col_core = Color(1.05, 0.95, 0.8, 1)
+shader_parameter/col_mid = Color(1, 0.6, 0.2, 1)
+shader_parameter/col_low = Color(0.35, 0.12, 0.05, 1)
+shader_parameter/emissive_gain = 0.35
+shader_parameter/fire_mix = 0.45
+shader_parameter/noise_scale = 3.0
+shader_parameter/flow_speed = 0.9
+shader_parameter/flicker_amp = 0.12
+shader_parameter/edge_softness = 0.9
+shader_parameter/dither_strength = 0.006
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvc7"]
+size = Vector2(64, 64)
+
+[node name="Water" type="Area2D"]
+material = SubResource("ShaderMaterial_ggr0k")
+script = ExtResource("2_o5qco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wsvc7")
+
+[node name="Shader" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_xwp6q")
