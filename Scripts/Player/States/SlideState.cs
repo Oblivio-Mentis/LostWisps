@@ -48,13 +48,14 @@ namespace LostWisps.Player
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ca63d9b (Rework movement controller)
         }
 
         public override void Update(double delta)
         {
             if (player.IsOnFloor())
             {
-                // player.frameVelocity.Y = 0;
                 player.ChangeState(new IdleState(player));
                 return;
             }

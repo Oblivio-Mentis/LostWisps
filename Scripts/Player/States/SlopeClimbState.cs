@@ -9,7 +9,7 @@ namespace LostWisps.Player
 
         public override void EnterState()
         {
-            player.MovementController.ResetVerticalVelocity();
+            player.frameVelocity.Y = 0;
         }
 
         public override void PhysicsUpdate(double delta)

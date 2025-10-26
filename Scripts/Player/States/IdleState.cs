@@ -35,13 +35,16 @@ namespace LostWisps.Player
 =======
 			player.MovementController.ApplyMovement(0, delta);
 >>>>>>> Stashed changes
+=======
+			HandleHorizontalMovement(delta);
+>>>>>>> parent of ca63d9b (Rework movement controller)
 		}
 
 		public override void Update(double delta)
 		{
 			if (!player.IsOnFloor())
 			{
-				// player.CoyoteTimer.Start(player.Stats.CoyoteTime);
+				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
 				player.ChangeState(new FallState(player));
 				return;
 			}

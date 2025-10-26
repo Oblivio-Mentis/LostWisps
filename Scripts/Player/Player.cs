@@ -13,8 +13,7 @@ namespace LostWisps.Player
 		[Export] public AnimationTree animationTree;
 		[Export] public Node2D skeletonContainer;
 
-		[Export] public CollisionShape2D Collider;
-
+		public Vector2 frameVelocity = Vector2.Zero;
 		public Vector2 frameInput = Vector2.Zero;
 		private PlayerState currentState;
 		private PlayerState previousState;
@@ -26,7 +25,6 @@ namespace LostWisps.Player
 		public bool KeyRight { get; private set; }
 		public bool KeyJump { get; private set; }
 		public bool KeyJumpPressed { get; private set; }
-		public bool KeyJumpReleased { get; private set; }
 
 		public override void _Ready()
 		{
@@ -36,6 +34,8 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of ca63d9b (Rework movement controller)
 				GD.PrintErr("PlayerStats не назначен!");
 
 			animationTree.Active = true;
@@ -96,6 +96,8 @@ namespace LostWisps.Player
 
 			MovementController.Initialize(this);
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ca63d9b (Rework movement controller)
 		}
 
 		public override void _PhysicsProcess(double delta)
@@ -179,13 +181,7 @@ namespace LostWisps.Player
 		{
 			KeyUp = Input.IsActionPressed("ui_up");
 			KeyDown = Input.IsActionPressed("ui_down");
-			KeyLeft = Input.IsActionPressed("move_left");
-			KeyRight = Input.IsActionPressed("move_right");
-			KeyJumpPressed = Input.IsActionJustPressed("jump");
-			KeyJumpReleased = Input.IsActionJustReleased("jump");
-			KeyJump = Input.IsActionPressed("jump");
 
-			frameInput.X = Input.GetAxis("move_left", "move_right");
 		}
 
 		public void ChangeState(PlayerState newState)

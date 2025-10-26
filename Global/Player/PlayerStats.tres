@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://bpkcu8xqt1ojj"]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://72vnhgbl44x2"]
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -21,12 +22,9 @@
 =======
 [ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
 >>>>>>> Stashed changes
+=======
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="1_n80jm"]
+>>>>>>> parent of ca63d9b (Rework movement controller)
 
 [resource]
 script = ExtResource("1_n80jm")
-FallGravity = 1500.0
-FallVelocity = 500.0
-WalkVelocity = 200.0
-JumpVelocity = -1000.0
-JumpDeceleration = 1500.0
-metadata/_custom_type_script = "uid://dfo5dnoijp327"

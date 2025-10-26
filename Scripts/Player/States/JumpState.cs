@@ -3,17 +3,11 @@ using System;
 
 namespace LostWisps.Player
 {
-<<<<<<< Updated upstream
     public partial class JumpState : PlayerState
     {
         private bool isBlockedByCeiling = false;
 
         public JumpState(Player player) : base(player) { }
-=======
-	public partial class JumpState : PlayerState
-	{
-		public JumpState(Player player) : base(player, "jump") { }
->>>>>>> Stashed changes
 
         public override void EnterState()
         {
@@ -133,3 +127,6 @@ namespace LostWisps.Player
 	}
 }
 >>>>>>> Stashed changes
+=======
+}
+>>>>>>> parent of ca63d9b (Rework movement controller)
