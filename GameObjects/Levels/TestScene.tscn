@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=11 format=3 uid="uid://de8vm4nenskxk"]
 
 <<<<<<< Updated upstream:Scenes/Levels/TestScene.tscn
@@ -11,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://Scenes/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="9_lq7ju"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://Scenes/Objects/Interactive objects/Buttons/Button.tscn" id="11_l2tm1"]
 =======
+=======
+[gd_scene load_steps=13 format=3 uid="uid://de8vm4nenskxk"]
+
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://GameObjects/Objects/Interactive objects/Lever.tscn" id="4_ewc4s"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="5_arb5r"]
 [ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://GameObjects/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="7_idno8"]
@@ -20,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="11_v1q72"]
 [ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="11_wrexh"]
 [ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="12_v1q72"]
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes:GameObjects/Levels/TestScene.tscn
 
 [sub_resource type="Resource" id="Resource_0ta0f"]
@@ -39,10 +45,26 @@ JumpBufferTime = 0.012
 PushForce = 200.0
 MinPushForce = 100.0
 metadata/_custom_type_script = "uid://dc3lsomwrsivi"
+=======
+
+[sub_resource type="Environment" id="Environment_l2tm1"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wrexh"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n7br"]
+resource_local_to_scene = true
+size = Vector2(1238, 100)
+>>>>>>> Stashed changes
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [333.0]
 
+<<<<<<< Updated upstream
 [node name="Platform" parent="." instance=ExtResource("6_gjo11")]
 position = Vector2(559, 663)
 scale = Vector2(7.64, 1)
@@ -77,6 +99,31 @@ TargetNodes = [null, null, null, null]
 position = Vector2(528, 488)
 rotation = -0.523598
 =======
+=======
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l2tm1")
+
+[node name="Lever" parent="." instance=ExtResource("4_ewc4s")]
+position = Vector2(372, 446)
+rotation = -0.287442
+
+[node name="Slider" parent="." instance=ExtResource("5_arb5r")]
+position = Vector2(857, 371)
+points = PackedVector2Array(-112, 0, 18, -9, 112, 0)
+
+[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_l2tm1")]
+position = Vector2(954, 451)
+TargetNodes = [NodePath("../RotationSynchronizer")]
+
+[node name="ButtonTimer" parent="." instance=ExtResource("7_idno8")]
+position = Vector2(1032, 412)
+
+[node name="OrbitSynchronizer" parent="." instance=ExtResource("9_lq7ju")]
+position = Vector2(512, 448)
+TargetAngle = 180.0
+Speed = 180.0
+
+>>>>>>> Stashed changes
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v1q72")]
 position = Vector2(695, 509)
 TargetAngle = 360.0
@@ -105,4 +152,7 @@ shape = SubResource("RectangleShape2D_5n7br")
 position = Vector2(266, 446)
 
 [editable path="PlatformBase"]
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes:GameObjects/Levels/TestScene.tscn
+=======
+>>>>>>> Stashed changes

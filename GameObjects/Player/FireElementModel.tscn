@@ -1404,7 +1404,10 @@ animationTree = NodePath("AnimationTree")
 skeletonContainer = NodePath("SkeletonContainer")
 MovementController = NodePath("MovementController")
 Collider = NodePath("Collider")
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes:GameObjects/Player/FireElementModel.tscn
+=======
+>>>>>>> Stashed changes
 
 [node name="SkeletonContainer" type="Node2D" parent="."]
 
@@ -1412,10 +1415,13 @@ Collider = NodePath("Collider")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonContainer"]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Scenes/Player/FireElementModel.tscn
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_y7ykh")
 =======
+=======
+>>>>>>> Stashed changes
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -19.5)
 shape = SubResource("RectangleShape2D_mjoiu")

@@ -15,7 +15,11 @@ namespace LostWisps.Player
 		public override void PhysicsUpdate(double delta)
 		{
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			HandleHorizontalMovement(delta);
+=======
+			player.MovementController.ApplyMovement(0, delta);
+>>>>>>> Stashed changes
 =======
 			player.MovementController.ApplyMovement(0, delta);
 >>>>>>> Stashed changes

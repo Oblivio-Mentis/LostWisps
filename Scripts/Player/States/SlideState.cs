@@ -35,6 +35,9 @@ namespace LostWisps.Player
 
             player.MovementController.ApplySlideFriction(delta);
             //player.MovementController.ApplyGravity(delta);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
 
