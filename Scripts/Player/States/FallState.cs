@@ -21,7 +21,6 @@ namespace LostWisps.Player
 		public override void PhysicsUpdate(double delta)
 		{
 			HandleJumpBuffer();
-
 			player.MovementController.ApplyMovement(player.frameInput.X, delta);
 			player.MovementController.ApplyFallGravity(delta, false);
 		}
