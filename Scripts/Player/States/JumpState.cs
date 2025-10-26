@@ -22,6 +22,8 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of ca63d9b (Rework movement controller)
         public override void PhysicsUpdate(double delta)
         {
             HandleHorizontalMovement(delta);
