@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://gfugd8vkw60"]
+
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platform.jpg" id="1_1edws"]
+[ext_resource type="Script" uid="uid://bjibhulmkonuu" path="res://Global/Systems/Destruction/Base/DestructionSystem.cs" id="2_1edws"]
+[ext_resource type="Script" uid="uid://crdlsd0eodlxk" path="res://Global/Systems/Destruction/Triggers/DamageOnContactTrigger.cs" id="3_1edws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrnnd"]
+size = Vector2(240, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wbrt"]
+size = Vector2(242, 32)
+
+[node name="DestructiblePlatform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.39098e-06, 3.57628e-07)
+scale = Vector2(0.97166, 1.30435)
+texture = ExtResource("1_1edws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nrnnd")
+
+[node name="DestructionSystem" type="Node2D" parent="."]
+script = ExtResource("2_1edws")
+Durability = 3
+metadata/_custom_type_script = "uid://bjibhulmkonuu"
+
+[node name="ContactTrigger" type="Area2D" parent="DestructionSystem"]
+script = ExtResource("3_1edws")
+metadata/_custom_type_script = "uid://cj4pw8bvx6au0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionSystem/ContactTrigger"]
+shape = SubResource("RectangleShape2D_4wbrt")

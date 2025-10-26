@@ -1,4 +1,5 @@
 using Godot;
+using LostWisps.Debug;
 using System;
 
 using System.Runtime.CompilerServices;
@@ -7,17 +8,20 @@ namespace LostWisps.Player
 {
 	public partial class Player : CharacterBody2D
 	{
-		[Export] public PlayerStats Stats;
+		[Export] public PlayerStats PlayerStats;
 		[Export] public Timer JumpBuffer;
 		[Export] public Timer CoyoteTimer;
 		[Export] public AnimationTree animationTree;
 		[Export] public Node2D skeletonContainer;
+		[Export] public MovementController MovementController;
 
 		public Vector2 frameVelocity = Vector2.Zero;
 		public Vector2 frameInput = Vector2.Zero;
 		private PlayerState currentState;
 		private PlayerState previousState;
-		private String currentAnimationState;
+		private String currentAnimationState = "idle";
+
+		private AnimationNodeStateMachinePlayback animationNodeStateMachinePlayback;
 
 		public bool KeyUp { get; private set; }
 		public bool KeyDown { get; private set; }
@@ -25,35 +29,11 @@ namespace LostWisps.Player
 		public bool KeyRight { get; private set; }
 		public bool KeyJump { get; private set; }
 		public bool KeyJumpPressed { get; private set; }
+		public bool KeyJumpReleased { get; private set; }
 
 		public override void _Ready()
 		{
-			if (Stats == null)
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
-				GD.PrintErr("PlayerStats не назначен!");
-
-			animationTree.Active = true;
-			currentAnimationState = "idle";
-
-			currentState = new IdleState(this);
-			currentState.EnterState();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+			if (PlayerStats == null)
 			{
 				Logger.Error(LogCategory.Player, "Player.Stats is not assigned! Assign it in the inspector.", this);
 				return;
@@ -87,19 +67,10 @@ namespace LostWisps.Player
 				return;
 			}
 
-			if (Collider == null)
-			{
-				Logger.Error(LogCategory.Player, "Player.Collider is not assigned! Make sure it's exported and connected in the inspector.", this);
-				return;
-			}
-
 			currentState = new IdleState(this);
 			currentState.EnterState();
 
 			MovementController.Initialize(this);
->>>>>>> Stashed changes
-=======
->>>>>>> parent of ca63d9b (Rework movement controller)
 		}
 
 		public override void _PhysicsProcess(double delta)
@@ -107,61 +78,36 @@ namespace LostWisps.Player
 			GetInputStates();
 			currentState.PhysicsUpdate(delta);
 
-			Velocity = frameVelocity;
-
-			// for (int i = 0; i < GetSlideCollisionCount(); i++)
-			// {
-			// 	KinematicCollision2D collision = GetSlideCollision(i);
-
-			// 	if (collision.GetCollider() is RigidBody2D rigidBody)
-			// 	{
-			// 		// 1. Вычисляем направление толчка
-			// 		Vector2 pushDir = -collision.GetNormal();
-
-			// 		// 2. Вычисляем разницу скоростей в направлении толчка
-			// 		float velocityDiffInPushDir = Velocity.Dot(pushDir) - rigidBody.LinearVelocity.Dot(pushDir);
-			// 		velocityDiffInPushDir = Mathf.Max(0.0f, velocityDiffInPushDir); // Только положительная разница
-
-			// 		// 3. Учитываем массу объекта
-			// 		float massRatio = Mathf.Min(1.0f, 100 / rigidBody.Mass);
-
-			// 		// 4. Вычисляем силу толчка
-			// 		Vector2 pushForce = pushDir * velocityDiffInPushDir * (massRatio * (IsOnFloor() ? 1 : 1.0f));
-
-			// 		// 5. Применяем импульс к объекту
-			// 		rigidBody.ApplyCentralImpulse(pushForce);
-			// 	}
-			// }
+			Velocity = MovementController.Velocity;
 
 			MoveAndSlide();
-
 			HandleForces();
 		}
 
 		private void HandleForces()
 		{
-			const float pushAngleThreshold = 0.2f;
-			const float maxPushForce = 500f;
+			// const float pushAngleThreshold = 0.2f;
+			// const float maxPushForce = 500f;
 
-			for (int i = 0; i < GetSlideCollisionCount(); i++)
-			{
-				var collision = GetSlideCollision(i);
-				if (collision.GetCollider() is RigidBody2D body)
-				{
-					Vector2 pushDirection = -collision.GetNormal();
-					Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
+			// for (int i = 0; i < GetSlideCollisionCount(); i++)
+			// {
+			// 	var collision = GetSlideCollision(i);
+			// 	if (collision.GetCollider() is RigidBody2D body)
+			// 	{
+			// 		Vector2 pushDirection = -collision.GetNormal();
+			// 		Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
 
-					float dot = pushDirection.Dot(playerDirection);
+			// 		float dot = pushDirection.Dot(playerDirection);
 
-					if (dot > pushAngleThreshold)
-					{
-						float rawPushForce = (Stats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
-						float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
+			// 		if (dot > pushAngleThreshold)
+			// 		{
+			// 			float rawPushForce = (PlayerStats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
+			// 			float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
 
-						body.ApplyCentralForce(pushDirection * finalPushForce);
-					}
-				}
-			}
+			// 			body.ApplyCentralForce(pushDirection * finalPushForce);
+			// 		}
+			// 	}
+			// }
 		}
 
 		public override void _Process(double delta)
@@ -183,12 +129,13 @@ namespace LostWisps.Player
 		{
 			KeyUp = Input.IsActionPressed("ui_up");
 			KeyDown = Input.IsActionPressed("ui_down");
-			KeyLeft = Input.IsActionPressed("ui_left");
-			KeyRight = Input.IsActionPressed("ui_right");
-			KeyJumpPressed = Input.IsActionJustPressed("ui_accept");
-			KeyJump = Input.IsActionPressed("ui_accept");
+			KeyLeft = Input.IsActionPressed("move_left");
+			KeyRight = Input.IsActionPressed("move_right");
+			KeyJumpPressed = Input.IsActionJustPressed("jump");
+			KeyJumpReleased = Input.IsActionJustReleased("jump");
+			KeyJump = Input.IsActionPressed("jump");
 
-			frameInput.X = Input.GetAxis("ui_left", "ui_right");
+			frameInput.X = Input.GetAxis("move_left", "move_right");
 		}
 
 		public void ChangeState(PlayerState newState)
@@ -202,23 +149,19 @@ namespace LostWisps.Player
 			currentState = newState;
 			currentState.EnterState();
 
-			// GD.Print($"State machine - State Change From '{previousState.GetType().FullName}' to '{currentState.GetType().FullName}'");
+			Logger.Log(LogCategory.Player, $"State Change From '{previousState.GetType().Name}'\t->\t'{currentState.GetType().Name}'", this);
 		}
 
 		public void SetAnimation(string newAnimationState)
 		{
-			if (animationTree == null)
-				return;
-
-			AnimationNodeStateMachinePlayback stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-			if (stateMachine == null)
+			if (animationNodeStateMachinePlayback == null || string.IsNullOrEmpty(newAnimationState))
 				return;
 
 			if (currentAnimationState != newAnimationState)
-			{
-				stateMachine.Travel(newAnimationState);
+            {
+				animationNodeStateMachinePlayback.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
-			}
+            }
 		}
 
 		public Vector2 GetSlopeUpDirection()
@@ -228,7 +171,7 @@ namespace LostWisps.Player
 
 			Vector2 normal = GetWallNormal();
 
-            return new Vector2(-normal.Y, normal.X).Normalized();
+			return new Vector2(-normal.Y, normal.X).Normalized();
 		}
 	}
 }

@@ -1,30 +1,8 @@
 [gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://72vnhgbl44x2"]
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="1_n80jm"]
-=======
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/PlayerStats.cs" id="1_n80jm"]
->>>>>>> parent of ca63d9b (Rework movement controller)
+
+[ext_resource type="Script" uid="uid://dc3lsomwrsivi" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="1_n80jm"]
+
 
 [resource]
 script = ExtResource("1_n80jm")

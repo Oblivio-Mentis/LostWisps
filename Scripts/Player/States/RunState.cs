@@ -5,48 +5,24 @@ namespace LostWisps.Player
 {
 	public partial class RunState : PlayerState
 	{
-
-		public RunState(Player player) : base(player) { }
+		public RunState(Player player) : base(player, "walk") { }
 
 		public override void EnterState()
 		{
-			player.SetAnimation("walk");
+			player.SetAnimation(animationState);
 		}
 
 		public override void PhysicsUpdate(double delta)
 		{
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-			HandleHorizontalMovement(delta);
-=======
+
 			player.MovementController.ApplyMovement(player.frameInput.X, delta);
->>>>>>> Stashed changes
-=======
-			player.MovementController.ApplyMovement(player.frameInput.X, delta);
->>>>>>> Stashed changes
-=======
-			player.MovementController.ApplyMovement(player.frameInput.X, delta);
->>>>>>> Stashed changes
-=======
-			player.MovementController.ApplyMovement(player.frameInput.X, delta);
->>>>>>> Stashed changes
-=======
-			player.MovementController.ApplyMovement(player.frameInput.X, delta);
->>>>>>> Stashed changes
-=======
-			HandleHorizontalMovement(delta);
->>>>>>> parent of ca63d9b (Rework movement controller)
 		}
 
 		public override void Update(double delta)
 		{
 			if (!player.IsOnFloor())
 			{
-				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
+				player.CoyoteTimer.Start();
 				player.ChangeState(new FallState(player));
 				return;
 			}
@@ -61,16 +37,6 @@ namespace LostWisps.Player
 			{
 				player.ChangeState(new IdleState(player));
 				return;
-			}
-		}
-
-		private void HandleHorizontalMovement(double delta)
-		{
-			float direction = player.frameInput.X;
-
-			if (direction != 0)
-			{
-				player.frameVelocity.X = Mathf.MoveToward(player.frameVelocity.X, direction * player.Stats.MaxSpeed, player.Stats.Acceleration * (float)delta);
 			}
 		}
 	}

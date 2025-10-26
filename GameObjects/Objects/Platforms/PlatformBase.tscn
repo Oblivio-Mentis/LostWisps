@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwbpp4072083g"]
+
+[ext_resource type="Script" uid="uid://0l52e05wf47w" path="res://Scripts/Objects/Platforms/PlatformBase.cs" id="1_m8756"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7uhu1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8756"]
+resource_local_to_scene = true
+size = Vector2(100, 100)
+
+[node name="PlatformBase" type="AnimatableBody2D"]
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = SubResource("CompressedTexture2D_7uhu1")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 100)
+region_filter_clip_enabled = true
+script = ExtResource("1_m8756")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m8756")

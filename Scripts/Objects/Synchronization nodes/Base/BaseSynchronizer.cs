@@ -1,6 +1,7 @@
 #nullable enable
 
 using Godot;
+using LostWisps.Debug;
 using System;
 
 namespace LostWisps.Object
@@ -21,14 +22,14 @@ namespace LostWisps.Object
             {
                 if (node == null)
                 {
-                    GD.PushWarning($"[{nameof(BaseSynchronizer)}] Найден null в массиве TargetNodes.");
+                    Logger.Warn(LogCategory.Synchronizer, "Found null in the TargetNodes array.", this);
                     continue;
                 }
 
                 if (node is not IActivatable activatable)
                 {
                     string nodePath = node.GetPath();
-                    GD.PushWarning($"[{nameof(BaseSynchronizer)}] Узел '{nodePath}' не реализует интерфейс {nameof(IActivatable)} и будет проигнорирован.");
+                    Logger.Warn(LogCategory.Synchronizer, $"The '{nodePath}' node does not implement the {nameof(IActivatable)} interface and will be ignored.", this);
                 }
             }
         }
