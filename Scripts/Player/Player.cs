@@ -33,6 +33,7 @@ namespace LostWisps.Player
 			if (Stats == null)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				GD.PrintErr("PlayerStats не назначен!");
 
 			animationTree.Active = true;
@@ -41,6 +42,8 @@ namespace LostWisps.Player
 			currentState = new IdleState(this);
 			currentState.EnterState();
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 			{

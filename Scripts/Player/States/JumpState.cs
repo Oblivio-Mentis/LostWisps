@@ -25,6 +25,7 @@ namespace LostWisps.Player
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public override void PhysicsUpdate(double delta)
         {
             HandleHorizontalMovement(delta);
@@ -96,6 +97,8 @@ namespace LostWisps.Player
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 			player.MovementController.Velocity = new Vector2(player.MovementController.Velocity.X, player.Stats.JumpVelocity);
