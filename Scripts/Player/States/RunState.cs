@@ -18,7 +18,11 @@ namespace LostWisps.Player
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			HandleHorizontalMovement(delta);
+=======
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+>>>>>>> Stashed changes
 =======
 			player.MovementController.ApplyMovement(player.frameInput.X, delta);
 >>>>>>> Stashed changes

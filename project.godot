@@ -20,7 +20,11 @@ config/icon="res://Sprites/Icon.svg"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 AnimationPriorityManager="*res://Global/Systems/Animation/AnimationPriorityManager.cs"
+=======
+DebugController="*res://Scripts/Debug/DebugController.cs"
+>>>>>>> Stashed changes
 =======
 DebugController="*res://Scripts/Debug/DebugController.cs"
 >>>>>>> Stashed changes
@@ -48,9 +52,16 @@ folder_colors={
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "res://Global/": "gray",
 "res://Global/Systems/Destruction/Base/": "red",
 "res://Scenes/": "teal",
+=======
+"res://Debug/": "purple",
+"res://GameObjects/": "teal",
+"res://GameObjects/Objects/Spawners/Base/": "red",
+"res://Global/": "gray",
+>>>>>>> Stashed changes
 =======
 "res://Debug/": "purple",
 "res://GameObjects/": "teal",
@@ -82,6 +93,9 @@ folder_colors={
 "res://UI/": "green"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -151,6 +165,9 @@ jump={
 }
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
