@@ -1,35 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctglfvwiqb0pu"]
+[gd_scene load_steps=12 format=3 uid="uid://ctglfvwiqb0pu"]
 
 [ext_resource type="Texture2D" uid="uid://y0qaqtnfax5v" path="res://Astronomical library/Levels/Templates/lvl1.drawio.png" id="1_jvttk"]
-[ext_resource type="PackedScene" uid="uid://ccd5tknvsh0n0" path="res://Scenes/Player/PlayerTutorial.tscn" id="4_8a4xe"]
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="5_eybc1"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="6_gbjom"]
 [ext_resource type="PackedScene" uid="uid://gfugd8vkw60" path="res://GameObjects/Objects/Platforms/DestructiblePlatform.tscn" id="7_ugq73"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Spawners/LightSource.tscn" id="8_qed61"]
 [ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://GameObjects/Objects/Fluids/Water.tscn" id="9_4jrj1"]
 [ext_resource type="PackedScene" uid="uid://ookade23udpb" path="res://GameObjects/Objects/Platforms/Platform.tscn" id="10_jvttk"]
-[ext_resource type="Resource" uid="uid://cygo3eactelp5" path="res://Astronomical library/Assets/Test1.tres" id="11_10d03"]
 [ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="11_v6d5c"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="12_0r3l5"]
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_lvhc0"]
-
-[sub_resource type="Resource" id="Resource_0k8ja"]
-resource_local_to_scene = true
-script = ExtResource("5_eybc1")
-MaxSpeed = 220.0
-Acceleration = 1000.0
-AirDeceleration = 1500.0
-GravityJump = 1100.0
-GravityFall = 1200.0
-JumpPowerX = 300.0
-JumpPowerY = 600.0
-MaxFallSpeed = 800.0
-AirAcceleration = 1500.0
-CoyoteTime = 0.012
-JumpBufferTime = 0.012
-PushForce = 200.0
-MinPushForce = 100.0
-metadata/_custom_type_script = "uid://dc3lsomwrsivi"
 
 [sub_resource type="Curve2D" id="Curve2D_fu0ab"]
 _data = {
@@ -56,11 +34,6 @@ position = Vector2(533.914, 403.125)
 scale = Vector2(0.987303, 0.987303)
 texture = ExtResource("1_jvttk")
 
-[node name="PlayerTutorial" parent="." instance=ExtResource("4_8a4xe")]
-position = Vector2(871, 216)
-scale = Vector2(1, 0.400001)
-Stats = SubResource("Resource_0k8ja")
-
 [node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
 position = Vector2(213, 188)
 points = PackedVector2Array(-71, 0, 75, 0)
@@ -86,9 +59,6 @@ scale = Vector2(0.022, 4.092)
 position = Vector2(926, 623)
 points = PackedVector2Array(-82, 0, 87, 0)
 TargetNodes = [NodePath("../RotationSynchronizer")]
-
-[node name="LightSource2" parent="." instance=ExtResource("8_qed61")]
-position = Vector2(61, 20)
 
 [node name="Water" parent="." instance=ExtResource("9_4jrj1")]
 position = Vector2(215, 219)
@@ -151,84 +121,65 @@ Speed = 90.0
 IsAlwaysActive = false
 TargetNodes = [NodePath("../DestructiblePlatform2")]
 
-[node name="LightSource" parent="." instance=ExtResource("8_qed61")]
-position = Vector2(1096, 635)
-rotation = -3.14159
-
 [node name="Platform" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(297, 364)
 scale = Vector2(0.511241, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform2" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(397, 423)
 scale = Vector2(0.44, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform3" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(485, 485)
 scale = Vector2(0.359995, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform4" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(578, 545)
 scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform5" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(724, 472)
 scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform6" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(819, 399)
 scale = Vector2(0.399995, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform7" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(916, 327)
 scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform8" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(1013, 256)
 scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform9" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(577, 134)
 scale = Vector2(0.679998, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform10" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(61, 57)
 scale = Vector2(0.36, 1)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform11" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(578, 34)
 scale = Vector2(1.16, 0.778442)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform12" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(215, 35)
 scale = Vector2(0.203057, 0.851445)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform13" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(941, 35)
 scale = Vector2(0.217935, 0.831419)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform14" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(1095, 576)
 scale = Vector2(0.359995, 0.84)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform15" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(444, 651)
 scale = Vector2(4.88, 0.72)
-Asset = ExtResource("11_10d03")
 
 [node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_0r3l5")]
 position = Vector2(578, 534)
@@ -237,9 +188,7 @@ TargetNodes = [NodePath("../PositionSynchronizer3"), NodePath("../PositionSynchr
 [node name="Platform16" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(216, 228)
 scale = Vector2(0.8, 0.8)
-Asset = ExtResource("11_10d03")
 
 [node name="Platform17" parent="." instance=ExtResource("10_jvttk")]
 position = Vector2(373, 288)
 scale = Vector2(0.598756, 1)
-Asset = ExtResource("11_10d03")

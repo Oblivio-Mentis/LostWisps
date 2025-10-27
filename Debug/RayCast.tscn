@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dm25au46lb645" path="res://GameObjects/Objects/Interactive objects/InteractionObject.tscn" id="5_6yx0q"]
 [ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://GameObjects/Objects/Interactive objects/Lever.tscn" id="6_30y1l"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="7_d4l3u"]
-[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="9_6yx0q"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://Scenes/Player/FireElementModel.tscn" id="9_6yx0q"]
 [ext_resource type="PackedScene" uid="uid://dsfb6sf0ft8jy" path="res://GameObjects/Objects/Chains/ChainSegment.tscn" id="10_d4l3u"]
 [ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://GameObjects/Objects/Fluids/Water.tscn" id="11_vb57p"]
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_kxrd6"]
@@ -36,7 +36,7 @@ region_rect = Rect2(0, 0, 247, 23)
 shape = SubResource("RectangleShape2D_30y1l")
 
 [node name="PlatformBase" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
-position = Vector2(536, 66)
+position = Vector2(323, 63)
 
 [node name="PlatformBase2" parent="." groups=["LightReflectors"] instance=ExtResource("1_gxqak")]
 position = Vector2(846, 349)
@@ -49,6 +49,7 @@ texture = ExtResource("2_30y1l")
 region_rect = Rect2(0, 0, 247, 23)
 
 [node name="Collider" parent="PlatformBase3" index="1"]
+scale = Vector2(10.48, 1)
 shape = SubResource("RectangleShape2D_jjpof")
 
 [node name="LightRayEmitter2D" parent="." instance=ExtResource("2_4jnpf")]
@@ -73,7 +74,10 @@ rotation = 0.0199496
 points = PackedVector2Array(-178.865, 8.56979, 236.993, -2.72815)
 
 [node name="FireElementModel" parent="." instance=ExtResource("9_6yx0q")]
-position = Vector2(530, 475)
+position = Vector2(524, 461)
+
+[node name="Camera2D" type="Camera2D" parent="FireElementModel"]
+position = Vector2(3, -6)
 
 [node name="ChainSegment" parent="." instance=ExtResource("10_d4l3u")]
 position = Vector2(57, 371)
