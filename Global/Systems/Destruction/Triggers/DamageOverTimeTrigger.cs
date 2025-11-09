@@ -59,7 +59,7 @@ namespace LostWisps.Global.Destruction.Triggers
 			var system = GetParent<DestructionSystem>();
 			system?.TakeDamage(damageAmount);
 
-			Logger.Log(LogCategory.Destruction, $"Damage taken {damageAmount}. Current durability {system.currentDurability + 1}");
+			Logger.Log(LogCategory.Destruction, $"Object took {damageAmount} damage. Remaining durability: {system.currentDurability + 1}", this);
 		}
 	}
 }
