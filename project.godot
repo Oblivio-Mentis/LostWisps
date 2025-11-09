@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LostWisps"
-run/main_scene="uid://xdwpuk4lolx5"
+run/main_scene="uid://ctglfvwiqb0pu"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Sprites/Icon.svg"
 
@@ -26,6 +26,12 @@ settings/size/mode=3
 settings/size/viewport_height=1080
 settings/size/viewport_width=1920
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+
 [dotnet]
 
 project/assembly_name="LostWisps"
@@ -34,7 +40,7 @@ project/assembly_name="LostWisps"
 
 folder_colors={
 "res://Astronomical library/": "purple",
-"res://Debug/": "purple",
+"res://Debug/": "blue",
 "res://GameObjects/": "teal",
 "res://GameObjects/Objects/Spawners/Base/": "red",
 "res://Global/": "gray",
@@ -45,7 +51,7 @@ folder_colors={
 "res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
 "res://Scripts/Player/States/Base/": "red",
-"res://Shaders/": "pink",
+"res://Shaders/": "red",
 "res://UI/": "green"
 }
 

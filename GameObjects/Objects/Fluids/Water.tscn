@@ -18,7 +18,8 @@ shader_parameter/edge_softness = 0.9
 shader_parameter/dither_strength = 0.006
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvc7"]
-size = Vector2(64, 64)
+resource_local_to_scene = true
+size = Vector2(63, 58.4359)
 
 [node name="Water" type="Area2D"]
 material = SubResource("ShaderMaterial_ggr0k")

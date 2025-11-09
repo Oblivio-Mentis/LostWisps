@@ -1,35 +1,42 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctglfvwiqb0pu"]
+[gd_scene load_steps=57 format=3 uid="uid://ctglfvwiqb0pu"]
 
 [ext_resource type="Texture2D" uid="uid://y0qaqtnfax5v" path="res://Astronomical library/Levels/Templates/lvl1.drawio.png" id="1_jvttk"]
-[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="5_eybc1"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="6_gbjom"]
-[ext_resource type="PackedScene" uid="uid://gfugd8vkw60" path="res://GameObjects/Objects/Platforms/DestructiblePlatform.tscn" id="7_ugq73"]
+[ext_resource type="Script" uid="uid://brcvuaff5jqgx" path="res://Global/Controllers/CameraController.cs" id="7_kybfn"]
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="8_5g3xa"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="9_2ukrb"]
 [ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://GameObjects/Objects/Fluids/Water.tscn" id="9_4jrj1"]
-[ext_resource type="PackedScene" uid="uid://ookade23udpb" path="res://GameObjects/Objects/Platforms/Platform.tscn" id="10_jvttk"]
-[ext_resource type="Resource" uid="uid://cygo3eactelp5" path="res://Astronomical library/Assets/Test1.tres" id="11_10d03"]
 [ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="11_v6d5c"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="12_0r3l5"]
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_lvhc0"]
 
-[sub_resource type="Resource" id="Resource_b210h"]
-metadata/__load_path__ = "res://Scenes/Player/PlayerTutorial.tscn"
-
-[sub_resource type="Resource" id="Resource_0k8ja"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g3xa"]
 resource_local_to_scene = true
-script = ExtResource("5_eybc1")
-FallGravity = 1500.0
-FallVelocity = 500.0
-WalkVelocity = 200.0
-JumpVelocity = -600.0
-JumpDeceleration = 1500.0
-metadata/_custom_type_script = "uid://dc3lsomwrsivi"
+size = Vector2(104.956, 58.4359)
 
-[sub_resource type="Resource" id="Resource_ojx3k"]
-metadata/__load_path__ = "res://Scenes/Objects/Spawners/LightSource.tscn"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ukrb"]
+resource_local_to_scene = true
+size = Vector2(237.997, 58.4359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b210h"]
+resource_local_to_scene = true
+size = Vector2(105.083, 58.4359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojx3k"]
+resource_local_to_scene = true
+size = Vector2(108.842, 58.4359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvttk"]
+resource_local_to_scene = true
+size = Vector2(105.945, 71.9616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10d03"]
+resource_local_to_scene = true
+size = Vector2(44.7412, 58.4359)
 
 [sub_resource type="Curve2D" id="Curve2D_fu0ab"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -16, -1, 0, 0, 0, 0, 358, -1)
+"points": PackedVector2Array(0, 0, 0, 0, -16, -1, 0, 0, 0, 0, -1709, -1)
 }
 point_count = 2
 
@@ -41,87 +48,262 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_73oqv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 16, -16, 0, 0, 0, 0, -1020, -16)
+"points": PackedVector2Array(0, 0, 0, 0, -982, -473, 0, 0, 0, 0, 714, -473)
 }
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_jvttk"]
-metadata/__load_path__ = "res://Scenes/Objects/Spawners/LightSource.tscn"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0r3l5"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a4xe"]
+resource_local_to_scene = true
+size = Vector2(208, 39)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eybc1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbjom"]
+resource_local_to_scene = true
+size = Vector2(178, 39)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugq73"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qed61"]
+resource_local_to_scene = true
+size = Vector2(148, 41)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jrj1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dli64"]
+resource_local_to_scene = true
+size = Vector2(158, 37)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v6d5c"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvhc0"]
+resource_local_to_scene = true
+size = Vector2(158, 37)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0k8ja"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu0ab"]
+resource_local_to_scene = true
+size = Vector2(155, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21tia"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73oqv"]
+resource_local_to_scene = true
+size = Vector2(156, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3881"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe2tw"]
+resource_local_to_scene = true
+size = Vector2(237, 34)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6cqo4"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfn1u"]
+resource_local_to_scene = true
+size = Vector2(315, 25)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e00x1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhkuw"]
+resource_local_to_scene = true
+size = Vector2(277, 38)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ridwb"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_637my"]
+resource_local_to_scene = true
+size = Vector2(129, 31)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wjbrq"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy616"]
+resource_local_to_scene = true
+size = Vector2(128, 30)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lhdop"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpj8"]
+resource_local_to_scene = true
+size = Vector2(158, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdj4l"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfjty"]
+resource_local_to_scene = true
+size = Vector2(148, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3gxrh"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r6tn"]
+resource_local_to_scene = true
+size = Vector2(148, 17)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p8037"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yb01h"]
+resource_local_to_scene = true
+size = Vector2(473, 31)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oigm8"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4mee"]
+resource_local_to_scene = true
+size = Vector2(78, 30)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kfl0b"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56ohi"]
+resource_local_to_scene = true
+size = Vector2(78, 30)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ukrb"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r3l5"]
+resource_local_to_scene = true
+size = Vector2(3129, 100)
 
 [node name="Level1" type="Node2D"]
 
 [node name="Lvl1_drawio" type="Sprite2D" parent="."]
-position = Vector2(533.914, 403.125)
+position = Vector2(532, 406)
 scale = Vector2(0.987303, 0.987303)
 texture = ExtResource("1_jvttk")
 
-[node name="PlayerTutorial" parent="."]
-position = Vector2(871, 216)
-scale = Vector2(1, 0.400001)
-Stats = SubResource("Resource_0k8ja")
-
 [node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
-position = Vector2(213, 188)
-points = PackedVector2Array(-71, 0, 75, 0)
-TargetNodes = [NodePath("../RotationSynchronizer2")]
-
-[node name="DestructiblePlatform" parent="." groups=["LightReflectors"] instance=ExtResource("7_ugq73")]
-position = Vector2(1095, 327)
-scale = Vector2(0.19999, 0.16)
-
-[node name="DestructiblePlatform2" parent="." groups=["LightReflectors"] instance=ExtResource("7_ugq73")]
-position = Vector2(61, 328)
-scale = Vector2(0.199998, 0.160015)
-
-[node name="DestructiblePlatform3" parent="." groups=["LightReflectors"] instance=ExtResource("7_ugq73")]
-position = Vector2(1, 389)
-scale = Vector2(0.0164823, 3.44001)
-
-[node name="DestructiblePlatform4" parent="." instance=ExtResource("7_ugq73")]
-position = Vector2(1155, 264)
-scale = Vector2(0.022, 4.092)
+position = Vector2(306, 329)
+points = PackedVector2Array(-71, 0, 162, 0)
+InitialValue = -1.0
+TargetNodes = [NodePath("../RotationSynchronizer2"), NodePath("../PositionSynchronizer3")]
 
 [node name="Slider2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
-position = Vector2(926, 623)
-points = PackedVector2Array(-82, 0, 87, 0)
-TargetNodes = [NodePath("../RotationSynchronizer")]
-
-[node name="LightSource2" parent="."]
-position = Vector2(61, 20)
+position = Vector2(1463, 1038)
+points = PackedVector2Array(-84, 0, 52, 0, 190, 0)
+InitialValue = 1.0
+TargetNodes = [NodePath("../RotationSynchronizer"), NodePath("../PositionSynchronizer")]
 
 [node name="Water" parent="." instance=ExtResource("9_4jrj1")]
 position = Vector2(215, 219)
 scale = Vector2(-2.83164, 0.234379)
 
+[node name="CollisionShape2D" parent="Water" index="0"]
+position = Vector2(-47.8174, 665.589)
+shape = SubResource("RectangleShape2D_5g3xa")
+
+[node name="Shader" parent="Water/CollisionShape2D" index="0"]
+position = Vector2(-0.16135, 10.9416)
+scale = Vector2(1.63853, 1.07526)
+
 [node name="Water2" parent="." instance=ExtResource("9_4jrj1")]
-position = Vector2(372, 282)
+position = Vector2(919, 1035)
 scale = Vector2(2.07267, 0.307492)
 
+[node name="CollisionShape2D" parent="Water2" index="0"]
+position = Vector2(11.7508, 143.093)
+shape = SubResource("RectangleShape2D_2ukrb")
+
+[node name="Shader" parent="Water2/CollisionShape2D" index="0"]
+position = Vector2(-0.00878906, 0)
+scale = Vector2(3.7039, 1)
+
 [node name="Water3" parent="." instance=ExtResource("9_4jrj1")]
-position = Vector2(820, 394)
+position = Vector2(1325, 623)
 scale = Vector2(1.31824, 0.294948)
 
+[node name="CollisionShape2D" parent="Water3" index="0"]
+position = Vector2(9.66266, 128.837)
+shape = SubResource("RectangleShape2D_b210h")
+
+[node name="Shader" parent="Water3/CollisionShape2D" index="0"]
+position = Vector2(-0.180314, -0.000411987)
+scale = Vector2(1.64756, 1)
+
 [node name="Water4" parent="." instance=ExtResource("9_4jrj1")]
-position = Vector2(916, 321)
+position = Vector2(1486, 511)
 scale = Vector2(1.28003, 0.257177)
 
+[node name="CollisionShape2D" parent="Water4" index="0"]
+position = Vector2(8.07751, 120.54)
+shape = SubResource("RectangleShape2D_ojx3k")
+
+[node name="Shader" parent="Water4/CollisionShape2D" index="0"]
+position = Vector2(-0.249989, 3.88837)
+scale = Vector2(1.68405, 1)
+
 [node name="Water5" parent="." instance=ExtResource("9_4jrj1")]
-position = Vector2(169, 646)
+position = Vector2(383, 1081)
 scale = Vector2(5.21026, 0.261746)
 
+[node name="CollisionShape2D" parent="Water5" index="0"]
+position = Vector2(-21.3041, -13.686)
+shape = SubResource("RectangleShape2D_jvttk")
+
+[node name="Shader" parent="Water5/CollisionShape2D" index="0"]
+position = Vector2(1.54972e-06, 9.86511)
+scale = Vector2(1.65539, 1)
+
 [node name="Water6" parent="." instance=ExtResource("9_4jrj1")]
-position = Vector2(580, 648)
+position = Vector2(602, 450)
 scale = Vector2(4.83341, 0.238445)
 
+[node name="CollisionShape2D" parent="Water6" index="0"]
+position = Vector2(1.21525, 100.652)
+shape = SubResource("RectangleShape2D_10d03")
+
+[node name="Shader" parent="Water6/CollisionShape2D" index="0"]
+position = Vector2(-0.146552, 4.19359)
+scale = Vector2(0.710126, 1)
+
 [node name="Slider3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
-position = Vector2(579, 97)
-points = PackedVector2Array(-460, 0, 458, 0)
+position = Vector2(655, 177)
+points = PackedVector2Array(-460, 1, 1036, 1)
 TargetNodes = [NodePath("../PositionSynchronizer")]
 
 [node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
-position = Vector2(594, 135)
+position = Vector2(1804, 963)
 curve = SubResource("Curve2D_fu0ab")
-TargetNodes = [NodePath("../Platform9")]
+TargetNodes = [NodePath("../PlatformBase12")]
 
 [node name="PositionSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(61, 76)
@@ -136,109 +318,361 @@ curve = SubResource("Curve2D_73oqv")
 Speed = 0.2
 CanBeDeactivated = false
 IsAdditive = true
-TargetNodes = [NodePath("../Platform14")]
+TargetNodes = [null, NodePath("../PlatformBase11")]
 
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
 position = Vector2(1095, 327)
 Speed = 90.0
 IsAlwaysActive = false
-TargetNodes = [NodePath("../DestructiblePlatform")]
+TargetNodes = [null]
 
 [node name="RotationSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
 position = Vector2(61, 328)
 Speed = 90.0
 IsAlwaysActive = false
-TargetNodes = [NodePath("../DestructiblePlatform2")]
-
-[node name="LightSource" parent="."]
-position = Vector2(1096, 635)
-rotation = -3.14159
-
-[node name="Platform" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(297, 364)
-scale = Vector2(0.511241, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform2" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(397, 423)
-scale = Vector2(0.44, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform3" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(485, 485)
-scale = Vector2(0.359995, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform4" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(578, 545)
-scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform5" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(724, 472)
-scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform6" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(819, 399)
-scale = Vector2(0.399995, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform7" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(916, 327)
-scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform8" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(1013, 256)
-scale = Vector2(0.4, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform9" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(577, 134)
-scale = Vector2(0.679998, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform10" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(61, 57)
-scale = Vector2(0.36, 1)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform11" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(578, 34)
-scale = Vector2(1.16, 0.778442)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform12" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(215, 35)
-scale = Vector2(0.203057, 0.851445)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform13" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(941, 35)
-scale = Vector2(0.217935, 0.831419)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform14" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(1095, 576)
-scale = Vector2(0.359995, 0.84)
-Asset = ExtResource("11_10d03")
-
-[node name="Platform15" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(444, 651)
-scale = Vector2(4.88, 0.72)
-Asset = ExtResource("11_10d03")
+TargetNodes = [null]
 
 [node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_0r3l5")]
-position = Vector2(578, 534)
+position = Vector2(942, 895)
 TargetNodes = [NodePath("../PositionSynchronizer3"), NodePath("../PositionSynchronizer2")]
 
-[node name="Platform16" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(216, 228)
-scale = Vector2(0.8, 0.8)
-Asset = ExtResource("11_10d03")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(957, 547)
+script = ExtResource("7_kybfn")
+zoomSpeed = 2.0
+maxZoom = 10.0
 
-[node name="Platform17" parent="." instance=ExtResource("10_jvttk")]
-position = Vector2(373, 288)
-scale = Vector2(0.598756, 1)
-Asset = ExtResource("11_10d03")
+[node name="PlatformBase" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(480, 607)
+
+[node name="Texture" parent="PlatformBase" index="0"]
+texture = SubResource("CompressedTexture2D_0r3l5")
+
+[node name="Collider" parent="PlatformBase" index="1"]
+position = Vector2(5, 7.5)
+shape = SubResource("RectangleShape2D_8a4xe")
+
+[node name="ColorRect" parent="PlatformBase" index="2"]
+offset_left = -99.0
+offset_top = -12.0
+offset_right = 109.0
+offset_bottom = 27.0
+
+[node name="PlatformBase2" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(653, 705)
+
+[node name="Texture" parent="PlatformBase2" index="0"]
+texture = SubResource("CompressedTexture2D_eybc1")
+
+[node name="Collider" parent="PlatformBase2" index="1"]
+position = Vector2(-5, 6.5)
+shape = SubResource("RectangleShape2D_gbjom")
+
+[node name="ColorRect" parent="PlatformBase2" index="2"]
+offset_left = -95.0
+offset_top = -13.0
+offset_right = 84.0
+offset_bottom = 26.0
+
+[node name="PlatformBase3" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(794, 811)
+
+[node name="Texture" parent="PlatformBase3" index="0"]
+texture = SubResource("CompressedTexture2D_ugq73")
+
+[node name="Collider" parent="PlatformBase3" index="1"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_qed61")
+
+[node name="ColorRect" parent="PlatformBase3" index="2"]
+offset_left = -76.0
+offset_top = -19.0
+offset_right = 72.0
+offset_bottom = 22.0
+
+[node name="PlatformBase4" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1188, 796)
+
+[node name="Texture" parent="PlatformBase4" index="0"]
+texture = SubResource("CompressedTexture2D_4jrj1")
+
+[node name="Collider" parent="PlatformBase4" index="1"]
+position = Vector2(-8, -4.5)
+shape = SubResource("RectangleShape2D_dli64")
+
+[node name="ColorRect" parent="PlatformBase4" index="2"]
+offset_left = -87.0
+offset_top = -23.0
+offset_right = 72.0
+offset_bottom = 15.0
+
+[node name="PlatformBase5" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1357, 679)
+
+[node name="Texture" parent="PlatformBase5" index="0"]
+texture = SubResource("CompressedTexture2D_v6d5c")
+
+[node name="Collider" parent="PlatformBase5" index="1"]
+position = Vector2(-18, -5.5)
+shape = SubResource("RectangleShape2D_lvhc0")
+
+[node name="ColorRect" parent="PlatformBase5" index="2"]
+offset_left = -98.0
+offset_top = -21.0
+offset_right = 59.0
+offset_bottom = 13.0
+
+[node name="PlatformBase6" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1488, 547)
+
+[node name="Texture" parent="PlatformBase6" index="0"]
+texture = SubResource("CompressedTexture2D_0k8ja")
+
+[node name="Collider" parent="PlatformBase6" index="1"]
+position = Vector2(8.5, 10)
+shape = SubResource("RectangleShape2D_fu0ab")
+
+[node name="ColorRect" parent="PlatformBase6" index="2"]
+offset_left = -70.0
+offset_top = -6.0
+offset_right = 87.0
+offset_bottom = 27.0
+
+[node name="PlatformBase7" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1652, 437)
+
+[node name="Texture" parent="PlatformBase7" index="0"]
+texture = SubResource("CompressedTexture2D_21tia")
+
+[node name="Collider" parent="PlatformBase7" index="1"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_73oqv")
+
+[node name="ColorRect" parent="PlatformBase7" index="2"]
+offset_left = -76.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+
+[node name="PlatformBase8" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(658, 480)
+
+[node name="Texture" parent="PlatformBase8" index="0"]
+texture = SubResource("CompressedTexture2D_g3881")
+
+[node name="Collider" parent="PlatformBase8" index="1"]
+position = Vector2(-50.5, 9)
+shape = SubResource("RectangleShape2D_pe2tw")
+
+[node name="ColorRect" parent="PlatformBase8" index="2"]
+offset_left = -169.0
+offset_top = -8.0
+offset_right = 68.0
+offset_bottom = 26.0
+
+[node name="PlatformBase9" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(353, 385)
+
+[node name="Texture" parent="PlatformBase9" index="0"]
+texture = SubResource("CompressedTexture2D_6cqo4")
+
+[node name="Collider" parent="PlatformBase9" index="1"]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_jfn1u")
+
+[node name="ColorRect" parent="PlatformBase9" index="2"]
+offset_left = -160.0
+offset_top = -13.0
+offset_right = 156.0
+offset_bottom = 12.0
+
+[node name="PlatformBase10" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(955, 238)
+
+[node name="Texture" parent="PlatformBase10" index="0"]
+texture = SubResource("CompressedTexture2D_e00x1")
+
+[node name="Collider" parent="PlatformBase10" index="1"]
+position = Vector2(-11.5, 2)
+shape = SubResource("RectangleShape2D_rhkuw")
+
+[node name="ColorRect" parent="PlatformBase10" index="2"]
+offset_left = -150.0
+offset_top = -18.0
+offset_right = 127.0
+offset_bottom = 21.0
+
+[node name="PlatformBase11" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(76, 149)
+
+[node name="Texture" parent="PlatformBase11" index="0"]
+texture = SubResource("CompressedTexture2D_ridwb")
+
+[node name="Collider" parent="PlatformBase11" index="1"]
+position = Vector2(23.5, -32.5)
+shape = SubResource("RectangleShape2D_637my")
+
+[node name="ColorRect" parent="PlatformBase11" index="2"]
+offset_left = -41.0
+offset_top = -48.0
+offset_right = 88.0
+offset_bottom = -18.0
+
+[node name="PlatformBase12" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1770, 944)
+
+[node name="Texture" parent="PlatformBase12" index="0"]
+texture = SubResource("CompressedTexture2D_wjbrq")
+
+[node name="Collider" parent="PlatformBase12" index="1"]
+position = Vector2(17, 17)
+shape = SubResource("RectangleShape2D_sy616")
+
+[node name="ColorRect" parent="PlatformBase12" index="2"]
+offset_left = -47.0
+offset_top = 1.0
+offset_right = 82.0
+offset_bottom = 33.0
+
+[node name="PlatformBase13" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(960, 938)
+
+[node name="Texture" parent="PlatformBase13" index="0"]
+texture = SubResource("CompressedTexture2D_lhdop")
+
+[node name="Collider" parent="PlatformBase13" index="1"]
+position = Vector2(-16, -27)
+shape = SubResource("RectangleShape2D_0rpj8")
+
+[node name="ColorRect" parent="PlatformBase13" index="2"]
+offset_left = -95.0
+offset_top = -47.0
+offset_right = 63.0
+offset_bottom = -7.0
+
+[node name="PlatformBase14" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(614, 1086)
+
+[node name="Texture" parent="PlatformBase14" index="0"]
+texture = SubResource("CompressedTexture2D_cdj4l")
+
+[node name="Collider" parent="PlatformBase14" index="1"]
+position = Vector2(10, -8)
+shape = SubResource("RectangleShape2D_hfjty")
+
+[node name="ColorRect" parent="PlatformBase14" index="2"]
+offset_left = -65.0
+offset_top = -17.0
+offset_right = 83.0
+offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DestructionSystem" parent="PlatformBase14" index="3"]
+position = Vector2(10, -8)
+
+[node name="PlatformBase15" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1271, 1083)
+
+[node name="Texture" parent="PlatformBase15" index="0"]
+texture = SubResource("CompressedTexture2D_3gxrh")
+
+[node name="Collider" parent="PlatformBase15" index="1"]
+position = Vector2(-7, -5.5)
+shape = SubResource("RectangleShape2D_3r6tn")
+
+[node name="ColorRect" parent="PlatformBase15" index="2"]
+offset_left = -81.0
+offset_top = -14.0
+offset_right = 67.0
+offset_bottom = 4.0
+
+[node name="PlatformBase16" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(954, 34)
+
+[node name="Texture" parent="PlatformBase16" index="0"]
+texture = SubResource("CompressedTexture2D_p8037")
+
+[node name="Collider" parent="PlatformBase16" index="1"]
+position = Vector2(-11.5, 42.5)
+shape = SubResource("RectangleShape2D_yb01h")
+
+[node name="ColorRect" parent="PlatformBase16" index="2"]
+offset_left = -248.0
+offset_top = 29.0
+offset_right = 226.0
+offset_bottom = 58.0
+
+[node name="PlatformBase17" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(1506, 55)
+
+[node name="Texture" parent="PlatformBase17" index="0"]
+texture = SubResource("CompressedTexture2D_oigm8")
+
+[node name="Collider" parent="PlatformBase17" index="1"]
+position = Vector2(30, 21)
+shape = SubResource("RectangleShape2D_o4mee")
+
+[node name="ColorRect" parent="PlatformBase17" index="2"]
+offset_left = -9.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 37.0
+
+[node name="PlatformBase18" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(348, 44)
+
+[node name="Texture" parent="PlatformBase18" index="0"]
+texture = SubResource("CompressedTexture2D_kfl0b")
+
+[node name="Collider" parent="PlatformBase18" index="1"]
+position = Vector2(4, 33)
+shape = SubResource("RectangleShape2D_56ohi")
+
+[node name="ColorRect" parent="PlatformBase18" index="2"]
+offset_left = -36.0
+offset_top = 18.0
+offset_right = 43.0
+offset_bottom = 48.0
+
+[node name="FireElementModel" parent="." instance=ExtResource("9_2ukrb")]
+position = Vector2(869, 202)
+
+[node name="PlatformBase19" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(804, 1146)
+
+[node name="Texture" parent="PlatformBase19" index="0"]
+texture = SubResource("CompressedTexture2D_2ukrb")
+
+[node name="Collider" parent="PlatformBase19" index="1"]
+position = Vector2(204.5, 0)
+shape = SubResource("RectangleShape2D_0r3l5")
+
+[node name="ColorRect" parent="PlatformBase19" index="2"]
+offset_left = -1166.0
+offset_right = 1576.0
+
+[editable path="Water"]
+[editable path="Water2"]
+[editable path="Water3"]
+[editable path="Water4"]
+[editable path="Water5"]
+[editable path="Water6"]
+[editable path="PlatformBase"]
+[editable path="PlatformBase2"]
+[editable path="PlatformBase3"]
+[editable path="PlatformBase4"]
+[editable path="PlatformBase5"]
+[editable path="PlatformBase6"]
+[editable path="PlatformBase7"]
+[editable path="PlatformBase8"]
+[editable path="PlatformBase9"]
+[editable path="PlatformBase10"]
+[editable path="PlatformBase11"]
+[editable path="PlatformBase12"]
+[editable path="PlatformBase13"]
+[editable path="PlatformBase14"]
+[editable path="PlatformBase15"]
+[editable path="PlatformBase16"]
+[editable path="PlatformBase17"]
+[editable path="PlatformBase18"]
+[editable path="PlatformBase19"]
