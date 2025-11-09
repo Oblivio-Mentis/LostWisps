@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlmtgsvj205ws"]
+
+[ext_resource type="Script" uid="uid://bdk08m7w70x11" path="res://Scripts/Objects/Synchronization nodes/OrbitSynchronizer.cs" id="1_fy8sb"]
+
+[node name="OrbitSynchronizer" type="Node2D"]
+script = ExtResource("1_fy8sb")
