@@ -1,11 +1,11 @@
+using System;
 using Godot;
-using LostWisps.Player;
 
 namespace LostWisps.Player
 {
     public partial class SlopeClimbState : LostWisps.Player.PlayerState
     {
-        public SlopeClimbState(Player player) : base(player) { }
+        public SlopeClimbState(Player player) : base(player, "slope") { }
 
         public override void EnterState()
         {
@@ -14,7 +14,7 @@ namespace LostWisps.Player
 
         public override void PhysicsUpdate(double delta)
         {
-            HandleHorizontalMovement(delta);
+            player.MovementController.ApplySlopeClimbMovement(player.frameInput.X, delta);
         }
 
         public override void Update(double delta)
@@ -45,19 +45,6 @@ namespace LostWisps.Player
                 player.ChangeState(new FallState(player));
                 return;
             }
-        }
-
-        private void HandleHorizontalMovement(double delta)
-        {
-            player.frameVelocity = new Vector2(
-                x: player.frameVelocity.X + player.Stats.Acceleration * player.frameInput.X * (float)delta,
-                y: player.frameVelocity.Y
-            );
-
-            float maxSpeed = player.Stats.MaxSpeed;
-            player.frameVelocity = player.frameVelocity with {
-                X = Mathf.Clamp(player.frameVelocity.X, -maxSpeed, maxSpeed)
-            };
         }
 	}
 }

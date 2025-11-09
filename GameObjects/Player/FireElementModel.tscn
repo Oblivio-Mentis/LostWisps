@@ -2612,6 +2612,139 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 6
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonContainer"]
+metadata/_edit_group_ = true
+
+[node name="Hip" type="Bone2D" parent="SkeletonContainer/Skeleton2D"]
+position = Vector2(14, -38)
+rotation = -0.222222
+rest = Transform2D(1, 0, 0, 1, 14, -12)
+auto_calculate_length_and_angle = false
+length = 8.0
+bone_angle = -99.162
+
+[node name="LHindLeg_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip"]
+rotation = -0.011204
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="LHindLeg_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/LHindLeg_1"]
+position = Vector2(-1, 23)
+rotation = -0.249817
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(1, 0, 0, 1, -1, 23)
+
+[node name="LHindPaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/LHindLeg_1/LHindLeg_2"]
+position = Vector2(-4, 11)
+rotation = -2.80769
+rest = Transform2D(-0.994585, 0.103925, -0.103925, -0.994585, -4, 11)
+auto_calculate_length_and_angle = false
+length = 3.749
+bone_angle = -17.311
+
+[node name="RHindLeg_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip"]
+rotation = 0.29252
+rest = Transform2D(0.996656, 0.0817072, -0.0817072, 0.996656, 0, 0)
+
+[node name="RHindLeg_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/RHindLeg_1"]
+position = Vector2(-2.10736, 23.2499)
+rotation = -0.538759
+rest = Transform2D(1, 0, 0, 1, -2.10736, 23.2499)
+
+[node name="RHindPaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/RHindLeg_1/RHindLeg_2"]
+position = Vector2(-2.1729, 10.2117)
+rotation = -2.8622
+rest = Transform2D(-0.994585, 0.103925, -0.103925, -0.994585, -2.1729, 10.2117)
+auto_calculate_length_and_angle = false
+length = 3.749
+bone_angle = -17.311
+
+[node name="Back" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip"]
+rotation = -0.794085
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Neck" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back"]
+position = Vector2(-16, -26)
+rotation = 0.634306
+rest = Transform2D(1, 0, 0, 1, -16, -26)
+
+[node name="LFrontLeg_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck"]
+rotation = 0.171668
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="LFrontLeg_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/LFrontLeg_1"]
+position = Vector2(-3, 23)
+rest = Transform2D(1, 0, 0, 1, -3, 23)
+auto_calculate_length_and_angle = false
+length = 9.874
+bone_angle = -202.635
+
+[node name="LFrontPaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/LFrontLeg_1/LFrontLeg_2"]
+position = Vector2(-4, 10)
+rotation = 0.31058
+rest = Transform2D(1, 0, 0, 1, -4, 10)
+auto_calculate_length_and_angle = false
+length = 3.749
+bone_angle = -185.389
+
+[node name="RFrontLeg_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck"]
+position = Vector2(4.76837e-07, 0)
+rotation = 0.0929092
+rest = Transform2D(0.995687, 0.0927756, -0.0927756, 0.995687, 4.76837e-07, 0)
+
+[node name="RFrontLeg_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/RFrontLeg_1"]
+position = Vector2(-3.93306, 22.4618)
+rest = Transform2D(1, 0, 0, 1, -3.93306, 22.4618)
+auto_calculate_length_and_angle = false
+length = 9.874
+bone_angle = -202.635
+
+[node name="RFrontPaw" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/RFrontLeg_1/RFrontLeg_2"]
+position = Vector2(-3.05499, 10.328)
+rotation = 0.178968
+rest = Transform2D(1, 0, 0, 1, -3.05499, 10.328)
+auto_calculate_length_and_angle = false
+length = 3.749
+bone_angle = -185.389
+
+[node name="Head" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck"]
+position = Vector2(-6, -11)
+rotation = 0.301311
+rest = Transform2D(1, 0, 0, 1, -6, -11)
+
+[node name="LEar_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head"]
+position = Vector2(2, -22)
+rotation = -0.0978391
+rest = Transform2D(0.995217, -0.0976831, 0.0976831, 0.995217, 2, -22)
+
+[node name="LEar_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head/LEar_1"]
+position = Vector2(20.9421, -29.0935)
+rotation = -0.815563
+scale = Vector2(1, 1)
+rest = Transform2D(0.685458, -0.728112, 0.728112, 0.685458, 20.9421, -29.0935)
+
+[node name="REar_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head"]
+position = Vector2(2, -22)
+rotation = -0.0871702
+rest = Transform2D(0.996203, -0.0870598, 0.0870598, 0.996203, 2, -22)
+
+[node name="REar_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head/REar_1"]
+position = Vector2(13.3088, -25.9398)
+rotation = 0.0199638
+rest = Transform2D(0.999801, 0.0199625, -0.0199625, 0.999801, 13.3088, -25.9398)
+
+[node name="Tail_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip"]
+rotation = 0.24114
+rest = Transform2D(0.971066, 0.238809, -0.238809, 0.971066, 0, 0)
+
+[node name="Tail_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1"]
+position = Vector2(21.4109, -17.623)
+rotation = -0.34821
+scale = Vector2(1, 1)
+rest = Transform2D(0.939985, -0.341216, 0.341216, 0.939985, 21.4109, -17.623)
+
+[node name="Tail_3" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1/Tail_2"]
+position = Vector2(-5.95622, -28.8014)
+rotation = 0.0607085
+rest = Transform2D(0.998158, 0.0606713, -0.0606713, 0.998158, -5.95622, -28.8014)
 
 [node name="Hip" type="Bone2D" parent="SkeletonContainer/Skeleton2D"]
 position = Vector2(14, -38)

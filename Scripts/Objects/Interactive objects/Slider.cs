@@ -1,4 +1,5 @@
 using Godot;
+using LostWisps.Debug;
 using System;
 using System.Collections.Generic;
 
@@ -78,14 +79,16 @@ namespace LostWisps.Object
             {
                 if (node is null)
                 {
-                    GD.PushWarning($"[{nameof(Slider)}] Найден null в массиве TargetNodes.");
+                    Logger.Warn(LogCategory.Interaction, "Найден null в массиве TargetNodes.", this);
+                    // GD.PushWarning($"[{nameof(Slider)}] Найден null в массиве TargetNodes.");
                     continue;
                 }
 
                 if (!(node is IValueReceiver))
                 {
                     string nodePath = node.GetPath();
-                    GD.PushWarning($"[{nameof(Slider)}] Узел '{nodePath}' не реализует интерфейс {nameof(IValueReceiver)} и будет проигнорирован.");
+                    Logger.Warn(LogCategory.Interaction, $"Узел '{nodePath}' не реализует интерфейс {nameof(IValueReceiver)} и будет проигнорирован.", this);
+                    // GD.PushWarning($"[{nameof(Slider)}] Узел '{nodePath}' не реализует интерфейс {nameof(IValueReceiver)} и будет проигнорирован.");
                 }
             }
         }

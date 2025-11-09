@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ookade23udpb"]
+
+[node name="Platform" type="AnimatableBody2D"]
+collision_layer = 3
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(3.57628e-06, 7.15256e-07)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+disabled = true
