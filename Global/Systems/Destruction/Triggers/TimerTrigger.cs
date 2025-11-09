@@ -18,7 +18,12 @@ namespace LostWisps.Global.Destruction.Triggers
 
         public void Activate()
         {
-            DestructionManager.Instance.TriggerDestruction(GetParent<DestructionSystem>());
+            var DestructionSystem = GetParent<DestructionSystem>();
+            if (DestructionSystem != null)
+            {
+                var DestructionController = GetNode<DestructionController>("/root/DestructionController");
+                DestructionController.TriggerDestruction(GetParent<DestructionSystem>());
+            }
         }
     }
 }

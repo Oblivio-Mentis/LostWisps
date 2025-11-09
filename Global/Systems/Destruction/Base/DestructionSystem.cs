@@ -6,12 +6,12 @@ namespace LostWisps.Global.Destruction
 	[GlobalClass]
 	public partial class DestructionSystem : Node2D
 	{
-		[Export] public int Durability = 1;
-		[Export] public DestructionStage[] Stages = new DestructionStage[0];
-		[Export] public float DestroyDelay = 1f;
+		[Export] public int Durability { get; set; } = 1;
+		[Export] public DestructionStage[] Stages { get; set; } = new DestructionStage[0];
+		[Export] public float DestroyDelay { get; set; } = 1f;
 
 		public IDestructionStrategy[] Triggers = new IDestructionStrategy[0];
-		private int currentDurability;
+		public int currentDurability { get; set; } = 0;
 		private int lastStageIndex = 0;
 		private Timer destroyTimer;
 
@@ -50,7 +50,6 @@ namespace LostWisps.Global.Destruction
 		public void TakeDamage(int amount)
 		{
 			currentDurability -= amount;
-
 			CheckStages();
 
 			if (currentDurability <= 0 && destroyTimer.IsStopped())
@@ -77,7 +76,8 @@ namespace LostWisps.Global.Destruction
 
 		private void OnDestroyTriggered()
 		{
-			DestructionManager.Instance.TriggerDestruction(this);
+			var DestructionController = GetNode<DestructionController>("/root/DestructionController");
+			DestructionController.TriggerDestruction(this);
 		}
 	}
 }

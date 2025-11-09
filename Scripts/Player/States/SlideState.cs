@@ -17,6 +17,7 @@ namespace LostWisps.Player
 
         public override void PhysicsUpdate(double delta)
         {
+<<<<<<< Updated upstream
             HandleHorizontalMovement(delta);
             ApplySlideFriction(delta);
             HandleGravity(delta);
@@ -50,6 +51,10 @@ namespace LostWisps.Player
 >>>>>>> Stashed changes
 =======
 >>>>>>> parent of ca63d9b (Rework movement controller)
+=======
+            player.MovementController.ApplySlideFriction(delta);
+            player.MovementController.ApplyFallGravity(delta);
+>>>>>>> Stashed changes
         }
 
         public override void Update(double delta)

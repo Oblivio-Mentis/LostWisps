@@ -15,6 +15,7 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -40,13 +41,17 @@ namespace LostWisps.Player
 =======
 			HandleHorizontalMovement(delta);
 >>>>>>> parent of ca63d9b (Rework movement controller)
+=======
+
+			player.MovementController.ApplyMovement(player.frameInput.X, delta);
+>>>>>>> Stashed changes
 		}
 
 		public override void Update(double delta)
 		{
 			if (!player.IsOnFloor())
 			{
-				player.CoyoteTimer.Start(player.Stats.CoyoteTime);
+				player.CoyoteTimer.Start();
 				player.ChangeState(new FallState(player));
 				return;
 			}

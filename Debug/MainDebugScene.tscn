@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://xdwpuk4lolx5"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_r02vk"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_b3syt"]
+[ext_resource type="Script" uid="uid://cj4pw8bvx6au0" path="res://Global/Systems/Destruction/Triggers/DamageOverTimeTrigger.cs" id="3_b3syt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp6k1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxoy5"]
+resource_local_to_scene = true
+size = Vector2(1152, 23)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rxoy5"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1e75"]
+resource_local_to_scene = true
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ijm"]
+size = Vector2(96, 24)
+
+[node name="MainDebugScene" type="Node2D"]
+
+[node name="FireElementModel" parent="." instance=ExtResource("2_b3syt")]
+position = Vector2(616, 624)
+
+[node name="PlatformBase" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(547, 597)
+
+[node name="Texture" parent="PlatformBase" index="0"]
+texture = SubResource("CompressedTexture2D_qp6k1")
+
+[node name="Collider" parent="PlatformBase" index="1"]
+position = Vector2(29, 38.5)
+shape = SubResource("RectangleShape2D_rxoy5")
+
+[node name="ColorRect" parent="PlatformBase" index="2"]
+offset_left = -547.0
+offset_top = 27.0
+offset_right = 605.0
+
+[node name="PlatformBase2" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(360, 592)
+
+[node name="Texture" parent="PlatformBase2" index="0"]
+texture = SubResource("CompressedTexture2D_rxoy5")
+
+[node name="Collider" parent="PlatformBase2" index="1"]
+shape = SubResource("RectangleShape2D_m1e75")
+
+[node name="DestructionSystem" parent="PlatformBase2" index="3"]
+Durability = 3
+
+[node name="DamageOnContactTrigger" type="Area2D" parent="PlatformBase2/DestructionSystem" index="0"]
+script = ExtResource("3_b3syt")
+metadata/_custom_type_script = "uid://cj4pw8bvx6au0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBase2/DestructionSystem/DamageOnContactTrigger"]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_l0ijm")
+
+[editable path="PlatformBase"]
+[editable path="PlatformBase2"]

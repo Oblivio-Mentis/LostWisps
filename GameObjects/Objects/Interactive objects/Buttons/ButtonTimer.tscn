@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlm8duj2g1vdx"]
 
-[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platfom.jpg" id="1_5eokw"]
+[ext_resource type="Texture2D" uid="uid://dxcqqs2xenxxp" path="res://Sprites/platform.jpg" id="1_5eokw"]
 [ext_resource type="Script" uid="uid://dwfghmeckuiox" path="res://Scripts/Objects/Interactive objects/Buttons/ButtonTimer.cs" id="1_d1dk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msdqy"]

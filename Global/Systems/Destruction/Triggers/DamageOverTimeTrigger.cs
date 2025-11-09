@@ -1,4 +1,5 @@
 using Godot;
+using LostWisps.Debug;
 using System.Collections.Generic;
 
 namespace LostWisps.Global.Destruction.Triggers
@@ -12,9 +13,16 @@ namespace LostWisps.Global.Destruction.Triggers
         private HashSet<Node> bodiesInside = new HashSet<Node>();
         private Timer nextDamageTimer;
 
+<<<<<<< Updated upstream
         public override void _Ready()
         {
             BodyEntered += OnBodyEntered;
+=======
+		public override void _Ready()
+		{
+			BodyEntered += OnBodyEntered;
+			BodyExited += OnBodyExited;
+>>>>>>> Stashed changes
 
             nextDamageTimer = new Timer();
             nextDamageTimer.OneShot = true;
@@ -23,6 +31,7 @@ namespace LostWisps.Global.Destruction.Triggers
             AddChild(nextDamageTimer);
         }
 
+<<<<<<< Updated upstream
         private void OnBodyEntered(Node body)
         {
             if ((body is CharacterBody2D || body is RigidBody2D) && !bodiesInside.Contains(body))
@@ -56,4 +65,43 @@ namespace LostWisps.Global.Destruction.Triggers
             system?.TakeDamage(damageAmount);
         }
     }
+=======
+		private void OnBodyEntered(Node body)
+		{
+			if ((body is CharacterBody2D || body is RigidBody2D) && !bodiesInside.Contains(body))
+			{
+				bodiesInside.Add(body);
+				if (nextDamageTimer.IsStopped())
+				{
+					nextDamageTimer.Start();
+				}
+			}
+		}
+
+		private void OnBodyExited(Node body)
+		{
+			if (bodiesInside.Remove(body) && bodiesInside.Count == 0)
+			{
+				nextDamageTimer.Stop();
+			}
+		}
+
+		private void OnDamageTimerCompleted()
+		{
+			if (bodiesInside.Count > 0)
+			{
+				Activate();
+				nextDamageTimer.Start();
+			}
+		}
+
+		public void Activate()
+		{
+			var system = GetParent<DestructionSystem>();
+			system?.TakeDamage(damageAmount);
+
+			Logger.Log(LogCategory.Destruction, $"Damage taken {damageAmount}. Current durability {system.currentDurability + 1}");
+		}
+	}
+>>>>>>> Stashed changes
 }

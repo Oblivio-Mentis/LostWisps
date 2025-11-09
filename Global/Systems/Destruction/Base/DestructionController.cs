@@ -18,41 +18,14 @@ namespace LostWisps.Global.Destruction
         public DestructionType Type { get; set; }
     }
 
-    [GlobalClass]
-    public partial class DestructionManager : Node
+    public partial class DestructionController : Node
     {
-        private static DestructionManager instance;
-
-        public static DestructionManager Instance => instance;
-
         private List<DestructionSystem> systems = new List<DestructionSystem>();
-
-        public override void _EnterTree()
-        {
-            if (instance == null)
-            {
-                instance = this;
-                AddToGroup("singleton");
-            }
-            else
-            {
-                QueueFree();
-            }
-        }
-
-        public void Register(DestructionSystem system)
-        {
-            systems.Add(system);
-        }
 
         public void TriggerDestruction(DestructionSystem system, DestructionType type = DestructionType.Damage)
         {
             var parent = system.GetParent();
-            if (parent != null)
-            {
-                parent.QueueFree();
-            }
-
+            parent?.QueueFree();
             OnDestructionOccurred(new DestructionEventArgs { Target = system, Type = type });
         }
 
