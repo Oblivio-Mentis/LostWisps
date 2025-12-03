@@ -83,26 +83,26 @@ namespace LostWisps.Player
 			MoveAndSlide();
 
 			if (frameInput.X != 0)
-				skeletonContainer.Scale = new Vector2(-frameInput.X * 0.6f, 0.6f);
+				skeletonContainer.Scale = new Vector2(-frameInput.X * 0.5f, 0.5f);
 
 			HandleForces();
 		}
 
 		private void HandleForces()
 		{
-		  for (int i = 0; i < GetSlideCollisionCount(); i++)
-		  {
-			var collision = GetSlideCollision(i);
-			if (collision.GetCollider() is RigidBody2D body)
+			for (int i = 0; i < GetSlideCollisionCount(); i++)
 			{
+				var collision = GetSlideCollision(i);
+				if (collision.GetCollider() is RigidBody2D body)
+				{
 
-			  Vector2 pushDirection = -collision.GetNormal();
+					Vector2 pushDirection = -collision.GetNormal();
 
-			  float scaledForce = 1f;
+					float scaledForce = 1f;
 
-			  body.ApplyCentralImpulse(pushDirection * scaledForce);
+					body.ApplyCentralImpulse(pushDirection * scaledForce);
+				}
 			}
-		  }
 		}
 
 		public override void _Process(double delta)
@@ -153,10 +153,10 @@ namespace LostWisps.Player
 				return;
 
 			if (currentAnimationState != newAnimationState)
-			{
+            {
 				animationNodeStateMachinePlayback.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
-			}
+            }
 		}
 
 		public Vector2 GetSlopeUpDirection()

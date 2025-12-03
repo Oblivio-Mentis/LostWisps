@@ -28,6 +28,6 @@ public partial class LiquidArea : Area2D
 
 	protected virtual void OnPlayerDied(CharacterBody2D characterBody2D)
 	{
-		 //characterBody2D.QueueFree(); 
+		characterBody2D.QueueFree(); 
 	}
 }

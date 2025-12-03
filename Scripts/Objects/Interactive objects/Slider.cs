@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace LostWisps.Object
 {
+    [Tool]
     public partial class Slider : Line2D
     {
         [Export] public float InitialValue { get; set; } = 0.0f;
@@ -24,6 +25,24 @@ namespace LostWisps.Object
             CalculateAxisAndLength();
             SetMarkerToInitialPosition();
             ValidateTargetNodes();
+
+            SetProcess(true);
+        }
+
+        public override void _Process(double delta)
+        {
+            if (Engine.IsEditorHint())
+            {
+                InitializeMarkerAndTrack();
+                ValidateTrackPoints();
+                CalculateAxisAndLength();
+                SetMarkerToInitialPosition();
+            }
+            else
+            {
+                SetProcess(false);
+                ApplyInitialValue();
+            }
         }
 
         public override void _PhysicsProcess(double delta)
@@ -37,6 +56,14 @@ namespace LostWisps.Object
             }
         }
 
+        private void ApplyInitialValue()
+        {
+            float clampedValue = Mathf.Clamp(InitialValue, -1f, 1f);
+            foreach (var node in TargetNodes)
+                if (node is Synchronizer<float> syncFloat)
+                    syncFloat.SetInstantValue(clampedValue);
+        }
+
         private void InitializeMarkerAndTrack()
         {
             marker ??= GetNode<RigidBody2D>("Marker");
@@ -46,7 +73,7 @@ namespace LostWisps.Object
         {
             if (Points.Length < 2)
             {
-                GD.PushError("Track должен содержать минимум две точки.");
+                Logger.Error(LogCategory.Interaction, "Track должен содержать минимум две точки.", this);
                 return;
             }
 
@@ -80,7 +107,6 @@ namespace LostWisps.Object
                 if (node is null)
                 {
                     Logger.Warn(LogCategory.Interaction, "Найден null в массиве TargetNodes.", this);
-                    // GD.PushWarning($"[{nameof(Slider)}] Найден null в массиве TargetNodes.");
                     continue;
                 }
 
@@ -88,7 +114,6 @@ namespace LostWisps.Object
                 {
                     string nodePath = node.GetPath();
                     Logger.Warn(LogCategory.Interaction, $"Узел '{nodePath}' не реализует интерфейс {nameof(IValueReceiver)} и будет проигнорирован.", this);
-                    // GD.PushWarning($"[{nameof(Slider)}] Узел '{nodePath}' не реализует интерфейс {nameof(IValueReceiver)} и будет проигнорирован.");
                 }
             }
         }

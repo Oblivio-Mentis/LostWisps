@@ -80,7 +80,7 @@ namespace LostWisps.Object
                 if (TargetNodes[i] != null)
                 {
                     Vector2 delta = (currentPathPos - initialPosition) * (CurrentDirection == PathDirectionType.Backward ? -1f : 1f);
-                    Vector2 targetPosition = offsets[i] + initialPosition + delta;
+                    Vector2 targetPosition = currentPathPos + offsets[i];
                     TargetNodes[i].GlobalPosition = targetPosition;
                 }
             }
@@ -93,13 +93,15 @@ namespace LostWisps.Object
         {
             value = Mathf.Clamp(value, -1f, 1f);
 
+            float progress = Mathf.Remap(value, -1f, 1f, 0f, 1f);
+
             if (!PingPong)
             {
                 bool newForward = value >= 0;
                 SetDirectionWithAnimation(newForward ? PathDirectionType.Forward : PathDirectionType.Backward);
             }
 
-            return Mathf.Abs(value);
+            return progress;
         }
 
         public void SetDirectionWithAnimation(PathDirectionType newDirection)

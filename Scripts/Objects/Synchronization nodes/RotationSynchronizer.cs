@@ -57,8 +57,12 @@ namespace LostWisps.Object
         public override float ValueToTarget(float normalizedValue) =>
             normalizedValue * TargetAngle * directionMultiplier;
 
-        public override float ValueToTargetDirect(float value) =>
-            value * TargetAngle * directionMultiplier;
+        public override float ValueToTargetDirect(float value)
+        {
+            value = Mathf.Clamp(value, -1f, 1f);
+            float progress = Mathf.Remap(value, -1f, 1f, 0f, 1f);
+            return progress * TargetAngle * directionMultiplier;               
+        }
 
         protected override void UpdateConstant(float delta)
         {

@@ -204,6 +204,17 @@ namespace LostWisps.Object
             isAnimating = false;
         }
 
+        public void SetInstantValue(float value)
+        {
+            if (PingPong) return;
+
+            value = Mathf.Clamp(value, -1f, 1f);
+            current = ValueToTargetDirect(value);
+            target = current;
+            ApplyCurrentValue();
+            isAnimating = false;
+        }
+
         public void Activate()
         {
             
