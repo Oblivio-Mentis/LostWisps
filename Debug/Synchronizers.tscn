@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://2em65p3que07"]
+[gd_scene load_steps=7 format=3 uid="uid://2em65p3que07"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_iblps"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="2_1nofn"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_6ja55"]
+[ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="3_1nofn"]
+[ext_resource type="Script" uid="uid://brcvuaff5jqgx" path="res://Global/Controllers/CameraController.cs" id="3_jedkq"]
+
+[sub_resource type="Curve2D" id="Curve2D_jedkq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 288, 0)
+}
+point_count = 2
 
 [node name="Synchronizers" type="Node2D"]
+
+[node name="RotationSynchronizer" type="Node" parent="."]
+
+[node name="InteractiveObjects" type="Node" parent="RotationSynchronizer"]
+
+[node name="Slider" parent="RotationSynchronizer/InteractiveObjects" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("2_1nofn")]
+position = Vector2(352, 512)
+points = PackedVector2Array(-176, 0, 112, 0)
+TargetNodes = [NodePath("../../Synchronizers/PositionSynchronizer")]
+
+[node name="Synchronizers" type="Node" parent="RotationSynchronizer"]
+
+[node name="PositionSynchronizer" parent="RotationSynchronizer/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_1nofn")]
+position = Vector2(176, 544)
+curve = SubResource("Curve2D_jedkq")
+TargetNodes = [NodePath("../../Objects/PlatformBase2")]
+
+[node name="Objects" type="Node" parent="RotationSynchronizer"]
+
+[node name="PlatformBase2" parent="RotationSynchronizer/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(176, 544)
+scale = Vector2(1, 0.2)
+
+[node name="GlobalObjects" type="Node" parent="."]
+
+[node name="FireElementModel" parent="GlobalObjects" instance=ExtResource("2_6ja55")]
+position = Vector2(352, 528)
+
+[node name="Camera2D" type="Camera2D" parent="GlobalObjects/FireElementModel"]
+position_smoothing_enabled = true
+script = ExtResource("3_jedkq")
+
+[node name="PlatformBase" parent="." instance=ExtResource("1_iblps")]
+position = Vector2(472, 656)
+scale = Vector2(38.96, 0.12)

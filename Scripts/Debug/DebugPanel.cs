@@ -87,7 +87,7 @@ namespace LostWisps.Debug
                 btn.Pressed += () =>
                 {
                     GetTree().ChangeSceneToFile(scenePath);
-                    Logger.Error(LogCategory.UI, $"Переход на уровень: {scenePath}", this);
+                    Logger.Log(LogCategory.UI, $"Load level: {scenePath}", this);
                     HidePanel();
                 };
 

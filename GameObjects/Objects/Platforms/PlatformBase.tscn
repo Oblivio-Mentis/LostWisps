@@ -14,7 +14,6 @@ size = Vector2(100, 100)
 [node name="PlatformBase" type="AnimatableBody2D"]
 
 [node name="Texture" type="Sprite2D" parent="."]
-visible = false
 texture_repeat = 2
 texture = SubResource("CompressedTexture2D_7uhu1")
 region_enabled = true
@@ -26,6 +25,7 @@ script = ExtResource("1_m8756")
 shape = SubResource("RectangleShape2D_m8756")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -50.0
 offset_top = -50.0
 offset_right = 50.0

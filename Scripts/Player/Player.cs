@@ -90,28 +90,19 @@ namespace LostWisps.Player
 
 		private void HandleForces()
 		{
-			// const float pushAngleThreshold = 0.2f;
-			// const float maxPushForce = 500f;
+			for (int i = 0; i < GetSlideCollisionCount(); i++)
+			{
+				var collision = GetSlideCollision(i);
+				if (collision.GetCollider() is RigidBody2D body)
+				{
 
-			// for (int i = 0; i < GetSlideCollisionCount(); i++)
-			// {
-			// 	var collision = GetSlideCollision(i);
-			// 	if (collision.GetCollider() is RigidBody2D body)
-			// 	{
-			// 		Vector2 pushDirection = -collision.GetNormal();
-			// 		Vector2 playerDirection = Velocity.Length() > 0.1f ? Velocity.Normalized() : Vector2.Zero;
+					Vector2 pushDirection = -collision.GetNormal();
 
-			// 		float dot = pushDirection.Dot(playerDirection);
+					float scaledForce = 1f;
 
-			// 		if (dot > pushAngleThreshold)
-			// 		{
-			// 			float rawPushForce = (PlayerStats.PushForce * Velocity.Length() / Stats.MaxSpeed) + Stats.MinPushForce;
-			// 			float finalPushForce = Mathf.Min(maxPushForce, rawPushForce);
-
-			// 			body.ApplyCentralForce(pushDirection * finalPushForce);
-			// 		}
-			// 	}
-			// }
+					body.ApplyCentralImpulse(pushDirection * scaledForce);
+				}
+			}
 		}
 
 		public override void _Process(double delta)

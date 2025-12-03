@@ -35,7 +35,16 @@ namespace LostWisps.Debug
             }
 
             _panel = _panelScene.Instantiate<DebugPanel>();
-            GetTree().Root.AddChild(_panel);
+
+            var uiLayer = GetTree().Root.GetNodeOrNull<CanvasLayer>("DebugUI");
+            if (uiLayer == null)
+            {
+                uiLayer = new CanvasLayer { Name = "DebugUI", Layer = 1000 };
+                GetTree().Root.AddChild(uiLayer);
+            }
+
+            uiLayer.AddChild(_panel);
+
             _panel.Owner = null;
         }
     }

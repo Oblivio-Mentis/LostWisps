@@ -1,72 +1,314 @@
-[gd_scene load_steps=10 format=3 uid="uid://xdwpuk4lolx5"]
+[gd_scene load_steps=26 format=3 uid="uid://xdwpuk4lolx5"]
 
 [ext_resource type="Script" uid="uid://brcvuaff5jqgx" path="res://Global/Controllers/CameraController.cs" id="1_qp6k1"]
 [ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_r02vk"]
 [ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_b3syt"]
-[ext_resource type="Script" uid="uid://cj4pw8bvx6au0" path="res://Global/Systems/Destruction/Triggers/DamageOverTimeTrigger.cs" id="3_b3syt"]
+[ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="5_m1e75"]
+[ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="5_rxoy5"]
+[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://GameObjects/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="6_m1e75"]
+[ext_resource type="PackedScene" uid="uid://bmbcqkvgim4sg" path="res://GameObjects/Objects/Interactive objects/Lever.tscn" id="6_nmkm8"]
+[ext_resource type="Script" uid="uid://cb7mvlpjpun7b" path="res://Global/Systems/Destruction/Triggers/ContactTrigger.cs" id="7_21528"]
+[ext_resource type="PackedScene" uid="uid://b2w4w7djofmja" path="res://GameObjects/Objects/Fluids/Water.tscn" id="8_mihdn"]
+[ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://GameObjects/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="8_ylmho"]
+[ext_resource type="PackedScene" uid="uid://bxsftmno0nvmi" path="res://GameObjects/Objects/Spawners/LightRayEmitter2D.tscn" id="11_mihdn"]
+[ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="12_ys5ct"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp6k1"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l0ijm"]
 resource_local_to_scene = true
 load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxoy5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmkm8"]
 resource_local_to_scene = true
-size = Vector2(1152, 23)
+size = Vector2(264, 6.5)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rxoy5"]
+[sub_resource type="Curve2D" id="Curve2D_ylmho"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 408, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_21528"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_21528"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -8, 14.3, 3.3, -14.3, -3.3, -224, -16, 29.7, 12.1, -29.7, -12.1, -312, -40, 30.8, 33, -30.8, -33, -376, -88, 1.1, 9.9, -1.1, -9.9, -392, -144, 0, 0, 0, 0, -392, -184)
+}
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_mihdn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys5ct"]
+size = Vector2(264, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m0js"]
+size = Vector2(272, 33.9999)
+
+[sub_resource type="Curve2D" id="Curve2D_mihdn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, -8)
+}
+point_count = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ys5ct"]
 resource_local_to_scene = true
 load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1e75"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfd0e"]
 resource_local_to_scene = true
 size = Vector2(100, 100)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ijm"]
-size = Vector2(96, 24)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0m0js"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0oxt"]
+resource_local_to_scene = true
+size = Vector2(100, 100)
 
 [node name="MainDebugScene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-script = ExtResource("1_qp6k1")
-
 [node name="FireElementModel" parent="." instance=ExtResource("2_b3syt")]
-position = Vector2(616, 624)
+position = Vector2(-2520, 376)
+
+[node name="Camera2D" type="Camera2D" parent="FireElementModel"]
+position = Vector2(-48, -192)
+script = ExtResource("1_qp6k1")
+zoomSpeed = 2.0
 
 [node name="PlatformBase" parent="." instance=ExtResource("1_r02vk")]
-position = Vector2(547, 597)
-
-[node name="Texture" parent="PlatformBase" index="0"]
-texture = SubResource("CompressedTexture2D_qp6k1")
-
-[node name="Collider" parent="PlatformBase" index="1"]
-position = Vector2(29, 38.5)
-shape = SubResource("RectangleShape2D_rxoy5")
-
-[node name="ColorRect" parent="PlatformBase" index="2"]
-offset_left = -547.0
-offset_top = 27.0
-offset_right = 605.0
+position = Vector2(616, 696)
+scale = Vector2(62.36, 1)
 
 [node name="PlatformBase2" parent="." instance=ExtResource("1_r02vk")]
-position = Vector2(360, 592)
+position = Vector2(104, 656)
 
-[node name="Texture" parent="PlatformBase2" index="0"]
-texture = SubResource("CompressedTexture2D_rxoy5")
+[node name="PlatformBase3" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(600, 576)
+scale = Vector2(2.92, 2.92)
 
-[node name="Collider" parent="PlatformBase2" index="1"]
-shape = SubResource("RectangleShape2D_m1e75")
+[node name="PlatformBase4" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-492, 580)
 
-[node name="DestructionSystem" parent="PlatformBase2" index="3"]
-Durability = 3
+[node name="Texture" parent="PlatformBase4" index="0"]
+position = Vector2(-20, -4.00001)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
 
-[node name="DamageOnContactTrigger" type="Area2D" parent="PlatformBase2/DestructionSystem" index="0"]
-script = ExtResource("3_b3syt")
-metadata/_custom_type_script = "uid://cj4pw8bvx6au0"
+[node name="Collider" parent="PlatformBase4" index="1"]
+position = Vector2(-20, -4)
+shape = SubResource("RectangleShape2D_nmkm8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBase2/DestructionSystem/DamageOnContactTrigger"]
-position = Vector2(0, -60)
-shape = SubResource("RectangleShape2D_l0ijm")
+[node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
+position = Vector2(-512, 576)
+curve = SubResource("Curve2D_ylmho")
+Speed = 0.3
+PingPong = true
+EasingCurve = SubResource("Curve_21528")
+TargetNodes = [NodePath("../PlatformBase4")]
 
-[editable path="PlatformBase"]
-[editable path="PlatformBase2"]
+[node name="ButtonTimer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_m1e75")]
+position = Vector2(88, 608)
+TargetNodes = [NodePath("../PositionSynchronizer")]
+
+[node name="PlatformBase5" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-696, 624)
+
+[node name="PositionSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
+position = Vector2(-888, 576)
+curve = SubResource("Curve2D_21528")
+Speed = 0.3
+EasingCurve = SubResource("Curve_mihdn")
+TargetNodes = [NodePath("../PlatformBase6")]
+
+[node name="PlatformBase6" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-864, 576)
+
+[node name="Texture" parent="PlatformBase6" index="0"]
+position = Vector2(-20, -4.00001)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase6" index="1"]
+position = Vector2(-20, -4)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="Lever" parent="PlatformBase6" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_nmkm8")]
+position = Vector2(-24, -16)
+TargetNodes = [NodePath("../../PositionSynchronizer2")]
+
+[node name="PlatformBase7" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-2864, 568)
+scale = Vector2(16.92, 3.64)
+
+[node name="PlatformBase8" parent="." groups=["LightReflectors"] instance=ExtResource("1_r02vk")]
+position = Vector2(-2952, 248)
+rotation = 1.57079
+
+[node name="Texture" parent="PlatformBase8" index="0"]
+position = Vector2(5.72205e-06, 3.67165e-05)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase8" index="1"]
+position = Vector2(5.72205e-06, 4.43459e-05)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="PlatformBase10" parent="." groups=["LightReflectors"] instance=ExtResource("1_r02vk")]
+position = Vector2(-2512, 16)
+
+[node name="Texture" parent="PlatformBase10" index="0"]
+position = Vector2(-3.62396e-05, 2.38419e-06)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase10" index="1"]
+position = Vector2(-3.62396e-05, 2.38419e-06)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="PlatformBase11" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-2832, -80)
+rotation = 1.57079
+collision_layer = 4
+
+[node name="Texture" parent="PlatformBase11" index="0"]
+position = Vector2(0, 3.67165e-05)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase11" index="1"]
+position = Vector2(-23.9999, -12.7502)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="PlatformBase9" parent="." groups=["LightReflectors"] instance=ExtResource("1_r02vk")]
+position = Vector2(-3088, 120)
+rotation = 3.14159
+
+[node name="Texture" parent="PlatformBase9" index="0"]
+position = Vector2(-1.71661e-05, -2.86102e-06)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase9" index="1"]
+position = Vector2(-1.71661e-05, -2.6226e-06)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="PlatformBase13" parent="." groups=["LightReflectors"] instance=ExtResource("1_r02vk")]
+position = Vector2(-1864, 400)
+rotation = -1.77701e-05
+
+[node name="Texture" parent="PlatformBase13" index="0"]
+position = Vector2(-1.71661e-05, -2.86102e-06)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase13" index="1"]
+position = Vector2(-1.71661e-05, -2.6226e-06)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="DestructionSystem" parent="PlatformBase13" index="3"]
+DestroyDelay = 1.5
+
+[node name="ContactTrigger" type="Area2D" parent="PlatformBase13/DestructionSystem" index="0"]
+script = ExtResource("7_21528")
+metadata/_custom_type_script = "uid://cb7mvlpjpun7b"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBase13/DestructionSystem/ContactTrigger"]
+position = Vector2(4, -7.00012)
+shape = SubResource("RectangleShape2D_ys5ct")
+
+[node name="Water" parent="." instance=ExtResource("8_mihdn")]
+position = Vector2(-2288, 727.994)
+scale = Vector2(72.9199, 3.04)
+
+[node name="PlatformBase12" parent="." groups=["LightReflectors"] instance=ExtResource("1_r02vk")]
+position = Vector2(-1560, 400)
+
+[node name="Texture" parent="PlatformBase12" index="0"]
+position = Vector2(-1.71661e-05, -2.86102e-06)
+scale = Vector2(2.64, 0.24)
+texture = SubResource("CompressedTexture2D_l0ijm")
+
+[node name="Collider" parent="PlatformBase12" index="1"]
+position = Vector2(-1.71661e-05, -2.6226e-06)
+shape = SubResource("RectangleShape2D_nmkm8")
+
+[node name="DestructionSystem" parent="PlatformBase12" index="3"]
+DestroyDelay = 1.5
+
+[node name="ContactTrigger" type="Area2D" parent="PlatformBase12/DestructionSystem" index="0"]
+script = ExtResource("7_21528")
+metadata/_custom_type_script = "uid://cb7mvlpjpun7b"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBase12/DestructionSystem/ContactTrigger"]
+position = Vector2(-0.00012207, -7.00003)
+shape = SubResource("RectangleShape2D_0m0js")
+
+[node name="OrbitSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("8_ylmho")]
+position = Vector2(-2956, 120)
+Speed = 360.0
+TargetNodes = [NodePath("../PlatformBase9"), NodePath("../PlatformBase11"), NodePath("../PlatformBase10"), NodePath("../PlatformBase8")]
+
+[node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_rxoy5")]
+position = Vector2(-2600, 360)
+points = PackedVector2Array(-56, 0, 216, 0)
+InitialValue = 1.0
+TargetNodes = [NodePath("../RotationSynchronizer")]
+
+[node name="LightRayEmitter2D" parent="." instance=ExtResource("11_mihdn")]
+position = Vector2(-2864, 376)
+rotation = -2.09439
+
+[node name="PositionSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
+position = Vector2(-2192, 48)
+curve = SubResource("Curve2D_mihdn")
+TargetNodes = [NodePath("../PlatformBase14")]
+
+[node name="PlatformBase14" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-1936, 56)
+
+[node name="Texture" parent="PlatformBase14" index="0"]
+texture = SubResource("CompressedTexture2D_ys5ct")
+
+[node name="Collider" parent="PlatformBase14" index="1"]
+shape = SubResource("RectangleShape2D_nfd0e")
+
+[node name="ColorRect" parent="PlatformBase14" index="2"]
+visible = true
+
+[node name="ButtonTimer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_m1e75")]
+position = Vector2(-2336, 384)
+TargetNodes = [NodePath("../PositionSynchronizer3")]
+
+[node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_ys5ct")]
+position = Vector2(-2496, 232)
+TargetAngle = 45.0
+RotationDirection = 0
+Speed = 45.0
+TargetNodes = [NodePath("../PlatformBase15")]
+
+[node name="PlatformBase15" parent="." instance=ExtResource("1_r02vk")]
+position = Vector2(-2496, 232)
+
+[node name="Texture" parent="PlatformBase15" index="0"]
+texture = SubResource("CompressedTexture2D_0m0js")
+
+[node name="Collider" parent="PlatformBase15" index="1"]
+shape = SubResource("RectangleShape2D_f0oxt")
+
+[node name="ColorRect" parent="PlatformBase15" index="2"]
+visible = true
+
+[editable path="PlatformBase4"]
+[editable path="PlatformBase6"]
+[editable path="PlatformBase8"]
+[editable path="PlatformBase10"]
+[editable path="PlatformBase11"]
+[editable path="PlatformBase9"]
+[editable path="PlatformBase13"]
+[editable path="PlatformBase12"]
+[editable path="PlatformBase14"]
+[editable path="PlatformBase15"]
