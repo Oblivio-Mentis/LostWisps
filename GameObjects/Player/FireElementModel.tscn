@@ -3279,7 +3279,7 @@ rest = Transform2D(0.685458, -0.728112, 0.728112, 0.685458, 20.9421, -29.0935)
 [node name="REar_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head"]
 position = Vector2(2, -22)
 rotation = -0.0871702
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(0.999992, 0.999992)
 rest = Transform2D(0.996203, -0.0870598, 0.0870598, 0.996203, 2, -22)
 
 [node name="REar_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head/REar_1"]
@@ -3295,13 +3295,13 @@ rest = Transform2D(0.971066, 0.238809, -0.238809, 0.971066, 0, 0)
 [node name="Tail_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1"]
 position = Vector2(21.4109, -17.623)
 rotation = -0.34821
-scale = Vector2(1, 1)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.939985, -0.341216, 0.341216, 0.939985, 21.4109, -17.623)
 
 [node name="Tail_3" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1/Tail_2"]
 position = Vector2(-5.95622, -28.8014)
 rotation = 0.0607085
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.998158, 0.0606713, -0.0606713, 0.998158, -5.95622, -28.8014)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
