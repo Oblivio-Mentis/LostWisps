@@ -14,7 +14,6 @@ namespace LostWisps.Player
 
 		public override void PhysicsUpdate(double delta)
 		{
-
 			player.MovementController.ApplyMovement(0, delta);
 		}
 
@@ -27,7 +26,7 @@ namespace LostWisps.Player
 				return;
 			}
 
-			if (player.KeyJump)
+			if (player.KeyJumpPressed)
 			{
 				player.ChangeState(new JumpState(player));
 				return;

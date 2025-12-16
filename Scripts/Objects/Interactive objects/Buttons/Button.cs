@@ -1,63 +1,55 @@
 #nullable enable
 
 using Godot;
-using System;
-using System.Collections.Generic;
 
 namespace LostWisps.Object
 {
+    [Tool]
     public partial class Button : BaseSynchronizer
     {
+        // === Экспортируемые параметры ===
+
+        [Export] bool OneShot { get; set; } = false;
+
+        // === Приватные поля ===
+
         private AnimationPlayer? animationPlayer;
-        private HashSet<Node2D> activeBodies = new HashSet<Node2D>();
         private bool isActivated = false;
+
+        // === Жизненный цикл ===
 
         public override void _Ready()
         {
             base._Ready();
-
             animationPlayer ??= GetNode<AnimationPlayer>("AnimationPlayer");
-
-            if (TargetNodes == null || TargetNodes.Length == 0)
-                return;
         }
 
-        private void OnBodyEntered(Node2D body)
+        // === Внутренняя логика активации ===
+        
+        private void Activate()
         {
-            if (!CanInteract(body))
-                return;
+            if (isActivated) return;
 
-            activeBodies.Add(body);
+            isActivated = true;
 
-            if (!isActivated)
-            {
-                isActivated = true;
-                animationPlayer?.Play("Toggle");
-                
-                foreach (var node in TargetNodes)
-                {
-                    if (node is IActivatable activatable)
-                    {
-                        activatable.Activate();
-                    }
-                }
-            }
+            ActivateTargetNodes();
         }
 
-        private void OnBodyExited(Node2D body)
+        private void OnInteractiveBodyEntered()
         {
-            activeBodies.Remove(body);
+            animationPlayer?.Play("Toggle");
+            Activate();
+        }
 
-            if (activeBodies.Count == 0)
+        // === События коллайдера ===
+
+        private void OnAllInteractiveBodiesExited()
+        {
+            if (!OneShot)
             {
                 isActivated = false;
                 animationPlayer?.PlayBackwards("Toggle");
             }
-        }
-
-        private bool CanInteract(Node2D body)
-        {
-            return body is CharacterBody2D || body is RigidBody2D;
         }
     }
 }

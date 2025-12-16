@@ -1,15 +1,24 @@
-[gd_scene load_steps=43 format=3 uid="uid://crdwbgsml408k"]
+[gd_scene load_steps=44 format=3 uid="uid://crdwbgsml408k"]
 
 [ext_resource type="Texture2D" uid="uid://mx0pwkl7x10a" path="res://Sprites/Assets/Models/FireElement/model_0008_right_ear.png" id="1_sa4dq"]
 [ext_resource type="Script" uid="uid://xyheqb3uyl17" path="res://Scripts/Player/Player.cs" id="1_tgrj2"]
 [ext_resource type="Texture2D" uid="uid://dqdjhmfukvclb" path="res://Sprites/Assets/Models/FireElement/model_0007_head.png" id="2_52dhm"]
-[ext_resource type="Resource" uid="uid://72vnhgbl44x2" path="res://Global/Player/PlayerStats.tres" id="2_prufq"]
+[ext_resource type="Script" uid="uid://dfo5dnoijp327" path="res://Scripts/Player/States/Base/PlayerStats.cs" id="2_so34e"]
 [ext_resource type="Texture2D" uid="uid://3pkaf81by6w3" path="res://Sprites/Assets/Models/FireElement/model_0002_left_front_leg.png" id="3_52dhm"]
 [ext_resource type="Texture2D" uid="uid://dg5hh3gh0xnjx" path="res://Sprites/Assets/Models/FireElement/model_0004_tail.png" id="3_aiytu"]
 [ext_resource type="Shader" uid="uid://5i00poan7tpf" path="res://Shaders/FireElementModel.gdshader" id="4_52dhm"]
 [ext_resource type="Texture2D" uid="uid://dve4vij4m7i7g" path="res://Sprites/Assets/Models/FireElement/model_0003_body.png" id="4_tgrj2"]
 [ext_resource type="Texture2D" uid="uid://dcuewpvucjx0o" path="res://Sprites/Assets/Models/FireElement/model_0000_left_ear.png" id="5_prufq"]
 [ext_resource type="Script" uid="uid://c1ua080mvnwtn" path="res://Scripts/Player/States/Base/MovementController.cs" id="10_prufq"]
+
+[sub_resource type="Resource" id="Resource_txdrn"]
+script = ExtResource("2_so34e")
+FallGravity = 1500.0
+FallVelocity = 500.0
+WalkVelocity = 200.0
+WalkDeceleration = 1000.0
+JumpVelocity = -600.0
+JumpDeceleration = 1500.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_52dhm"]
 shader = ExtResource("4_52dhm")
@@ -3048,9 +3057,9 @@ states/walk/position = Vector2(369, 314)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_dlryd"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_sxkax"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_7slgi"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_0crf3"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_rvgq0"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_w3yav"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_wwjlp"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_8gynd"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_mfhyl"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_5pcw1"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_f124h")]
 graph_offset = Vector2(-131, 59)
 
-[node name="FireElementModel" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "CoyoteTimer", "animationTree", "skeletonContainer", "MovementController")]
+[node name="FireElementModel" type="CharacterBody2D" node_paths=PackedStringArray("JumpBuffer", "CoyoteTimer", "animationTree", "skeletonContainer", "MovementController") groups=["InteractiveObject"]]
 script = ExtResource("1_tgrj2")
-PlayerStats = ExtResource("2_prufq")
+PlayerStats = SubResource("Resource_txdrn")
 JumpBuffer = NodePath("Timers/JumpBuffer")
 CoyoteTimer = NodePath("Timers/CoyoteTimer")
 animationTree = NodePath("AnimationTree")
@@ -3285,23 +3294,32 @@ rest = Transform2D(0.996203, -0.0870598, 0.0870598, 0.996203, 2, -22)
 [node name="REar_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Back/Neck/Head/REar_1"]
 position = Vector2(13.3088, -25.9398)
 rotation = 0.0199638
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.999801, 0.0199625, -0.0199625, 0.999801, 13.3088, -25.9398)
 
 [node name="Tail_1" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip"]
 rotation = 0.24114
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.971066, 0.238809, -0.238809, 0.971066, 0, 0)
 
 [node name="Tail_2" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1"]
 position = Vector2(21.4109, -17.623)
 rotation = -0.34821
+<<<<<<< Updated upstream
 scale = Vector2(0.999998, 0.999998)
+=======
+scale = Vector2(0.999995, 0.999995)
+>>>>>>> Stashed changes
 rest = Transform2D(0.939985, -0.341216, 0.341216, 0.939985, 21.4109, -17.623)
 
 [node name="Tail_3" type="Bone2D" parent="SkeletonContainer/Skeleton2D/Hip/Tail_1/Tail_2"]
 position = Vector2(-5.95622, -28.8014)
 rotation = 0.0607085
+<<<<<<< Updated upstream
 scale = Vector2(0.999997, 0.999997)
+=======
+scale = Vector2(0.99999, 0.99999)
+>>>>>>> Stashed changes
 rest = Transform2D(0.998158, 0.0606713, -0.0606713, 0.998158, -5.95622, -28.8014)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

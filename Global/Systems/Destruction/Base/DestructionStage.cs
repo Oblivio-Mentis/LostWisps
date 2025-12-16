@@ -12,7 +12,6 @@ namespace LostWisps.Global.Destruction
 
         public void Apply(Node target)
         {
-            GD.Print(target is Sprite2D && Texture != null);
             if (target is Sprite2D spriteNode && Texture != null)
             {
                 spriteNode.Texture = Texture;

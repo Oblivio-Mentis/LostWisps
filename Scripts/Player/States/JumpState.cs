@@ -24,7 +24,7 @@ namespace LostWisps.Player
 
 		public override void Update(double delta)
 		{
-			if (player.KeyJumpReleased || player.Velocity.Y >= 0)
+			if (player.KeyJumpReleased || player.MovementController.Velocity.Y >= 0f)
 			{
 				player.ChangeState(new FallState(player));
 				return;

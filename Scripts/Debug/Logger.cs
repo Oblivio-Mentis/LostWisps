@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LostWisps.Debug
 {
@@ -17,45 +18,55 @@ namespace LostWisps.Debug
 
     public static class Logger
     {
-        private static readonly Dictionary<LogCategory, bool> _enabledCategories = new()
-        {
-            { LogCategory.Player, true },
-            { LogCategory.Synchronizer, true },
-            { LogCategory.Destruction, true },
-            { LogCategory.Interaction, true },
-            { LogCategory.Raycast, true },
-            { LogCategory.UI, true },
-            { LogCategory.General, true }
-        };
-
+        private static readonly Dictionary<LogCategory, bool> _enabledCategories = new();
         private static readonly bool _isEnabled = OS.IsDebugBuild() || Engine.IsEditorHint();
+
+        public static void InitializeFromProjectSettings()
+        {
+            var projectSettings = ProjectSettings.Singleton;
+            _enabledCategories.Clear();
+
+            foreach (LogCategory category in Enum.GetValues<LogCategory>())
+            {
+                string key = LostWisps.Global.GlobalConstants.DebugSettings.SETTING_LOG_BASE_KEY + category.ToString().ToLower();
+                bool enabled = projectSettings.HasSetting(key)
+                             ? projectSettings.GetSetting(key).As<bool>()
+                             : true;
+
+                _enabledCategories[category] = enabled;
+            }
+        }
 
         public static void SetCategoryEnabled(LogCategory category, bool enabled)
         {
-            if (_enabledCategories.ContainsKey(category))
-                _enabledCategories[category] = enabled;
+            _enabledCategories[category] = enabled;
         }
 
         public static bool IsCategoryEnabled(LogCategory category)
         {
-            return _isEnabled && _enabledCategories.GetValueOrDefault(category, false);
+            // Ленивая инициализация: если словарь пуст — загружаем настройки
+            if (_enabledCategories.Count == 0)
+            {
+                InitializeFromProjectSettings();
+            }
+            return _isEnabled && _enabledCategories.GetValueOrDefault(category, true);
         }
 
         public static void Log(LogCategory category, string message, Node context = null)
         {
-            if (!_isEnabled || !IsCategoryEnabled(category)) return;
+            if (!IsCategoryEnabled(category)) return;
             GD.Print(FormatMessage(category, message, context));
         }
 
         public static void Warn(LogCategory category, string message, Node context = null)
         {
-            if (!_isEnabled || !IsCategoryEnabled(category)) return;
+            if (!IsCategoryEnabled(category)) return;
             GD.PushWarning(FormatMessage(category, message, context));
         }
 
         public static void Error(LogCategory category, string message, Node context = null)
         {
-            if (!_isEnabled) return;
+            // Ошибки всегда выводим, даже если категория отключена
             GD.PushError(FormatMessage(category, message, context));
         }
 
@@ -65,8 +76,8 @@ namespace LostWisps.Debug
 
             if (context != null && context.IsInsideTree())
             {
-                string sceneName = context.SceneFilePath != "" 
-                    ? System.IO.Path.GetFileNameWithoutExtension(context.SceneFilePath) 
+                string sceneName = !string.IsNullOrEmpty(context.SceneFilePath)
+                    ? Path.GetFileNameWithoutExtension(context.SceneFilePath)
                     : "UnknownScene";
                 string nodeName = context.Name;
                 prefix += $" [{sceneName}/{nodeName}]";

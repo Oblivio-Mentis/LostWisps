@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=69 format=3 uid="uid://ctglfvwiqb0pu"]
+=======
+[gd_scene load_steps=69 format=3 uid="uid://js1ilssu2t6a"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://y0qaqtnfax5v" path="res://Astronomical library/Levels/Templates/lvl1.drawio.png" id="1_jvttk"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="6_gbjom"]
@@ -251,6 +255,7 @@ position = Vector2(532, 406)
 scale = Vector2(0.987303, 0.987303)
 texture = ExtResource("1_jvttk")
 
+<<<<<<< Updated upstream
 [node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_0r3l5")]
 position = Vector2(942, 895)
 TargetNodes = [NodePath("../PositionSynchronizer2"), NodePath("../PositionSynchronizer3")]
@@ -294,6 +299,41 @@ texture = SubResource("CompressedTexture2D_eybc1")
 position = Vector2(-5, 6.5)
 shape = SubResource("RectangleShape2D_gbjom")
 
+=======
+[node name="PlatformBase" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(480, 607)
+
+[node name="Texture" parent="PlatformBase" index="0"]
+visible = false
+position = Vector2(4.5, 7.5)
+scale = Vector2(2.07, 0.39)
+texture = SubResource("CompressedTexture2D_0r3l5")
+
+[node name="Collider" parent="PlatformBase" index="1"]
+position = Vector2(5, 7.5)
+shape = SubResource("RectangleShape2D_8a4xe")
+
+[node name="ColorRect" parent="PlatformBase" index="2"]
+visible = true
+offset_left = -99.0
+offset_top = -12.0
+offset_right = 109.0
+offset_bottom = 27.0
+
+[node name="PlatformBase2" parent="." instance=ExtResource("8_5g3xa")]
+position = Vector2(653, 705)
+
+[node name="Texture" parent="PlatformBase2" index="0"]
+visible = false
+position = Vector2(-5, 6.5)
+scale = Vector2(1.78, 0.39)
+texture = SubResource("CompressedTexture2D_eybc1")
+
+[node name="Collider" parent="PlatformBase2" index="1"]
+position = Vector2(-5, 6.5)
+shape = SubResource("RectangleShape2D_gbjom")
+
+>>>>>>> Stashed changes
 [node name="ColorRect" parent="PlatformBase2" index="2"]
 visible = true
 offset_left = -95.0
@@ -617,7 +657,11 @@ offset_left = -1166.0
 offset_right = 1576.0
 
 [node name="Water" parent="." instance=ExtResource("9_4jrj1")]
+<<<<<<< Updated upstream
 position = Vector2(214, 226)
+=======
+position = Vector2(215, 219)
+>>>>>>> Stashed changes
 rotation = 3.14159
 scale = Vector2(2.83164, -0.234379)
 
@@ -689,45 +733,89 @@ shape = SubResource("RectangleShape2D_10d03")
 position = Vector2(-0.146552, 4.19359)
 scale = Vector2(0.710126, 1)
 
+<<<<<<< Updated upstream
 [node name="FireElementModel" parent="." instance=ExtResource("9_2ukrb")]
 position = Vector2(379, 330)
+=======
+[node name="Button" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_0r3l5")]
+position = Vector2(942, 895)
+TargetNodes = [null, null]
+
+[node name="FireElementModel" parent="." instance=ExtResource("9_2ukrb")]
+position = Vector2(1696, 1033)
+
+[node name="Camera2D" type="Camera2D" parent="FireElementModel"]
+position = Vector2(4, -11)
+script = ExtResource("7_kybfn")
+zoomSpeed = 2.0
+minZoom = -1.0
+maxZoom = 10.0
+>>>>>>> Stashed changes
 
 [node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
 position = Vector2(945, 194)
 points = PackedVector2Array(-614, -1, 610, -1)
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../PositionSynchronizer")]
+=======
+TargetNodes = [null]
+>>>>>>> Stashed changes
 
 [node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(194, 294)
 curve = SubResource("Curve2D_5g3xa")
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../PlatformBase10")]
+=======
+TargetNodes = [null]
+>>>>>>> Stashed changes
 
 [node name="Slider2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
 position = Vector2(352, 344)
 points = PackedVector2Array(-119, 0, 117, 0)
 InitialValue = -1.0
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../RotationSynchronizer2")]
+=======
+TargetNodes = [null]
+>>>>>>> Stashed changes
 
 [node name="PositionSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(99, 116)
 curve = SubResource("Curve2D_2ukrb")
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../PlatformBase11")]
+=======
+TargetNodes = [null]
+>>>>>>> Stashed changes
 
 [node name="Slider3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_gbjom")]
 position = Vector2(1505, 1073)
 points = PackedVector2Array(150, -14, -125, -14)
 InitialValue = -1.0
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../RotationSynchronizer")]
+=======
+TargetNodes = [null]
+>>>>>>> Stashed changes
 
 [node name="PositionSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("11_v6d5c")]
 position = Vector2(1788, 959)
 curve = SubResource("Curve2D_b210h")
+<<<<<<< Updated upstream
 TargetNodes = [NodePath("../PlatformBase12")]
 
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
 position = Vector2(99, 555)
 Speed = 90.0
 TargetNodes = [NodePath("../PlatformBase20"), NodePath("../LightRayEmitter2D")]
+=======
+TargetNodes = [null]
+
+[node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
+position = Vector2(99, 555)
+TargetNodes = [null, null]
+>>>>>>> Stashed changes
 
 [node name="PlatformBase20" parent="." groups=["LightReflectors"] instance=ExtResource("8_5g3xa")]
 position = Vector2(99, 555)
@@ -769,8 +857,12 @@ color = Color(0, 0.690196, 0.894118, 0.392157)
 
 [node name="RotationSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_lvhc0")]
 position = Vector2(1788, 554)
+<<<<<<< Updated upstream
 Speed = 90.0
 TargetNodes = [NodePath("../PlatformBase21"), NodePath("../LightRayEmitter2D2")]
+=======
+TargetNodes = [null, null]
+>>>>>>> Stashed changes
 
 [node name="PlatformBase22" parent="." groups=["LightReflectors"] instance=ExtResource("8_5g3xa")]
 position = Vector2(1885, 410)
@@ -829,10 +921,19 @@ shape = SubResource("RectangleShape2D_21tia")
 [node name="LightRayEmitter2D" parent="." instance=ExtResource("11_ojx3k")]
 position = Vector2(1788, 1060)
 rotation = -1.57113
+<<<<<<< Updated upstream
 
 [node name="LightRayEmitter2D2" parent="." instance=ExtResource("11_ojx3k")]
 position = Vector2(98, 23)
 rotation = 1.56536
+=======
+LineWidth = 10.5
+
+[node name="LightRayEmitter2D2" parent="." instance=ExtResource("11_ojx3k")]
+position = Vector2(96, 24)
+rotation = 1.56536
+LineWidth = 10.0
+>>>>>>> Stashed changes
 
 [editable path="PlatformBase"]
 [editable path="PlatformBase2"]

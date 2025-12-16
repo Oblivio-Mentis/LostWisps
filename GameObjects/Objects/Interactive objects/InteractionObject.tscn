@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://sqy6nwk6jnfa" path="res://Sprites/icon.svg" id="1_rd3vv"]
 
 [node name="InteractionObject" type="RigidBody2D"]
+mass = 0.1
 gravity_scale = 0.5
 can_sleep = false
+lock_rotation = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-19, -16, -16, -19, 16, -19, 19, -16, 19, 16, 16, 19, -16, 19, -19, 16)

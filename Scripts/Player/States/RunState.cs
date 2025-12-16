@@ -27,13 +27,13 @@ namespace LostWisps.Player
 				return;
 			}
 
-			if (player.KeyJump || player.JumpBuffer.TimeLeft > 0)
+			if (player.KeyJumpPressed)
 			{
 				player.ChangeState(new JumpState(player));
 				return;
 			}
 
-			if (player.frameInput == Vector2.Zero)
+			if (player.frameInput == Vector2.Zero && player.MovementController.Velocity == Vector2.Zero)
 			{
 				player.ChangeState(new IdleState(player));
 				return;

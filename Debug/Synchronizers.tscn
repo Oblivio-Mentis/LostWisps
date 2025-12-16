@@ -1,50 +1,440 @@
-[gd_scene load_steps=7 format=3 uid="uid://2em65p3que07"]
+[gd_scene load_steps=30 format=3 uid="uid://b7085wyo2x5kv"]
 
 [ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_iblps"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="2_1nofn"]
 [ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_6ja55"]
 [ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="3_1nofn"]
 [ext_resource type="Script" uid="uid://brcvuaff5jqgx" path="res://Global/Controllers/CameraController.cs" id="3_jedkq"]
+[ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="3_toblf"]
+[ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="7_toblf"]
+[ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://GameObjects/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="8_c36my"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iblps"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ja55"]
+resource_local_to_scene = true
+size = Vector2(8192, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_jedkq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 288, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -128, 0, 0, 0, 0, 0, 128, 0)
 }
 point_count = 2
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nofn"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toblf"]
+resource_local_to_scene = true
+size = Vector2(100, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c36my"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ychls"]
+resource_local_to_scene = true
+size = Vector2(100, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ht5ta"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jg3w1"]
+resource_local_to_scene = true
+size = Vector2(100, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_1nofn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_toblf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ychls"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht5ta"]
+resource_local_to_scene = true
+size = Vector2(100, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jg3w1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2dxy"]
+resource_local_to_scene = true
+size = Vector2(16, 112)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vr8nt"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw3dc"]
+resource_local_to_scene = true
+size = Vector2(16, 112)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kn0ae"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enkpo"]
+resource_local_to_scene = true
+size = Vector2(112, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dqihm"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m2lo"]
+resource_local_to_scene = true
+size = Vector2(112, 16)
+
 [node name="Synchronizers" type="Node2D"]
 
-[node name="RotationSynchronizer" type="Node" parent="."]
+[node name="Test" type="Node" parent="."]
 
-[node name="InteractiveObjects" type="Node" parent="RotationSynchronizer"]
+[node name="Synchronizers" type="Node" parent="Test"]
 
-[node name="Slider" parent="RotationSynchronizer/InteractiveObjects" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("2_1nofn")]
-position = Vector2(352, 512)
-points = PackedVector2Array(-176, 0, 112, 0)
-TargetNodes = [NodePath("../../Synchronizers/PositionSynchronizer")]
+[node name="Objects" type="Node" parent="Test"]
 
-[node name="Synchronizers" type="Node" parent="RotationSynchronizer"]
+[node name="Interactive" type="Node" parent="Test"]
 
-[node name="PositionSynchronizer" parent="RotationSynchronizer/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_1nofn")]
-position = Vector2(176, 544)
-curve = SubResource("Curve2D_jedkq")
-TargetNodes = [NodePath("../../Objects/PlatformBase2")]
+[node name="Objects" type="Node" parent="."]
 
-[node name="Objects" type="Node" parent="RotationSynchronizer"]
+[node name="PlatformBase" parent="Objects" instance=ExtResource("1_iblps")]
 
-[node name="PlatformBase2" parent="RotationSynchronizer/Objects" instance=ExtResource("1_iblps")]
-position = Vector2(176, 544)
-scale = Vector2(1, 0.2)
+[node name="Texture" parent="Objects/PlatformBase" index="0"]
+position = Vector2(0.000274658, 0)
+scale = Vector2(81.92, 0.16)
+texture = SubResource("CompressedTexture2D_iblps")
 
-[node name="GlobalObjects" type="Node" parent="."]
+[node name="Collider" parent="Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_6ja55")
 
-[node name="FireElementModel" parent="GlobalObjects" instance=ExtResource("2_6ja55")]
-position = Vector2(352, 528)
+[node name="FireElementModel" parent="." instance=ExtResource("2_6ja55")]
+position = Vector2(1224, -32)
 
-[node name="Camera2D" type="Camera2D" parent="GlobalObjects/FireElementModel"]
-position_smoothing_enabled = true
+[node name="Camera2D" type="Camera2D" parent="FireElementModel"]
 script = ExtResource("3_jedkq")
 
-[node name="PlatformBase" parent="." instance=ExtResource("1_iblps")]
-position = Vector2(472, 656)
-scale = Vector2(38.96, 0.12)
+[node name="TestPosition1" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestPosition1"]
+
+[node name="PositionSynchronizer" parent="TestPosition1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_1nofn")]
+position = Vector2(-384, -128)
+curve = SubResource("Curve2D_jedkq")
+TargetNodes = [null, null, null]
+
+[node name="Objects" type="Node" parent="TestPosition1"]
+
+[node name="PlatformBase" parent="TestPosition1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(-512, -144)
+
+[node name="Texture" parent="TestPosition1/Objects/PlatformBase" index="0"]
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(1, 0.16)
+texture = SubResource("CompressedTexture2D_1nofn")
+
+[node name="Collider" parent="TestPosition1/Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_toblf")
+
+[node name="PlatformBase2" parent="TestPosition1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(-384, -128)
+
+[node name="Texture" parent="TestPosition1/Objects/PlatformBase2" index="0"]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1, 0.16)
+texture = SubResource("CompressedTexture2D_c36my")
+
+[node name="Collider" parent="TestPosition1/Objects/PlatformBase2" index="1"]
+shape = SubResource("RectangleShape2D_ychls")
+
+[node name="PlatformBase3" parent="TestPosition1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(-256, -112)
+
+[node name="Texture" parent="TestPosition1/Objects/PlatformBase3" index="0"]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1, 0.16)
+texture = SubResource("CompressedTexture2D_ht5ta")
+
+[node name="Collider" parent="TestPosition1/Objects/PlatformBase3" index="1"]
+shape = SubResource("RectangleShape2D_jg3w1")
+
+[node name="Interactive" type="Node" parent="TestPosition1"]
+
+[node name="Slider" parent="TestPosition1/Interactive" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("2_1nofn")]
+position = Vector2(-384, -24)
+points = PackedVector2Array(-128, 0, 128, 0)
+TargetNodes = [null]
+
+[node name="Decription" type="Node" parent="TestPosition1"]
+
+[node name="Label" type="Label" parent="TestPosition1/Decription"]
+offset_left = -520.0
+offset_top = -72.0
+offset_right = -252.0
+offset_bottom = -49.0
+text = "Тест Position synchronizer и Slider"
+
+[node name="TestPosition2" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestPosition2"]
+
+[node name="PositionSynchronizer2" parent="TestPosition2/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_1nofn")]
+position = Vector2(-960, -128)
+curve = SubResource("Curve2D_1nofn")
+IsPingPong = true
+IsLooped = true
+EasingCurve = SubResource("Curve_toblf")
+IsAlwaysActive = true
+TargetNodes = [null]
+
+[node name="Objects" type="Node" parent="TestPosition2"]
+
+[node name="PlatformBase" parent="TestPosition2/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(-960, -128)
+
+[node name="Texture" parent="TestPosition2/Objects/PlatformBase" index="0"]
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(1, 0.16)
+texture = SubResource("CompressedTexture2D_ychls")
+
+[node name="Collider" parent="TestPosition2/Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_ht5ta")
+
+[node name="Interactive" type="Node" parent="TestPosition2"]
+
+[node name="Description" type="Node" parent="TestPosition2"]
+
+[node name="Label" type="Label" parent="TestPosition2/Description"]
+offset_left = -1008.0
+offset_top = -72.0
+offset_right = -603.0
+offset_bottom = -49.0
+text = "Тест Position synchronizer и Движений \"Ping pong\""
+
+[node name="TestRotation1" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestRotation1"]
+
+[node name="RotationSynchronizer" parent="TestRotation1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(192, -128)
+TargetAngle = 360.0
+AnimationSpeed = 30.0
+IsConstant = true
+TargetNodes = [null]
+
+[node name="RotationSynchronizer2" parent="TestRotation1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(320, -128)
+TargetAngle = 360.0
+RotationDirection = 0
+AnimationSpeed = 30.0
+IsConstant = true
+TargetNodes = [null]
+
+[node name="Objects" type="Node" parent="TestRotation1"]
+
+[node name="PlatformBase" parent="TestRotation1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(192, -128)
+rotation = 3.67398
+scale = Vector2(0.799999, 0.799999)
+
+[node name="PlatformBase2" parent="TestRotation1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(320, -128)
+rotation = 8.89225
+scale = Vector2(0.8, 0.8)
+
+[node name="Interactive" type="Node" parent="TestRotation1"]
+
+[node name="Description" type="Node" parent="TestRotation1"]
+
+[node name="Label" type="Label" parent="TestRotation1/Description"]
+offset_left = 96.0
+offset_top = -80.0
+offset_right = 424.0
+offset_bottom = -31.0
+text = "Тест Rotation synchronizer 
+и постоянного движения в обе стороны"
+horizontal_alignment = 1
+
+[node name="TestRotation2" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestRotation2"]
+
+[node name="RotationSynchronizer" parent="TestRotation2/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(576, -128)
+TargetAngle = 45.0
+AnimationSpeed = 30.0
+IsAdditive = true
+TargetNodes = [null]
+
+[node name="RotationSynchronizer2" parent="TestRotation2/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(704, -128)
+TargetAngle = 45.0
+RotationDirection = 0
+AnimationSpeed = 30.0
+IsAdditive = true
+TargetNodes = [null]
+
+[node name="RotationSynchronizer3" parent="TestRotation2/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(576, -128)
+TargetAngle = 45.0
+RotationDirection = 0
+AnimationSpeed = 30.0
+IsAdditive = true
+TargetNodes = [null]
+
+[node name="RotationSynchronizer4" parent="TestRotation2/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(704, -128)
+TargetAngle = 45.0
+AnimationSpeed = 30.0
+IsAdditive = true
+TargetNodes = [null]
+
+[node name="Objects" type="Node" parent="TestRotation2"]
+
+[node name="PlatformBase" parent="TestRotation2/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(576, -128)
+scale = Vector2(0.800002, 0.800002)
+
+[node name="PlatformBase2" parent="TestRotation2/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(704, -128)
+scale = Vector2(0.800002, 0.800002)
+
+[node name="Interactive" type="Node" parent="TestRotation2"]
+
+[node name="Button" parent="TestRotation2/Interactive" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("7_toblf")]
+position = Vector2(576, -8)
+TargetNodes = [null, null]
+
+[node name="Button2" parent="TestRotation2/Interactive" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("7_toblf")]
+position = Vector2(704, -8)
+TargetNodes = [null, null]
+
+[node name="Description" type="Node" parent="TestRotation2"]
+
+[node name="Label" type="Label" parent="TestRotation2/Description"]
+offset_left = 536.0
+offset_top = -80.0
+offset_right = 750.0
+offset_bottom = -31.0
+text = "Тест Rotation synchronizer 
+и управления активацией"
+
+[node name="TestRotation3" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestRotation3"]
+
+[node name="RotationSynchronizer" parent="TestRotation3/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(960, -128)
+AnimationSpeed = 30.0
+TargetNodes = [null]
+
+[node name="Objects" type="Node" parent="TestRotation3"]
+
+[node name="PlatformBase" parent="TestRotation3/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(960, -128)
+
+[node name="Interactive" type="Node" parent="TestRotation3"]
+
+[node name="Slider" parent="TestRotation3/Interactive" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("2_1nofn")]
+position = Vector2(960, -24)
+points = PackedVector2Array(-128, 0, 128, 0)
+TargetNodes = [null]
+
+[node name="Description" type="Node" parent="TestRotation3"]
+
+[node name="Label" type="Label" parent="TestRotation3/Description"]
+offset_left = 856.0
+offset_top = -72.0
+offset_right = 1069.0
+offset_bottom = -23.0
+text = "Тест Rotation synchronizer 
+и Slider"
+
+[node name="TestOrbit1" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestOrbit1"]
+
+[node name="OrbitSynchronizer" parent="TestOrbit1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("8_c36my")]
+position = Vector2(1344, -128)
+AnimationSpeed = 30.0
+IsPingPong = true
+IsLooped = true
+IsActiveOnStart = true
+TargetNodes = [null, null, null, null]
+
+[node name="Objects" type="Node" parent="TestOrbit1"]
+
+[node name="PlatformBase" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(1311.03, -182.856)
+
+[node name="Texture" parent="TestOrbit1/Objects/PlatformBase" index="0"]
+position = Vector2(-7.62939e-06, 4.05312e-06)
+scale = Vector2(0.16, 1.12)
+texture = SubResource("CompressedTexture2D_jg3w1")
+
+[node name="Collider" parent="TestOrbit1/Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_l2dxy")
+
+[node name="PlatformBase2" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(1376.97, -73.1441)
+
+[node name="Texture" parent="TestOrbit1/Objects/PlatformBase2" index="0"]
+position = Vector2(-7.62939e-06, -4.05312e-06)
+scale = Vector2(0.16, 1.12)
+texture = SubResource("CompressedTexture2D_vr8nt")
+
+[node name="Collider" parent="TestOrbit1/Objects/PlatformBase2" index="1"]
+shape = SubResource("RectangleShape2D_yw3dc")
+
+[node name="PlatformBase3" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(1398.86, -160.965)
+
+[node name="Texture" parent="TestOrbit1/Objects/PlatformBase3" index="0"]
+position = Vector2(-5.26905e-05, -1.90735e-06)
+scale = Vector2(1.12, 0.16)
+texture = SubResource("CompressedTexture2D_kn0ae")
+
+[node name="Collider" parent="TestOrbit1/Objects/PlatformBase3" index="1"]
+shape = SubResource("RectangleShape2D_enkpo")
+
+[node name="PlatformBase4" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
+position = Vector2(1289.14, -95.0352)
+
+[node name="Texture" parent="TestOrbit1/Objects/PlatformBase4" index="0"]
+position = Vector2(1.21593e-05, 0)
+scale = Vector2(1.12, 0.16)
+texture = SubResource("CompressedTexture2D_dqihm")
+
+[node name="Collider" parent="TestOrbit1/Objects/PlatformBase4" index="1"]
+shape = SubResource("RectangleShape2D_1m2lo")
+
+[node name="Interactive" type="Node" parent="TestOrbit1"]
+
+[node name="TestRotation5" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestRotation5"]
+
+[node name="Objects" type="Node" parent="TestRotation5"]
+
+[node name="Interactive" type="Node" parent="TestRotation5"]
+
+[editable path="Objects/PlatformBase"]
+[editable path="TestPosition1/Objects/PlatformBase"]
+[editable path="TestPosition1/Objects/PlatformBase2"]
+[editable path="TestPosition1/Objects/PlatformBase3"]
+[editable path="TestPosition2/Objects/PlatformBase"]
+[editable path="TestOrbit1/Objects/PlatformBase"]
+[editable path="TestOrbit1/Objects/PlatformBase2"]
+[editable path="TestOrbit1/Objects/PlatformBase3"]
+[editable path="TestOrbit1/Objects/PlatformBase4"]

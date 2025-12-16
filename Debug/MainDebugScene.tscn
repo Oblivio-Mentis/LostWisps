@@ -105,14 +105,12 @@ shape = SubResource("RectangleShape2D_nmkm8")
 [node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
 position = Vector2(-512, 576)
 curve = SubResource("Curve2D_ylmho")
-Speed = 0.3
-PingPong = true
 EasingCurve = SubResource("Curve_21528")
-TargetNodes = [NodePath("../PlatformBase4")]
+TargetNodes = [null]
 
 [node name="ButtonTimer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_m1e75")]
 position = Vector2(88, 608)
-TargetNodes = [NodePath("../PositionSynchronizer")]
+TargetNodes = [null]
 
 [node name="PlatformBase5" parent="." instance=ExtResource("1_r02vk")]
 position = Vector2(-696, 624)
@@ -120,9 +118,8 @@ position = Vector2(-696, 624)
 [node name="PositionSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
 position = Vector2(-888, 576)
 curve = SubResource("Curve2D_21528")
-Speed = 0.3
 EasingCurve = SubResource("Curve_mihdn")
-TargetNodes = [NodePath("../PlatformBase6")]
+TargetNodes = [null]
 
 [node name="PlatformBase6" parent="." instance=ExtResource("1_r02vk")]
 position = Vector2(-864, 576)
@@ -249,14 +246,13 @@ shape = SubResource("RectangleShape2D_0m0js")
 
 [node name="OrbitSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("8_ylmho")]
 position = Vector2(-2956, 120)
-Speed = 360.0
-TargetNodes = [NodePath("../PlatformBase9"), NodePath("../PlatformBase11"), NodePath("../PlatformBase10"), NodePath("../PlatformBase8")]
+TargetNodes = [null, null, null, null]
 
 [node name="Slider" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_rxoy5")]
 position = Vector2(-2600, 360)
 points = PackedVector2Array(-56, 0, 216, 0)
 InitialValue = 1.0
-TargetNodes = [NodePath("../RotationSynchronizer")]
+TargetNodes = [null]
 
 [node name="LightRayEmitter2D" parent="." instance=ExtResource("11_mihdn")]
 position = Vector2(-2864, 376)
@@ -265,7 +261,7 @@ rotation = -2.09439
 [node name="PositionSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_m1e75")]
 position = Vector2(-2192, 48)
 curve = SubResource("Curve2D_mihdn")
-TargetNodes = [NodePath("../PlatformBase14")]
+TargetNodes = [null]
 
 [node name="PlatformBase14" parent="." instance=ExtResource("1_r02vk")]
 position = Vector2(-1936, 56)
@@ -281,14 +277,13 @@ visible = true
 
 [node name="ButtonTimer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_m1e75")]
 position = Vector2(-2336, 384)
-TargetNodes = [NodePath("../PositionSynchronizer3")]
+TargetNodes = [null]
 
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_ys5ct")]
 position = Vector2(-2496, 232)
 TargetAngle = 45.0
 RotationDirection = 0
-Speed = 45.0
-TargetNodes = [NodePath("../PlatformBase15")]
+TargetNodes = [null]
 
 [node name="PlatformBase15" parent="." instance=ExtResource("1_r02vk")]
 position = Vector2(-2496, 232)

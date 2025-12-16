@@ -95,12 +95,16 @@ namespace LostWisps.Player
 				var collision = GetSlideCollision(i);
 				if (collision.GetCollider() is RigidBody2D body)
 				{
+					Vector2 normal = collision.GetNormal();
 
-					Vector2 pushDirection = -collision.GetNormal();
+					if (Math.Abs(normal.Y) < 0.1f)
+					{
+						Vector2 pushDirection = -normal;
 
-					float scaledForce = 1f;
+						float pushForce = 1.0f;
 
-					body.ApplyCentralImpulse(pushDirection * scaledForce);
+						body.ApplyCentralImpulse(pushDirection * pushForce);
+					}
 				}
 			}
 		}

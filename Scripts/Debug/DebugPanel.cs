@@ -19,7 +19,7 @@ namespace LostWisps.Debug
             LevelsGroup = GetNode<VBoxContainer>("PanelContainer/MarginContainer/VBoxContainer/LevelsGroup");
 
             AddLevelButtons();
-            AddLogCategoryCheckboxes();
+            //AddLogCategoryCheckboxes();
         }
 
         private void AddLogCategoryCheckboxes()

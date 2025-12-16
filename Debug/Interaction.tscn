@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdhrgf860gw1n"]
+
+[ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_sdyeg"]
+[ext_resource type="PackedScene" uid="uid://crdwbgsml408k" path="res://GameObjects/Player/FireElementModel.tscn" id="2_qqjp0"]
+[ext_resource type="Script" uid="uid://brcvuaff5jqgx" path="res://Global/Controllers/CameraController.cs" id="3_cp6om"]
+[ext_resource type="PackedScene" uid="uid://bn68ts0vx4yn5" path="res://GameObjects/Objects/Synchronization nodes/PositionSynchronizer.tscn" id="4_qh801"]
+[ext_resource type="PackedScene" uid="uid://dlm8duj2g1vdx" path="res://GameObjects/Objects/Interactive objects/Buttons/ButtonTimer.tscn" id="5_lah1h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_772dr"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj2u1"]
+resource_local_to_scene = true
+size = Vector2(8192, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_7jk0x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uj2u1"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PlatformPrototype.png-3b42c7f52623fe15e7c0321c9a95648a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jk0x"]
+resource_local_to_scene = true
+size = Vector2(256, 16)
+
+[node name="Interaction" type="Node2D"]
+
+[node name="Test" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="Test"]
+
+[node name="Objects" type="Node" parent="Test"]
+
+[node name="Interactive" type="Node" parent="Test"]
+
+[node name="Description" type="Node" parent="Test"]
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="PlatformBase" parent="Objects" instance=ExtResource("1_sdyeg")]
+
+[node name="Texture" parent="Objects/PlatformBase" index="0"]
+position = Vector2(0.000274658, 0)
+scale = Vector2(81.92, 0.16)
+texture = SubResource("CompressedTexture2D_772dr")
+
+[node name="Collider" parent="Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_uj2u1")
+
+[node name="FireElementModel" parent="." instance=ExtResource("2_qqjp0")]
+position = Vector2(-192, -104)
+
+[node name="Camera2D" type="Camera2D" parent="FireElementModel"]
+script = ExtResource("3_cp6om")
+
+[node name="TestButtonTimer1" type="Node" parent="."]
+
+[node name="Synchronizers" type="Node" parent="TestButtonTimer1"]
+
+[node name="PositionSynchronizer" parent="TestButtonTimer1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("4_qh801")]
+position = Vector2(-192, 0)
+curve = SubResource("Curve2D_7jk0x")
+IsActiveOnStart = true
+TargetNodes = [null]
+
+[node name="Objects" type="Node" parent="TestButtonTimer1"]
+
+[node name="PlatformBase" parent="TestButtonTimer1/Objects" instance=ExtResource("1_sdyeg")]
+position = Vector2(-192, -64)
+
+[node name="Texture" parent="TestButtonTimer1/Objects/PlatformBase" index="0"]
+position = Vector2(1.90735e-05, -1.90735e-06)
+scale = Vector2(2.56, 0.16)
+texture = SubResource("CompressedTexture2D_uj2u1")
+
+[node name="Collider" parent="TestButtonTimer1/Objects/PlatformBase" index="1"]
+shape = SubResource("RectangleShape2D_7jk0x")
+
+[node name="ButtonTimer" parent="TestButtonTimer1/Objects/PlatformBase" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_lah1h")]
+position = Vector2(0, -8)
+Inverse = true
+TargetNodes = [null]
+
+[node name="Interactive" type="Node" parent="TestButtonTimer1"]
+
+[node name="Description" type="Node" parent="TestButtonTimer1"]
+
+[editable path="Objects/PlatformBase"]
+[editable path="TestButtonTimer1/Objects/PlatformBase"]

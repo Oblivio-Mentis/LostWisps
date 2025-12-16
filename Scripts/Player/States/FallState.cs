@@ -23,12 +23,12 @@ namespace LostWisps.Player
 			HandleJumpBuffer();
 
 			player.MovementController.ApplyMovement(player.frameInput.X, delta);
-			player.MovementController.ApplyFallGravity(delta, false);
+			player.MovementController.ApplyFallGravity(delta);
 		}
 
 		public override void Update(double delta)
 		{
-			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0f)
+			if (player.IsOnFloor() && player.JumpBuffer.TimeLeft > 0.7f)
 			{
 				player.ChangeState(new JumpState(player));
 				return;

@@ -1,91 +1,78 @@
 #nullable enable
 
 using Godot;
-using System;
-using System.Collections.Generic;
 
 namespace LostWisps.Object
 {
+    [Tool]
     public partial class ButtonTimer : BaseSynchronizer
     {
         [Export] public float ReleaseDelay = 0f;
 
+        [Export] public bool Inverse = false;
+
         private AnimationPlayer? animationPlayer;
         private Timer? timer;
 
-        private HashSet<Node2D> activeBodies = new HashSet<Node2D>();
         private bool isActivated = false;
 
         public override void _Ready()
         {
             base._Ready();
 
-            animationPlayer ??= GetNode<AnimationPlayer>("AnimationPlayer");
+            animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+            timer = GetNode<Timer>("ReleaseDelayTimer");
 
-            timer ??= GetNode<Timer>("ReleaseDelayTimer");
-
-            if (TargetNodes == null || TargetNodes.Length == 0)
-                return;
-        }
-
-        private void OnBodyEntered(Node2D body)
-        {
-            if (!CanInteract(body))
-                return;
-
-            activeBodies.Add(body);
-
-            if (!isActivated)
+            if (timer != null)
             {
-                isActivated = true;
-                timer?.Stop();
-                animationPlayer?.Play("Toggle");
-
-                foreach (var node in TargetNodes)
-                {
-                    if (node is IActivatable activatable)
-                    {
-                        activatable.Activate();
-                    }
-                }
+                timer.OneShot = true;
+                timer.Timeout += TimerTimeout;
             }
         }
 
-        private void OnBodyExited(Node2D body)
+        private void Activate()
         {
-            activeBodies.Remove(body);
+            if (isActivated) return;
 
-            if (activeBodies.Count == 0)
+            isActivated = true;
+            timer?.Stop();
+
+            ActivateTargetNodes();
+        }
+
+        private void Deactivate()
+        {
+            if (!isActivated) return;
+
+            isActivated = false;
+            timer?.Stop();
+
+            DeactivateTargetNodes();
+        }
+
+        public void OnInteractiveBodyEntered()
+        {
+            animationPlayer?.Play("Toggle");
+            if (Inverse) Deactivate(); else Activate();
+        }
+
+        public void OnAllInteractiveBodiesExited()
+        {
+            if (ReleaseDelay <= 0f)
             {
-                if (ReleaseDelay <= 0)
-                {
-                    TimerTimeout();
-                }
-                else
-                {
-                    timer?.Start(ReleaseDelay);
-                }
+                animationPlayer?.PlayBackwards("Toggle");
+                if (Inverse) Activate(); else Deactivate();
+            }
+            else
+            {
+                timer?.Start(ReleaseDelay);
             }
         }
 
         private void TimerTimeout()
         {
-            isActivated = false;
-            timer?.Stop();
             animationPlayer?.PlayBackwards("Toggle");
-
-            foreach (var node in TargetNodes)
-            {
-                if (node is IActivatable activatable)
-                {
-                    activatable.Deactivate();
-                }
-            }
-        }
-
-        private bool CanInteract(Node2D body)
-        {
-            return body is CharacterBody2D || body is RigidBody2D;
+            if (Inverse) Activate(); else Deactivate();
         }
     }
 }

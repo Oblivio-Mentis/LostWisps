@@ -94,10 +94,8 @@ namespace LostWisps.Object
                     animationDuration = CalculateAnimationDuration(startValue, endValue);
                     isAnimating = true;
                 }
-                else
-                {
-                    return;
-                }
+
+                return;
             }
 
             animationStartTime += delta;
@@ -114,7 +112,7 @@ namespace LostWisps.Object
             {
                 current = endValue;
                 isAnimating = false;
-
+                
                 if (!IsAlwaysActive)
                 {
                     if (!_manuallyDeactivated)
@@ -181,6 +179,8 @@ namespace LostWisps.Object
         protected virtual float GetEasedProgress(float t) =>
             EasingCurve?.SampleBaked(Mathf.Clamp(t, 0f, 1f)) ?? t;
 
+        protected abstract void SetInitialOffsets();
+
         protected abstract void ApplyCurrentValue();
 
         public abstract T Lerp(T from, T to, float t);
@@ -200,8 +200,17 @@ namespace LostWisps.Object
 
             value = Mathf.Clamp(value, -1f, 1f);
             _activatable.Activate();
+
             target = ValueToTargetDirect(value);
-            isAnimating = false;
+
+            if (!IsAdditive)
+            {
+                startValue = current;
+                endValue = target;
+                animationStartTime = 0f;
+                animationDuration = CalculateAnimationDuration(startValue, endValue);
+                isAnimating = true;
+            }
         }
 
         public void SetInstantValue(float value)
@@ -211,6 +220,7 @@ namespace LostWisps.Object
             value = Mathf.Clamp(value, -1f, 1f);
             current = ValueToTargetDirect(value);
             target = current;
+            SetInitialOffsets();
             ApplyCurrentValue();
             isAnimating = false;
         }

@@ -4,5 +4,3 @@
 
 [node name="RotationSynchronizer" type="Node2D"]
 script = ExtResource("1_wc4rt")
-Speed = 5.0
-IsAlwaysActive = true

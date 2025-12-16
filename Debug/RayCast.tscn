@@ -66,5 +66,7 @@ position = Vector2(586, 420)
 rotation = 0.0199496
 points = PackedVector2Array(-178.865, 8.56979, 236.993, -2.72815)
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [editable path="PlatformBase4"]
 [editable path="PlatformBase3"]

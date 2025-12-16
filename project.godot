@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="LostWisps"
+<<<<<<< Updated upstream
 run/main_scene="uid://ctglfvwiqb0pu"
+=======
+run/main_scene="uid://b7085wyo2x5kv"
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Sprites/Icon.svg"
 
@@ -19,12 +23,20 @@ config/icon="res://Sprites/Icon.svg"
 
 DebugController="*res://Scripts/Debug/DebugController.cs"
 DestructionController="*res://Global/Systems/Destruction/Base/DestructionController.cs"
+GameController="*res://Global/Controllers/GameController.cs"
 
 [debug]
 
 settings/size/mode=3
 settings/size/viewport_height=1080
 settings/size/viewport_width=1920
+log/player=false
+log/synchronizer=false
+log/destruction=false
+log/interaction=false
+log/raycast=false
+log/ui=false
+log/general=false
 
 [display]
 
@@ -36,12 +48,17 @@ window/size/mode=3
 
 project/assembly_name="LostWisps"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/LostWispsDebug/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://Astronomical library/": "purple",
 "res://Debug/": "blue",
 "res://GameObjects/": "teal",
+"res://GameObjects/Objects/Interactive objects/Base/": "red",
 "res://GameObjects/Objects/Spawners/Base/": "red",
 "res://Global/": "gray",
 "res://Global/Systems/Destruction/Base/": "red",
@@ -51,13 +68,18 @@ folder_colors={
 "res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
 "res://Scripts/Player/States/Base/": "red",
+<<<<<<< Updated upstream
 "res://Shaders/": "red",
+=======
+"res://Shaders/": "teal",
+>>>>>>> Stashed changes
 "res://UI/": "green"
 }
 
 [global_group]
 
 LightReflectors=""
+InteractiveObject=""
 
 [input]
 
@@ -128,6 +150,16 @@ zoom_out={
 
 2d_physics/layer_1="Player1"
 2d_physics/layer_2="Player2"
+
+[lost_wisps]
+
+debug/log/player=false
+debug/log/synchronizer=false
+debug/log/destruction=false
+debug/log/interaction=false
+debug/log/raycast=false
+debug/log/ui=false
+debug/log/general=false
 
 [physics]
 

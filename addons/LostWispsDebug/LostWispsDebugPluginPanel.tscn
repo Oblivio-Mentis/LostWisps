@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1un4jxhduve"]
+
+[ext_resource type="Script" uid="uid://bcnewpsnmr044" path="res://addons/LostWispsDebug/LostWispsDebugPluginPanel.cs" id="1_akxxs"]
+
+[sub_resource type="Theme" id="Theme_akxxs"]
+
+[node name="LostWispsDebugPluginPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_akxxs")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+current_tab = 2
+
+[node name="Global" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Global"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SynchronizersLabel" type="Label" parent="TabContainer/Global/VBoxContainer"]
+layout_mode = 2
+text = "Synchronizers"
+
+[node name="EnableAnimateInInspectorCheckBox" type="CheckBox" parent="TabContainer/Global/VBoxContainer"]
+layout_mode = 2
+text = "Simulate animations in inspector"
+
+[node name="Logs" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Logs"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LogCategoriesLabel" type="Label" parent="TabContainer/Logs/VBoxContainer"]
+layout_mode = 2
+text = "Log Categories"
+
+[node name="LogCategoriesGroup" type="VBoxContainer" parent="TabContainer/Logs/VBoxContainer"]
+layout_mode = 2
+
+[node name="Rays" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Rays"]
+layout_mode = 2
+offset_right = 3.0
+offset_bottom = 12.0
+
+[node name="LightRayEmitterLabel" type="Label" parent="TabContainer/Rays/VBoxContainer"]
+layout_mode = 2
+text = "Light Ray Emitter"
+
+[node name="LightRayEmitterGroup" type="VBoxContainer" parent="TabContainer/Rays/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_akxxs")
+
+[node name="EnableLightRayEmitterInInspectorCheckBox" type="CheckBox" parent="TabContainer/Rays/VBoxContainer/LightRayEmitterGroup"]
+layout_mode = 2
+text = "Simulate rays in inspector"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Rays/VBoxContainer/LightRayEmitterGroup"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Rays/VBoxContainer/LightRayEmitterGroup/HBoxContainer"]
+layout_mode = 2
+text = "Editor Tick Ms:"
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/Rays/VBoxContainer/LightRayEmitterGroup/HBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+value = 10.0

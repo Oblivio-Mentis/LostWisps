@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0j1tv23piwvc"]
+
+[ext_resource type="Script" uid="uid://3w03xr6k52kw" path="res://Scripts/Objects/Interactive objects/Base/ContactWatcher.cs" id="1_uo8qm"]
+
+[node name="ContactWatcher" type="Area2D"]
+script = ExtResource("1_uo8qm")
