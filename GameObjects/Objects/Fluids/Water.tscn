@@ -9,11 +9,9 @@ shader = ExtResource("1_wsvc7")
 shader_parameter/water_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvc7"]
-resource_local_to_scene = true
-size = Vector2(63, 58.4359)
+size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_swbdp"]
-resource_local_to_scene = true
 shader = ExtResource("1_wsvc7")
 shader_parameter/water_color = Color(0.0714403, 0.38402, 0.704637, 1)
 
