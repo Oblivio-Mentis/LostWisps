@@ -11,11 +11,7 @@ config_version=5
 [application]
 
 config/name="LostWisps"
-<<<<<<< Updated upstream
-run/main_scene="uid://ctglfvwiqb0pu"
-=======
 run/main_scene="uid://b7085wyo2x5kv"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Sprites/Icon.svg"
 
@@ -38,12 +34,6 @@ log/raycast=false
 log/ui=false
 log/general=false
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=3
-
 [dotnet]
 
 project/assembly_name="LostWisps"
@@ -56,7 +46,7 @@ enabled=PackedStringArray("res://addons/LostWispsDebug/plugin.cfg")
 
 folder_colors={
 "res://Astronomical library/": "purple",
-"res://Debug/": "blue",
+"res://Debug/": "red",
 "res://GameObjects/": "teal",
 "res://GameObjects/Objects/Interactive objects/Base/": "red",
 "res://GameObjects/Objects/Spawners/Base/": "red",
@@ -68,11 +58,7 @@ folder_colors={
 "res://Scripts/Objects/Spawners/Base/": "red",
 "res://Scripts/Objects/Synchronization nodes/Base/": "red",
 "res://Scripts/Player/States/Base/": "red",
-<<<<<<< Updated upstream
-"res://Shaders/": "red",
-=======
 "res://Shaders/": "teal",
->>>>>>> Stashed changes
 "res://UI/": "green"
 }
 
@@ -117,7 +103,7 @@ ui_down={
 }
 debug_toggle={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 move_left={
