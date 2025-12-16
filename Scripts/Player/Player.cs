@@ -157,10 +157,10 @@ namespace LostWisps.Player
 				return;
 
 			if (currentAnimationState != newAnimationState)
-			{
+            {
 				animationNodeStateMachinePlayback.Travel(newAnimationState);
 				currentAnimationState = newAnimationState;
-			}
+            }
 		}
 
 		public Vector2 GetSlopeUpDirection()
