@@ -29,11 +29,7 @@ namespace LostWisps.Debug
             foreach (LogCategory category in Enum.GetValues<LogCategory>())
             {
                 string key = LostWisps.Global.GlobalConstants.DebugSettings.SETTING_LOG_BASE_KEY + category.ToString().ToLower();
-                bool enabled = projectSettings.HasSetting(key)
-                             ? projectSettings.GetSetting(key).As<bool>()
-                             : true;
-
-                _enabledCategories[category] = enabled;
+                _enabledCategories[category] = LostWisps.Utils.Utils.IsProjectSettingEnabled(key);
             }
         }
 

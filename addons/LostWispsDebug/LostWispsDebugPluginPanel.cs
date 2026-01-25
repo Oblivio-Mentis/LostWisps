@@ -108,9 +108,14 @@ public partial class LostWispsDebugPluginPanel : PanelContainer
 
     private void OnEnableAnimateInInspectorCheckBoxToggled(bool pressed)
     {
+        SetEditorSetting(GlobalConstants.DebugSettings.SETTING_ENABLE_ANIMATE_KEY, pressed);
+    }
+
+    private void SetEditorSetting(string key, bool value)
+    {
         if (EditorInterface == null) return;
 
         var editorSettings = EditorInterface.GetEditorSettings();
-        editorSettings.SetSetting(GlobalConstants.DebugSettings.SETTING_ENABLE_ANIMATE_KEY, pressed);
+        editorSettings.SetSetting(key, value);
     }
 }

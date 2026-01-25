@@ -16,7 +16,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
+tracks/0/path = NodePath("PressurePlate:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
+tracks/0/path = NodePath("PressurePlate:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,18 +51,18 @@ _data = {
 [node name="Button" type="Node2D"]
 script = ExtResource("1_tgvw6")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PressurePlate" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="PressurePlateTexture" type="Sprite2D" parent="PressurePlate"]
 position = Vector2(0, -12)
 scale = Vector2(0.081, 0.174)
 texture = ExtResource("1_tpufo")
 
-[node name="ContactWatcher" type="Area2D" parent="Node2D"]
+[node name="ContactWatcher" type="Area2D" parent="PressurePlate"]
 script = ExtResource("3_hcdx5")
 metadata/_custom_type_script = "uid://3w03xr6k52kw"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ContactWatcher"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePlate/ContactWatcher"]
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_ou7wj")
 

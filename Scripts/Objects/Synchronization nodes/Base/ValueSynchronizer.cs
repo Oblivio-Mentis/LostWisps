@@ -8,7 +8,7 @@ namespace LostWisps.Object
 {
 
     [Tool]
-    public abstract partial class ValueSynchronizer<T> : BaseSynchronizer, IActivatable, IValueReceiver where T : struct
+    public abstract partial class ValueSynchronizer<T> : BaseSynchronizer, IActivatable, IEditorResettable, IValueReceiver where T : struct
     {
         #region AnimationModeStrategy
 
@@ -157,7 +157,7 @@ namespace LostWisps.Object
 
         public override void _Ready()
         {
-            if (Engine.IsEditorHint())
+            if (Engine.IsEditorHint() && !LostWisps.Utils.Utils.IsEditorSettingEnabled(LostWisps.Global.GlobalConstants.DebugSettings.SETTING_ENABLE_ANIMATE_KEY))
                 return;
             
             ResetInitialState();
@@ -175,6 +175,15 @@ namespace LostWisps.Object
             currentMode.OnEnter(this);
         }
 
+        public void ResetEditorState()
+        {
+            // Вынести в каждый synchronizer
+            if (!Engine.IsEditorHint()) return;
+
+            ResetInitialState();
+            ApplyCurrentValue();
+        }
+
         protected virtual void ResetInitialState()
         {
             current = IsAdditive || (!IsConstant && !IsPingPong && !IsAlwaysActive && !IsActiveOnStart)
@@ -188,9 +197,9 @@ namespace LostWisps.Object
 
         public override void _PhysicsProcess(double delta)
         {
-            if (Engine.IsEditorHint())
+            if (Engine.IsEditorHint() && !LostWisps.Utils.Utils.IsEditorSettingEnabled(LostWisps.Global.GlobalConstants.DebugSettings.SETTING_ENABLE_ANIMATE_KEY))
                 return;
-
+                
             if (!IsActivated || TargetNodes.Length == 0) return;
 
             currentMode.Update(this, (float)delta);

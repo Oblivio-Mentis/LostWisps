@@ -14,10 +14,9 @@ script = ExtResource("1_akxxs")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 
 [node name="Global" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -33,6 +32,14 @@ text = "Synchronizers"
 [node name="EnableAnimateInInspectorCheckBox" type="CheckBox" parent="TabContainer/Global/VBoxContainer"]
 layout_mode = 2
 text = "Simulate animations in inspector"
+
+[node name="ShowTargetNodes" type="CheckBox" parent="TabContainer/Global/VBoxContainer"]
+layout_mode = 2
+text = "Show linked objects in inspector (VIP)"
+
+[node name="ShowSynchronizersDebugInfo" type="CheckBox" parent="TabContainer/Global/VBoxContainer"]
+layout_mode = 2
+text = "Show synchronizers debug info (VIP)"
 
 [node name="Logs" type="TabBar" parent="TabContainer"]
 visible = false
@@ -52,6 +59,7 @@ text = "Log Categories"
 layout_mode = 2
 
 [node name="Rays" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

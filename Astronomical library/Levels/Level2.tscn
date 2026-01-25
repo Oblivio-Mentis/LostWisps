@@ -234,7 +234,6 @@ texture = ExtResource("1_g2q13")
 
 [node name="InteractionObject" parent="." instance=ExtResource("2_y2lgr")]
 position = Vector2(1731, 306)
-mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_34cai")
 
 [node name="PlatformBase" parent="." instance=ExtResource("3_7tun3")]
@@ -326,7 +325,7 @@ offset_right = 298.0
 offset_bottom = -39.0
 
 [node name="PlatformBase5" parent="." instance=ExtResource("3_7tun3")]
-position = Vector2(711, 168)
+position = Vector2(1532.36, 122.714)
 
 [node name="Texture" parent="PlatformBase5" index="0"]
 visible = false
@@ -644,7 +643,6 @@ position = Vector2(1774, -1)
 TargetAngle = 90.0
 RotationDirection = 0
 AlwaysFaceCenter = true
-Speed = 50.0
 EasingCurve = SubResource("Curve_m7pmg")
 CanBeDeactivated = false
 TargetNodes = [NodePath("../PlatformBase11")]
@@ -659,15 +657,12 @@ script = ExtResource("11_m7pmg")
 [node name="PositionSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_nrst4")]
 position = Vector2(221, 221)
 curve = SubResource("Curve2D_8ra0d")
-Speed = 0.2
 EasingCurve = SubResource("Curve_lq2gg")
 TargetNodes = [NodePath("../PlatformBase")]
 
 [node name="PositionSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_nrst4")]
 position = Vector2(792, 142)
 curve = SubResource("Curve2D_34cai")
-Speed = 0.1
-PingPong = true
 EasingCurve = SubResource("Curve_8ra0d")
 IsAlwaysActive = true
 CanBeDeactivated = false
@@ -681,13 +676,11 @@ TargetNodes = [NodePath("../PlatformBase2")]
 [node name="PositionSynchronizer4" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_nrst4")]
 position = Vector2(309, -105)
 curve = SubResource("Curve2D_lq2gg")
-Speed = 0.6
 TargetNodes = [NodePath("../PlatformBase3")]
 
 [node name="RotationSynchronizer" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("13_34cai")]
 position = Vector2(1839, 112)
 TargetAngle = 180.0
-IsAlwaysActive = false
 TargetNodes = [NodePath("../PlatformBase10")]
 
 [node name="PositionSynchronizer5" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("12_nrst4")]
@@ -705,19 +698,16 @@ TargetNodes = [NodePath("../PlatformBase17")]
 [node name="RotationSynchronizer2" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("13_34cai")]
 position = Vector2(199, 1174)
 RotationDirection = 0
-IsAlwaysActive = false
 CanBeDeactivated = false
 TargetNodes = [NodePath("../PlatformBase13")]
 
 [node name="RotationSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("13_34cai")]
 position = Vector2(767, 1323)
-IsAlwaysActive = false
 CanBeDeactivated = false
 TargetNodes = [NodePath("../PlatformBase14")]
 
 [node name="RotationSynchronizer4" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("13_34cai")]
 position = Vector2(1524, 1234)
-IsAlwaysActive = false
 CanBeDeactivated = false
 TargetNodes = [NodePath("../PlatformBase15")]
 

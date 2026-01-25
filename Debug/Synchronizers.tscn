@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b7085wyo2x5kv"]
+[gd_scene load_steps=31 format=3 uid="uid://b7085wyo2x5kv"]
 
 [ext_resource type="PackedScene" uid="uid://cwbpp4072083g" path="res://GameObjects/Objects/Platforms/PlatformBase.tscn" id="1_iblps"]
 [ext_resource type="PackedScene" uid="uid://kcmq2oermbar" path="res://GameObjects/Objects/Interactive objects/Slider.tscn" id="2_1nofn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4qjrgqqwiio" path="res://GameObjects/Objects/Synchronization nodes/RotationSyncronizer.tscn" id="3_toblf"]
 [ext_resource type="PackedScene" uid="uid://bk7dqe7ndwxk5" path="res://GameObjects/Objects/Interactive objects/Buttons/Button.tscn" id="7_toblf"]
 [ext_resource type="PackedScene" uid="uid://dlmtgsvj205ws" path="res://GameObjects/Objects/Synchronization nodes/OrbitSynchronizer.tscn" id="8_c36my"]
+[ext_resource type="Texture2D" uid="uid://2w0wtlw8ig3l" path="res://Sprites/1766791408.png" id="9_ychls"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iblps"]
 resource_local_to_scene = true
@@ -120,7 +121,7 @@ texture = SubResource("CompressedTexture2D_iblps")
 shape = SubResource("RectangleShape2D_6ja55")
 
 [node name="FireElementModel" parent="." instance=ExtResource("2_6ja55")]
-position = Vector2(1224, -32)
+position = Vector2(416, -24)
 
 [node name="Camera2D" type="Camera2D" parent="FireElementModel"]
 script = ExtResource("3_jedkq")
@@ -196,7 +197,7 @@ IsPingPong = true
 IsLooped = true
 EasingCurve = SubResource("Curve_toblf")
 IsAlwaysActive = true
-TargetNodes = [null]
+TargetNodes = [NodePath("../../Objects/PlatformBase")]
 
 [node name="Objects" type="Node" parent="TestPosition2"]
 
@@ -231,7 +232,7 @@ position = Vector2(192, -128)
 TargetAngle = 360.0
 AnimationSpeed = 30.0
 IsConstant = true
-TargetNodes = [null]
+TargetNodes = [NodePath("../../Objects/PlatformBase")]
 
 [node name="RotationSynchronizer2" parent="TestRotation1/Synchronizers" node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
 position = Vector2(320, -128)
@@ -239,18 +240,18 @@ TargetAngle = 360.0
 RotationDirection = 0
 AnimationSpeed = 30.0
 IsConstant = true
-TargetNodes = [null]
+TargetNodes = [NodePath("../../Objects/PlatformBase2")]
 
 [node name="Objects" type="Node" parent="TestRotation1"]
 
 [node name="PlatformBase" parent="TestRotation1/Objects" instance=ExtResource("1_iblps")]
 position = Vector2(192, -128)
-rotation = 3.67398
+rotation = 36.1129
 scale = Vector2(0.799999, 0.799999)
 
 [node name="PlatformBase2" parent="TestRotation1/Objects" instance=ExtResource("1_iblps")]
 position = Vector2(320, -128)
-rotation = 8.89225
+rotation = 23.5793
 scale = Vector2(0.8, 0.8)
 
 [node name="Interactive" type="Node" parent="TestRotation1"]
@@ -371,12 +372,13 @@ AnimationSpeed = 30.0
 IsPingPong = true
 IsLooped = true
 IsActiveOnStart = true
-TargetNodes = [null, null, null, null]
+TargetNodes = [NodePath("../../Objects/PlatformBase"), NodePath("../../Objects/PlatformBase2"), NodePath("../../Objects/PlatformBase3"), NodePath("../../Objects/PlatformBase4")]
 
 [node name="Objects" type="Node" parent="TestOrbit1"]
 
 [node name="PlatformBase" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
-position = Vector2(1311.03, -182.856)
+position = Vector2(1408, -128)
+rotation = -1.82388
 
 [node name="Texture" parent="TestOrbit1/Objects/PlatformBase" index="0"]
 position = Vector2(-7.62939e-06, 4.05312e-06)
@@ -387,7 +389,8 @@ texture = SubResource("CompressedTexture2D_jg3w1")
 shape = SubResource("RectangleShape2D_l2dxy")
 
 [node name="PlatformBase2" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
-position = Vector2(1376.97, -73.1441)
+position = Vector2(1280, -128)
+rotation = 1.31771
 
 [node name="Texture" parent="TestOrbit1/Objects/PlatformBase2" index="0"]
 position = Vector2(-7.62939e-06, -4.05312e-06)
@@ -398,7 +401,8 @@ texture = SubResource("CompressedTexture2D_vr8nt")
 shape = SubResource("RectangleShape2D_yw3dc")
 
 [node name="PlatformBase3" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
-position = Vector2(1398.86, -160.965)
+position = Vector2(1344, -72)
+rotation = -0.253088
 
 [node name="Texture" parent="TestOrbit1/Objects/PlatformBase3" index="0"]
 position = Vector2(-5.26905e-05, -1.90735e-06)
@@ -409,7 +413,8 @@ texture = SubResource("CompressedTexture2D_kn0ae")
 shape = SubResource("RectangleShape2D_enkpo")
 
 [node name="PlatformBase4" parent="TestOrbit1/Objects" instance=ExtResource("1_iblps")]
-position = Vector2(1289.14, -95.0352)
+position = Vector2(1344, -184)
+rotation = 2.8885
 
 [node name="Texture" parent="TestOrbit1/Objects/PlatformBase4" index="0"]
 position = Vector2(1.21593e-05, 0)
@@ -428,6 +433,27 @@ shape = SubResource("RectangleShape2D_1m2lo")
 [node name="Objects" type="Node" parent="TestRotation5"]
 
 [node name="Interactive" type="Node" parent="TestRotation5"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1143, -54)
+scale = Vector2(0.136719, 0.136719)
+texture = ExtResource("9_ychls")
+
+[node name="RotationSynchronizer3" parent="." node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_toblf")]
+position = Vector2(0, -128)
+AnimationSpeed = 35.0
+IsConstant = true
+IsAlwaysActive = true
+TargetNodes = [NodePath("../PlatformBase")]
+
+[node name="PlatformBase" parent="." instance=ExtResource("1_iblps")]
+position = Vector2(0, -128)
+rotation = 18.8291
+
+[node name="PlatformBase2" parent="." instance=ExtResource("1_iblps")]
+position = Vector2(496, -48)
+rotation = 0.482628
 
 [editable path="Objects/PlatformBase"]
 [editable path="TestPosition1/Objects/PlatformBase"]
